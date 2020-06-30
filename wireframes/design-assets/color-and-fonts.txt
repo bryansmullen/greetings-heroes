@@ -1,0 +1,11 @@
+#8F4836
+#991B00
+#800000
+#99004C
+#8C078C
+
+@import url("https://use.typekit.net/fks6qbq.css");
+
+font-family: gothicus-roman, serif;
+font-weight: 400;
+font-style: normal;
