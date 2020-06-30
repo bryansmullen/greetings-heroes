@@ -9,12 +9,13 @@
 - As a user I should be able to start, pause, and stop the game at will [Feature](#StartStopPause)
 - As a user I should be able to choose whether to attack, use a spell, or use an item during each turn [Feature](#ChooseAction)
 - As a user I should be able to inspect both my remaining health and magic points, as well as what items I have available [Feature](#HUD)
-- As a user I should be able to see read the narrative at my own pace and advance it when I am ready [Feature](AdvanceStory)
-- As a user I should be able to choose my character from a list of four at the beginning of the game [Feature](CharacterSelect)
-- As a user I should be able to inspect the attributes of each available character [Feature](InspectCharacter)
-- As a user I should receive feedback when I win a battle, complete the game, or fail [Feature](GameResult)
-- As a user I should be able to progress to three separate battles in order to win the game [Feature](Game)
-- As a user I should be able to read story narrative before and after each battle [Feature](Story)
+- As a user I should be able to see read the narrative at my own pace and advance it when I am ready [Feature](#AdvanceStory)
+- As a user I should be able to choose my character from a list of four at the beginning of the game [Feature](#CharacterSelect)
+- As a user I should be able to inspect the attributes of each available character [Feature](#InspectCharacter)
+- As a user I should receive feedback when I win a battle, complete the game, or fail [Feature](#GameResult)
+- As a user I should be able to progress to three separate battles in order to win the game [Feature](#Game)
+- As a user I should be able to read story narrative before and after each battle [Feature](#Story)
+- As a user I should be able to read instructions about how to play the game
 
 ## Features
 
@@ -53,3 +54,7 @@ The game proper should consist of a linear path that the character is set on, in
 ### Story
 
 Story blocks should appear at the start of the game, after the first battle, after the second battle, and after the final battle. They should be displayed on a separate screen, for example a modal to distinguish between action (battles) and exposition (story)
+
+## Wireframes
+
+Wireframes are generated to accomodate the majority of user stories. Still to be implemented are #StartStopPause, #AdvanceStory, #InspectCharacter.
