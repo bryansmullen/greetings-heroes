@@ -4,8 +4,29 @@
 #99004C
 #8C078C
 
-@import url("https://use.typekit.net/fks6qbq.css");
+@import url("https://use.typekit.net/twt4nji.css");
 
+# Gothicus Roman
 font-family: gothicus-roman, serif;
 font-weight: 400;
 font-style: normal;
+
+# Courier Prime
+font-family: courier-prime, monospace;
+font-weight: 400;
+font-style: normal;
+
+# Courier Prime Italic
+font-family: courier-prime, monospace;
+font-weight: 400;
+font-style: italic;
+
+# Courier Prime Bold
+font-family: courier-prime, monospace;
+font-weight: 700;
+font-style: normal;
+
+# Courier Prime Bold Italic
+font-family: courier-prime, monospace;
+font-weight: 700;
+font-style: italic;
