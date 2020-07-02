@@ -1,0 +1,26 @@
+$gh-earth: #8F4836;
+$gh-red: #991B00;
+$gh-dark-red: #800000;
+$gh-magenta: #99004C;
+$gh-violet: #8C078C;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background-color: $gh-dark-red;
+  height: 120px;
+  display:flex;
+  justify-content: space-between;
+  padding: 0 10%;
+  align-items: center;
+  i{
+    color:white;
+  }
+  i:hover{
+    color: lighten($gh-red, 50%);
+  }
+}
