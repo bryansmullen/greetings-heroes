@@ -28,6 +28,7 @@
     - [Color Palette](#color-palette)
     - [Typography](#typography)
     - [Imagery](#imagery)
+    - [Iconography](#iconography)
     - [Prototype](#prototype)
   - [Credits](#credits)
     - [Content](#content)
@@ -141,6 +142,10 @@ Initial hues were selected based on these representations of the brand, and then
 ### Imagery
 
 [Freepik](http://www.freepik.com) was used for the main title image. As such the following code must be included to conform with their free licensing agreement. `<a href="">Designed by freepic.diller / Freepik</a>`
+
+### Iconography
+
+[Material Io](https://material.io/resources/icons) was used to source basic icons for sound on/off, information, and exit application. Additionally icons for LinkedIn and Github were sourced from their respective official websites.
 
 ### Prototype
 
