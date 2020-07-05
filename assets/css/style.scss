@@ -13,6 +13,15 @@ $gh-courier: courier-prime, monospace;
   margin: 0;
 }
 
+body {
+  background-image: url(../img/bg-image.jpg);
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 header {
   background-color: $gh-dark-red;
   height: 120px;
@@ -33,14 +42,18 @@ main {
   display: flex;
   justify-content: center;
   padding-top: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .button {
   padding: 20px 40px;
+  margin: 2px;
   background-color: $gh-dark-red;
   color: white;
   font-family: $gh-courier;
-  width: 200px;
+  width: 25%;
   border-radius: 10px;
   text-align: center;
 
