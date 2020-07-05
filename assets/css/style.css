@@ -1,3 +1,4 @@
+@import url("https://use.typekit.net/twt4nji.css");
 * {
   box-sizing: border-box;
   padding: 0;
@@ -14,5 +15,24 @@ header {
     color: white; }
   header i:hover {
     color: #ffab99; }
+
+main {
+  display: flex;
+  justify-content: center;
+  padding-top: 400px; }
+
+.button {
+  padding: 20px 40px;
+  background-color: #800000;
+  color: white;
+  font-family: courier-prime, monospace;
+  width: 200px;
+  border-radius: 10px;
+  text-align: center; }
+  .button:hover {
+    background-color: #8F4836;
+    cursor: pointer; }
+  .button:active {
+    background-color: #8C078C; }
 
 /*# sourceMappingURL=style.css.map */

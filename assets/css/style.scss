@@ -1,8 +1,11 @@
+@import url("https://use.typekit.net/twt4nji.css");
+
 $gh-earth: #8F4836;
 $gh-red: #991B00;
 $gh-dark-red: #800000;
 $gh-magenta: #99004C;
 $gh-violet: #8C078C;
+$gh-courier: courier-prime, monospace;
 
 * {
   box-sizing: border-box;
@@ -22,5 +25,29 @@ header {
   }
   i:hover{
     color: lighten($gh-red, 50%);
+  }
+}
+
+main{
+  display:flex;
+  justify-content: center;
+  padding-top: 400px;
+}
+
+.button {
+  padding: 20px 40px;
+  background-color: $gh-dark-red;
+  color: white;
+  font-family: $gh-courier;
+  width: 200px;
+  border-radius: 10px;
+  text-align: center;
+
+  &:hover{
+    background-color: $gh-earth;
+    cursor: pointer;
+  }
+  &:active{
+    background-color: $gh-violet;
   }
 }
