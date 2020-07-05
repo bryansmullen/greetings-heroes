@@ -13,6 +13,16 @@ $gh-courier: courier-prime, monospace;
   margin: 0;
 }
 
+body {
+  background-image: url(../img/bg-image.png);
+  background-color: black;
+  background-size: cover;
+  width: 100vw;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 header {
   background-color: $gh-dark-red;
   height: 120px;
@@ -33,14 +43,18 @@ main {
   display: flex;
   justify-content: center;
   padding-top: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .button {
   padding: 20px 40px;
+  margin: 2px;
   background-color: $gh-dark-red;
   color: white;
   font-family: $gh-courier;
-  width: 200px;
+  width: 25%;
   border-radius: 10px;
   text-align: center;
 
@@ -99,12 +113,47 @@ custom-modal {
   }
 }
 
-custom-modal h2 {
+h2 {
   font-family: "Courier New", Courier, monospace;
   text-align: center;
+  color: white;
 }
 
 p {
   margin: 16px;
   text-align: center;
+}
+
+.character-heading {
+  font-family: "gothicus-roman";
+  font-size: 6rem;
+  color: $gh-dark-red;
+  margin-bottom: 40px;
+}
+
+.character-selection {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 20px;
+}
+
+.character-card {
+  background-color: $gh-dark-red;
+  display: grid;
+  width: 800px;
+  h2 {
+    color: white;
+    grid-column: 2;
+    font-family: "gothicus roman";
+    font-size: 4rem;
+    margin: auto 0;
+  }
+  &:hover {
+    background-color: $gh-earth;
+  }
+  &:active {
+    background-color: $gh-magenta;
+  }
 }

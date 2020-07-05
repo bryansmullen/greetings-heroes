@@ -4,6 +4,15 @@
   padding: 0;
   margin: 0; }
 
+body {
+  background-image: url(../img/bg-image.png);
+  background-color: black;
+  background-size: cover;
+  width: 100vw;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center; }
+
 header {
   background-color: #800000;
   height: 120px;
@@ -20,14 +29,18 @@ header {
 main {
   display: flex;
   justify-content: center;
-  padding-top: 400px; }
+  padding-top: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .button {
   padding: 20px 40px;
+  margin: 2px;
   background-color: #800000;
   color: white;
   font-family: courier-prime, monospace;
-  width: 200px;
+  width: 25%;
   border-radius: 10px;
   text-align: center; }
   .button:hover {
@@ -71,12 +84,41 @@ custom-modal {
   custom-modal p {
     font-family: courier-prime, monospace; }
 
-custom-modal h2 {
+h2 {
   font-family: "Courier New", Courier, monospace;
-  text-align: center; }
+  text-align: center;
+  color: white; }
 
 p {
   margin: 16px;
   text-align: center; }
+
+.character-heading {
+  font-family: "gothicus-roman";
+  font-size: 6rem;
+  color: #800000;
+  margin-bottom: 40px; }
+
+.character-selection {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 20px; }
+
+.character-card {
+  background-color: #800000;
+  display: grid;
+  width: 800px; }
+  .character-card h2 {
+    color: white;
+    grid-column: 2;
+    font-family: "gothicus roman";
+    font-size: 4rem;
+    margin: auto 0; }
+  .character-card:hover {
+    background-color: #8f4836; }
+  .character-card:active {
+    background-color: #99004c; }
 
 /*# sourceMappingURL=style.css.map */
