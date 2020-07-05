@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-  <title>Greetings Heroes</title>
-</head>
-<body>
-  
-  <header>
-    <i class="material-icons">info</i>
-    <i class="material-icons">volume_off</i>
-    <i class="material-icons">exit_to_app</i>
-  </header>
-  <main>
-    <div class="button">Instructions</div>
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/modal-triggers.js" defer></script>
+    <title>Greetings Heroes</title>
+  </head>
+  <body>
+    <header>
+      <i class="material-icons">info</i>
+      <i class="material-icons">volume_off</i>
+      <i class="material-icons">exit_to_app</i>
+    </header>
+    <main>
+      <div id="instructions-button" class="button">Instructions</div>
+    </main>
+
+    <custom-modal>
+      <h2 slot="title">Instructions</h2>
+      <p slot="content">
+        In this section is where we are going to have the instructions for the
+        game
+      </p>
+    </custom-modal>
+  </body>
 </html>
