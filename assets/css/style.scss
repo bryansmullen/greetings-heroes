@@ -14,9 +14,10 @@ $gh-courier: courier-prime, monospace;
 }
 
 body {
-  background-image: url(../img/bg-image.jpg);
+  background-image: url(../img/bg-image.png);
+  background-color: black;
   background-size: cover;
-  height: 100vh;
+  width: 100vw;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
@@ -112,9 +113,10 @@ custom-modal {
   }
 }
 
-custom-modal h2 {
+h2 {
   font-family: "Courier New", Courier, monospace;
   text-align: center;
+  color: white;
 }
 
 p {
