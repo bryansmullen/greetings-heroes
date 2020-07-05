@@ -164,6 +164,8 @@ Character artwork created by [#](#)
 
 ### Acknowledgements
 
+Logic for creating custom modal using Javascript, CSS, and the shadow DOM was customised from content on Maximilian Schwarzmüller's course "Javascript - The Complete Guide 2020"
+
 I received inspiration for this project from:
 
 - [Final Fantasy VII](https://en.wikipedia.org/wiki/Final_Fantasy_VII)

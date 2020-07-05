@@ -1,10 +1,10 @@
 @import url("https://use.typekit.net/twt4nji.css");
 
-$gh-earth: #8F4836;
-$gh-red: #991B00;
+$gh-earth: #8f4836;
+$gh-red: #991b00;
 $gh-dark-red: #800000;
-$gh-magenta: #99004C;
-$gh-violet: #8C078C;
+$gh-magenta: #99004c;
+$gh-violet: #8c078c;
 $gh-courier: courier-prime, monospace;
 
 * {
@@ -16,20 +16,21 @@ $gh-courier: courier-prime, monospace;
 header {
   background-color: $gh-dark-red;
   height: 120px;
-  display:flex;
+  display: flex;
   justify-content: space-between;
   padding: 0 10%;
   align-items: center;
-  i{
-    color:white;
+  i {
+    color: white;
+    cursor: pointer;
   }
-  i:hover{
+  i:hover {
     color: lighten($gh-red, 50%);
   }
 }
 
-main{
-  display:flex;
+main {
+  display: flex;
   justify-content: center;
   padding-top: 400px;
 }
@@ -43,11 +44,67 @@ main{
   border-radius: 10px;
   text-align: center;
 
-  &:hover{
+  &:hover {
     background-color: $gh-earth;
     cursor: pointer;
   }
-  &:active{
+  &:active {
     background-color: $gh-violet;
   }
+}
+
+#backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+}
+
+custom-modal {
+  &::part(header) {
+    background-color: $gh-dark-red;
+  }
+  &::part(content) {
+    background-color: $gh-earth;
+  }
+  &::part(footer) {
+    background-color: $gh-dark-red;
+  }
+
+  &::part(button) {
+    padding: 20px 40px;
+    background-color: $gh-dark-red;
+    color: white;
+    font-family: $gh-courier;
+    width: 200px;
+    border-radius: 10px;
+    text-align: center;
+
+    &:hover {
+      background-color: $gh-earth;
+      cursor: pointer;
+    }
+    &:active {
+      background-color: $gh-violet;
+    }
+  }
+  color: white;
+  p {
+    font-family: $gh-courier;
+  }
+}
+
+custom-modal h2 {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+}
+
+p {
+  margin: 16px;
+  text-align: center;
 }
