@@ -29,7 +29,7 @@ header {
 main {
   display: flex;
   justify-content: center;
-  padding-top: 400px;
+  padding-top: 200px;
   display: flex;
   flex-direction: column;
   align-items: center; }
@@ -107,11 +107,16 @@ p {
   column-gap: 20px; }
 
 .character-card {
+  cursor: pointer;
   background-color: #800000;
   display: grid;
   width: 800px; }
+  .character-card img {
+    grid-row: 1;
+    grid-column: 1; }
   .character-card h2 {
     color: white;
+    grid-row: 1;
     grid-column: 2;
     font-family: "gothicus roman";
     font-size: 4rem;
@@ -120,5 +125,19 @@ p {
     background-color: #8f4836; }
   .character-card:active {
     background-color: #99004c; }
+  .character-card div.character-info {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    opacity: 0;
+    z-index: 0; }
+    .character-card div.character-info:hover {
+      opacity: 1; }
 
 /*# sourceMappingURL=style.css.map */
