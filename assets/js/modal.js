@@ -120,7 +120,7 @@ class Modal extends HTMLElement {
 
 customElements.define("custom-modal", Modal);
 
-class Cardm extends HTMLElement {
+class Card extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -131,4 +131,4 @@ class Cardm extends HTMLElement {
   }
 }
 
-customElements.define("card", Cardm);
+customElements.define("bsm-card", Card);
