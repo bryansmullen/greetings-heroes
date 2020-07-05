@@ -93,4 +93,32 @@ p {
   margin: 16px;
   text-align: center; }
 
+.character-heading {
+  font-family: "gothicus-roman";
+  font-size: 6rem;
+  color: #800000;
+  margin-bottom: 40px; }
+
+.character-selection {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 20px; }
+
+.character-card {
+  background-color: #800000;
+  display: grid;
+  width: 800px; }
+  .character-card h2 {
+    color: white;
+    grid-column: 2;
+    font-family: "gothicus roman";
+    font-size: 4rem;
+    margin: auto 0; }
+  .character-card:hover {
+    background-color: #8f4836; }
+  .character-card:active {
+    background-color: #99004c; }
+
 /*# sourceMappingURL=style.css.map */
