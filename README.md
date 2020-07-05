@@ -14,7 +14,7 @@
   - [UX Design](#ux-design)
     - [Goals](#goals)
     - [User Stories](#user-stories)
-  - [Features](#features)
+  - [Featuresgit](#featuresgit)
     - [StartStopPause](#startstoppause)
     - [ChooseAction](#chooseaction)
     - [HUD](#hud)
@@ -68,18 +68,18 @@ Therefore the user profile for this application is children between the ages of 
 
 ### User Stories
 
-- As a user I should be able to start, pause, and stop the game at will [Feature](#StartStopPause)
-- As a user I should be able to choose whether to attack, use a spell, or use an item during each turn [Feature](#ChooseAction)
-- As a user I should be able to inspect both my remaining health and magic points, as well as what items I have available [Feature](#HUD)
-- As a user I should be able to see read the narrative at my own pace and advance it when I am ready [Feature](#AdvanceStory)
-- As a user I should be able to choose my character from a list of four at the beginning of the game [Feature](#CharacterSelect)
-- As a user I should be able to inspect the attributes of each available character [Feature](#InspectCharacter)
-- As a user I should receive feedback when I win a battle, complete the game, or fail [Feature](#GameResult)
-- As a user I should be able to progress to three separate battles in order to win the game [Feature](#Game)
-- As a user I should be able to read story narrative before and after each battle [Feature](#Story)
+- As a user I should be able to start, pause, and stop the game at will
+- As a user I should be able to choose whether to attack, use a spell, or use an item during each turn
+- As a user I should be able to inspect both my remaining health and magic points, as well as what items I have available
+- As a user I should be able to see read the narrative at my own pace and advance it when I am ready
+- As a user I should be able to choose my character from a list of four at the beginning of the game
+- As a user I should be able to inspect the attributes of each available character
+- As a user I should receive feedback when I win a battle, complete the game, or fail
+- As a user I should be able to progress to three separate battles in order to win the game
+- As a user I should be able to read story narrative before and after each battle
 - As a user I should be able to read instructions about how to play the game
 
-## Features
+## Featuresgit 
 
 ### StartStopPause
 
