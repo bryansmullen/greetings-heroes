@@ -48,13 +48,14 @@ class Modal extends HTMLElement {
           z-index: 100;
           background-color: white;
           border-radius: 3px;
-          box-shadow: 0 2px 8px rgba (0,0,0,0.25);
+          box-shadow: 0 2px 8px #333;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           opacity: 0;
           pointer-events: none;
           transition: all 0.2s ease-out;
+          
         }
         #actions{
           border-top: 1px solid #ccc;
@@ -68,15 +69,14 @@ class Modal extends HTMLElement {
       </style>
       <div id="backdrop"></div>
       <div id="modal">
-        <header>
+        <header part="header">
             <slot name="title">Modal Title</slot>
         </header>
-        <section id="main">
-          <slot name="content">Modal Content goes here</slot>
+        <section id="main" part="content">
+          <slot>Modal Content goes here</slot>
         </section>
-        <section id="actions">
-          <button id="cancel-button">Cancel</button>
-          <button id="confirm-button">OK</button>
+        <section id="actions" part="footer">
+          <button id="exit-button" part="button">Return To Menu</button>
         </section>
       </div>
     `;
@@ -84,11 +84,8 @@ class Modal extends HTMLElement {
     const backdrop = this.shadowRoot.querySelector("#backdrop");
     backdrop.addEventListener("click", this._cancel.bind(this));
 
-    const cancelButton = this.shadowRoot.querySelector("#cancel-button");
-    const confirmButton = this.shadowRoot.querySelector("#confirm-button");
-
-    cancelButton.addEventListener("click", this._cancel.bind(this));
-    confirmButton.addEventListener("click", this._confirm.bind(this));
+    const exitButton = this.shadowRoot.querySelector("#exit-button");
+    exitButton.addEventListener("click", this._cancel.bind(this));
   }
 
   attributeChangedCallback() {
@@ -118,12 +115,6 @@ class Modal extends HTMLElement {
     this.hide();
     const cancelEvent = new Event("cancel");
     this.dispatchEvent(cancelEvent);
-  }
-
-  _confirm() {
-    this.hide();
-    const confirmEvent = new Event("confirm");
-    this.dispatchEvent(confirmEvent);
   }
 }
 

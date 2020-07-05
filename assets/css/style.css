@@ -12,7 +12,8 @@ header {
   padding: 0 10%;
   align-items: center; }
   header i {
-    color: white; }
+    color: white;
+    cursor: pointer; }
   header i:hover {
     color: #ffab99; }
 
@@ -46,7 +47,36 @@ main {
   opacity: 0;
   pointer-events: none; }
 
-h2 {
-  font-family: "Courier New", Courier, monospace; }
+custom-modal {
+  color: white; }
+  custom-modal::part(header) {
+    background-color: #800000; }
+  custom-modal::part(content) {
+    background-color: #8f4836; }
+  custom-modal::part(footer) {
+    background-color: #800000; }
+  custom-modal::part(button) {
+    padding: 20px 40px;
+    background-color: #800000;
+    color: white;
+    font-family: courier-prime, monospace;
+    width: 200px;
+    border-radius: 10px;
+    text-align: center; }
+    custom-modal::part(button):hover {
+      background-color: #8f4836;
+      cursor: pointer; }
+    custom-modal::part(button):active {
+      background-color: #8c078c; }
+  custom-modal p {
+    font-family: courier-prime, monospace; }
+
+custom-modal h2 {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center; }
+
+p {
+  margin: 16px;
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

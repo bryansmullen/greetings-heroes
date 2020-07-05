@@ -22,6 +22,7 @@ header {
   align-items: center;
   i {
     color: white;
+    cursor: pointer;
   }
   i:hover {
     color: lighten($gh-red, 50%);
@@ -64,6 +65,46 @@ main {
   pointer-events: none;
 }
 
-h2 {
+custom-modal {
+  &::part(header) {
+    background-color: $gh-dark-red;
+  }
+  &::part(content) {
+    background-color: $gh-earth;
+  }
+  &::part(footer) {
+    background-color: $gh-dark-red;
+  }
+
+  &::part(button) {
+    padding: 20px 40px;
+    background-color: $gh-dark-red;
+    color: white;
+    font-family: $gh-courier;
+    width: 200px;
+    border-radius: 10px;
+    text-align: center;
+
+    &:hover {
+      background-color: $gh-earth;
+      cursor: pointer;
+    }
+    &:active {
+      background-color: $gh-violet;
+    }
+  }
+  color: white;
+  p {
+    font-family: $gh-courier;
+  }
+}
+
+custom-modal h2 {
   font-family: "Courier New", Courier, monospace;
+  text-align: center;
+}
+
+p {
+  margin: 16px;
+  text-align: center;
 }
