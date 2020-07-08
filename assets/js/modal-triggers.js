@@ -1,3 +1,5 @@
+import { Modal } from "./modal.js";
+
 const confirmButton = document.querySelector("#instructions-button");
 const modal = document.querySelector("custom-modal");
 
@@ -15,3 +17,4 @@ confirmButton.addEventListener("click", () => {
     console.log("Opening Modal...");
   }
 });
+customElements.define("custom-modal", Modal);
