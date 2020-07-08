@@ -1,4 +1,4 @@
-class Modal extends HTMLElement {
+export class Modal extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -117,18 +117,3 @@ class Modal extends HTMLElement {
     this.dispatchEvent(cancelEvent);
   }
 }
-
-customElements.define("custom-modal", Modal);
-
-class Cardm extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-    this.isOpen = false;
-    this.shadowRoot.innerHTML = `
-      <h2>THIS IS MY CUSTOM H2</h2>
-      `;
-  }
-}
-
-customElements.define("card", Cardm);
