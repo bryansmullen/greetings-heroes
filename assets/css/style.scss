@@ -7,6 +7,9 @@ $gh-magenta: #99004c;
 $gh-violet: #8c078c;
 $gh-courier: courier-prime, monospace;
 
+$media-tablet: 788px;
+$media-web: 1024px;
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -17,6 +20,7 @@ body {
   background-image: url(../img/bg-image.png);
   background-color: black;
   background-size: cover;
+  min-width: 300px;
   width: 100vw;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -25,7 +29,7 @@ body {
 
 header {
   background-color: $gh-dark-red;
-  height: 120px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   padding: 0 10%;
@@ -40,9 +44,12 @@ header {
 }
 
 main {
+  width: 90vw;
+  height: 80vh;
+  border: 5px solid green;
+  margin: 100px auto;
   display: flex;
   justify-content: center;
-  padding-top: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +61,7 @@ main {
   background-color: $gh-dark-red;
   color: white;
   font-family: $gh-courier;
-  width: 25%;
+  width: 80%;
   border-radius: 10px;
   text-align: center;
 
@@ -126,28 +133,37 @@ p {
 
 .character-heading {
   font-family: "gothicus-roman";
-  font-size: 6rem;
+  font-size: 2rem;
   color: $gh-dark-red;
-  margin-bottom: 40px;
 }
 
 .character-selection {
+  height: 100%;
+  width: 100%;
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 20px;
-  column-gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+
+  @media (min-width: $media-tablet) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
 }
 
 .character-card {
   background-color: $gh-dark-red;
   display: grid;
-  width: 800px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid orange;
+  cursor: pointer;
   h2 {
+    font-size: 2rem;
     color: white;
     grid-column: 2;
     font-family: "gothicus roman";
-    font-size: 4rem;
     margin: auto 0;
   }
   &:hover {
@@ -155,5 +171,16 @@ p {
   }
   &:active {
     background-color: $gh-magenta;
+  }
+  img {
+    height: 100px;
+    margin: auto;
+    @media (min-width: $media-tablet) {
+      height: 200px;
+    }
+  }
+  @media (min-width: $media-tablet) {
+    width: 95%;
+    height: 90%;
   }
 }
