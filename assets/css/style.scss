@@ -168,8 +168,24 @@ p {
     font-family: "gothicus roman";
     margin: auto 0;
   }
+  .stats {
+    display: none;
+    color: white;
+    text-align: center;
+    margin: auto;
+    font-family: "Courier New", Courier, monospace;
+    p {
+      margin: 0;
+    }
+  }
   &:hover {
     background-color: $gh-earth;
+    img {
+      display: none;
+    }
+    .stats {
+      display: block;
+    }
   }
   &:active {
     background-color: $gh-magenta;
