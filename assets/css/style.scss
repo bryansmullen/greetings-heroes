@@ -153,6 +153,7 @@ p {
 }
 
 .character-card {
+  cursor: pointer;
   background-color: $gh-dark-red;
   display: grid;
   width: 100%;
@@ -162,6 +163,7 @@ p {
   h2 {
     font-size: 2rem;
     color: white;
+    grid-row: 1;
     grid-column: 2;
     font-family: "gothicus roman";
     margin: auto 0;

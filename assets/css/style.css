@@ -116,6 +116,7 @@ p {
       align-items: center; } }
 
 .character-card {
+  cursor: pointer;
   background-color: #800000;
   display: grid;
   width: 100%;
@@ -125,6 +126,7 @@ p {
   .character-card h2 {
     font-size: 2rem;
     color: white;
+    grid-row: 1;
     grid-column: 2;
     font-family: "gothicus roman";
     margin: auto 0; }
