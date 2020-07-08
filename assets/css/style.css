@@ -130,8 +130,20 @@ p {
     grid-column: 2;
     font-family: "gothicus roman";
     margin: auto 0; }
+  .character-card .stats {
+    display: none;
+    color: white;
+    text-align: center;
+    margin: auto;
+    font-family: "Courier New", Courier, monospace; }
+    .character-card .stats p {
+      margin: 0; }
   .character-card:hover {
     background-color: #8f4836; }
+    .character-card:hover img {
+      display: none; }
+    .character-card:hover .stats {
+      display: block; }
   .character-card:active {
     background-color: #99004c; }
   .character-card img {
