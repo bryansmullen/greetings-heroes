@@ -36,7 +36,8 @@ main {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); }
 
 .button {
   padding: 20px 40px;
@@ -61,41 +62,21 @@ main {
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 10;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none; }
 
-custom-modal {
-  color: white; }
-  custom-modal::part(header) {
-    background-color: #800000; }
-  custom-modal::part(content) {
-    background-color: #8f4836; }
-  custom-modal::part(footer) {
-    background-color: #800000; }
-  custom-modal::part(button) {
-    padding: 20px 40px;
-    background-color: #800000;
-    color: white;
-    font-family: courier-prime, monospace;
-    width: 200px;
-    border-radius: 10px;
-    text-align: center; }
-    custom-modal::part(button):hover {
-      background-color: #8f4836;
-      cursor: pointer; }
-    custom-modal::part(button):active {
-      background-color: #8c078c; }
-  custom-modal p {
-    font-family: courier-prime, monospace; }
-
 h2 {
-  font-family: "Courier New", Courier, monospace;
+  font-family: gothicus-roman, sans-serif;
   text-align: center;
-  color: white; }
+  color: #800000;
+  font-size: 4rem; }
 
 p {
   margin: 16px;
-  text-align: center; }
+  text-align: center;
+  color: white;
+  font-family: courier-prime, monospace;
+  max-width: 80%; }
 
 .character-heading {
   font-family: "gothicus-roman";
@@ -128,14 +109,14 @@ p {
     color: white;
     grid-row: 1;
     grid-column: 2;
-    font-family: "gothicus roman";
+    font-family: gothicus-roman, sans-serif;
     margin: auto 0; }
   .character-card .stats {
     display: none;
     color: white;
     text-align: center;
     margin: auto;
-    font-family: "Courier New", Courier, monospace; }
+    font-family: courier-prime, monospace; }
     .character-card .stats p {
       margin: 0; }
   .character-card:hover {
