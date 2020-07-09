@@ -178,3 +178,40 @@ p {
     height: 90%;
   }
 }
+
+// Battle styles
+
+.battle-arena {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 3fr 1fr 3fr;
+  .battle {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    font-size: 2rem;
+    align-items: center;
+  }
+  .battle-command {
+    color: white;
+    background: $gh-dark-red;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+      background-color: $gh-earth;
+    }
+    &:active {
+      background-color: $gh-magenta;
+    }
+  }
+}
+
+.character-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

@@ -24,7 +24,7 @@ startGame = (character) => {
 const game = {
   // TITLE SCREEN METHOD - RESETS GAME TO TITLE SCREEN
   titleScreen() {
-    mainContent.innerHTML = `
+    mainContent.innerHTML = `<h2>Greetings Heroes</h2>
     <div id="play-game-button" class="button">Play Game</div>
     <div id="instructions-button" class="button">Instructions</div>
     `;
@@ -146,8 +146,26 @@ const game = {
 // BATTLE OBJECT - DISPLAYS BATTLE UI
 battle = {
   firstEnemy() {
-    mainContent.innerHTML = `<h2>This will be the battle screen with enemy 1</h2>
-    <div>The UI Will Go Here</div>
+    mainContent.innerHTML = `<div class="battle-arena">
+    <div class="battle health">
+      <div class="character-stats">
+        <p>Player</p>
+        <progress value="100" max="100"></progress>
+        <progress value="100" max="100"></progress>
+      </div>
+      <div class="character-stats">
+        <p>Enemy</p>
+        <progress value="100" max="100"></progress>
+        <progress value="100" max="100"></progress>
+      </div>
+    </div>
+    <div class="battle status"><p>Vaaldorak Attacked!</p></div>
+    <div class="battle actions">
+      <div class="battle-command"><p>Attack</p></div>
+      <div class="battle-command"><p>Magic</p></div>
+      <div class="battle-command"><p>Item</p></div>
+    </div>
+  </div>
     <div id="next-scene" class="button">Next Scene</div>
     `;
     document
@@ -155,8 +173,26 @@ battle = {
       .addEventListener("click", story.sceneFour);
   },
   secondEnemy() {
-    mainContent.innerHTML = `<h2>This will be the battle screen with enemy 2</h2>
-    <div>The UI Will Go Here</div>
+    mainContent.innerHTML = `<div class="battle-arena">
+    <div class="battle health">
+      <div class="character-stats">
+        <p>Player</p>
+        <progress value="100" max="100"></progress>
+        <progress value="100" max="100"></progress>
+      </div>
+      <div class="character-stats">
+        <p>Enemy</p>
+        <progress value="100" max="100"></progress>
+        <progress value="100" max="100"></progress>
+      </div>
+    </div>
+    <div class="battle status"><p>Vaaldorak Attacked!</p></div>
+    <div class="battle actions">
+      <div class="battle-command"><p>Attack</p></div>
+      <div class="battle-command"><p>Magic</p></div>
+      <div class="battle-command"><p>Item</p></div>
+    </div>
+  </div>
     <div id="next-scene" class="button">Next Scene</div>
     `;
     document
@@ -164,8 +200,26 @@ battle = {
       .addEventListener("click", story.sceneEight);
   },
   thirdEnemy() {
-    mainContent.innerHTML = `<h2>This will be the battle screen with enemy 3</h2>
-    <div>The UI Will Go Here</div>
+    mainContent.innerHTML = `<div class="battle-arena">
+    <div class="battle health">
+      <div class="character-stats">
+        <p>Player</p>
+        <progress value="100" max="100"></progress>
+        <progress value="100" max="100"></progress>
+      </div>
+      <div class="character-stats">
+        <p>Enemy</p>
+        <progress value="100" max="100"></progress>
+        <progress value="100" max="100"></progress>
+      </div>
+    </div>
+    <div class="battle status"><p>Vaaldorak Attacked!</p></div>
+    <div class="battle actions">
+      <div class="battle-command"><p>Attack</p></div>
+      <div class="battle-command"><p>Magic</p></div>
+      <div class="battle-command"><p>Item</p></div>
+    </div>
+  </div>
     <div id="next-scene" class="button">Next Scene</div>
     `;
     document
