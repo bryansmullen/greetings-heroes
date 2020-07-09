@@ -1,6 +1,19 @@
 // GLOBAL CONSTANTS
 const mainContent = document.querySelector("#main-content");
 
+var myAudio = document.createElement("audio");
+myAudio.src = "assets/audio/temp-score.mp3";
+
+async function toggle() {
+  if (myAudio.paused) {
+    await myAudio.play();
+    document.getElementById("toggle-sound").innerText = "volume_up";
+  } else {
+    await myAudio.pause();
+    document.getElementById("toggle-sound").innerText = "volume_off";
+  }
+}
+
 // GLOBAL FUNCTIONS
 startGame = (character) => {
   console.log(character);
@@ -28,9 +41,7 @@ const game = {
       .getElementById("exit-game")
       .addEventListener("click", game.titleScreen);
 
-    document
-      .getElementById("toggle-sound")
-      .addEventListener("click", game.toggleSound);
+    document.getElementById("toggle-sound").addEventListener("click", toggle);
   },
 
   // INFORMATION METHOD - DISPLAYS INSTRUCTIONS
@@ -66,11 +77,12 @@ const game = {
         If the player wins, you will progress through the story until you defeat
         the final enemy.
       </p>
+      <div id="return-to-title" class="button">Return To Title Screen</div>
     `;
+    document
+      .getElementById("return-to-title")
+      .addEventListener("click", game.titleScreen);
   },
-
-  // TOGGLE SOUND METHOD - MUTES/UNMUTES MUSIC
-  toggleSound() {},
 
   // CHOOSE CHARACTER - ALLOWS GAME TO BE STARTED WITH CHOICE OF CHARACTER
   chooseCharacter() {
