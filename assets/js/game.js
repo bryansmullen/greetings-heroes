@@ -16,7 +16,8 @@ async function toggle() {
 
 // GLOBAL FUNCTIONS
 startGame = (character) => {
-  console.log(character);
+  let chosenCharacter = character;
+  story.sceneOne();
 };
 
 // GAME OBJECT
@@ -140,12 +141,123 @@ const game = {
     yolo.addEventListener("click", startGame.bind(null, bjorna));
     zazzerpan.addEventListener("click", startGame.bind(null, bjorna));
   },
+};
 
-  // STORY METHOD - DISPLAYS NARRATIVE TO SCREEN
-  story() {},
+// BATTLE OBJECT - DISPLAYS BATTLE UI
+battle = {
+  firstEnemy() {
+    mainContent.innerHTML = `<h2>This will be the battle screen with enemy 1</h2>
+    <div>The UI Will Go Here</div>
+    <div id="next-scene" class="button">Next Scene</div>
+    `;
+    document
+      .getElementById("next-scene")
+      .addEventListener("click", story.sceneFive);
+  },
+  secondEnemy() {
+    mainContent.innerHTML = `<h2>This will be the battle screen with enemy 2</h2>
+    <div>The UI Will Go Here</div>
+    <div id="next-scene" class="button">Next Scene</div>
+    `;
+    document
+      .getElementById("next-scene")
+      .addEventListener("click", story.sceneSeven);
+  },
+  thirdEnemy() {
+    mainContent.innerHTML = `<h2>This will be the battle screen with enemy 3</h2>
+    <div>The UI Will Go Here</div>
+    <div id="next-scene" class="button">Next Scene</div>
+    `;
+    document
+      .getElementById("next-scene")
+      .addEventListener("click", story.finalScene);
+  },
+};
 
-  // BATTLE METHOD - DISPLAYS BATTLE UI
-  battle() {},
+// STORY OBJECT - DISPLAYS NARRATIVE TO SCREEN
+const story = {
+  sceneOne() {
+    mainContent.innerHTML = `<h2>This is scene one</h2> 
+    <div id="next-scene" class="button">Progress to next scene</div>
+    `;
+    document
+      .getElementById("next-scene")
+      .addEventListener("click", story.sceneTwo);
+  },
+  sceneTwo() {
+    mainContent.innerHTML = `<h2>This is scene two</h2> 
+    <div id="next-scene" class="button">Progress to next scene</div>
+    `;
+    document
+      .getElementById("next-scene")
+      .addEventListener("click", story.sceneThree);
+  },
+  sceneThree() {
+    mainContent.innerHTML = `<h2>This is scene three</h2> 
+    <div id="next-scene" class="button">Progress to next scene</div>
+    `;
+    document
+      .getElementById("next-scene")
+      .addEventListener("click", story.sceneFour);
+  },
+  sceneFour() {
+    mainContent.innerHTML = `<h2>This is scene four</h2> 
+    <div id="next-scene" class="button">Progress to next scene</div>
+    `;
+    document
+      .getElementById("next-scene")
+      .addEventListener("click", battle.firstEnemy);
+  },
+  sceneFive() {
+    mainContent.innerHTML = `<h2>This is scene Five</h2> 
+    <div id="next-scene" class="button">Progress to next scene</div>
+    `;
+    document
+      .getElementById("next-scene")
+      .addEventListener("click", story.sceneSix);
+  },
+  sceneSix() {
+    mainContent.innerHTML = `<h2>This is scene Six</h2> 
+    <div id="next-scene" class="button">Progress to next scene</div>
+    `;
+    document
+      .getElementById("next-scene")
+      .addEventListener("click", battle.secondEnemy);
+  },
+  sceneSeven() {
+    mainContent.innerHTML = `<h2>This is scene Seven</h2> 
+    <div id="next-scene" class="button">Progress to next scene</div>
+    `;
+    document
+      .getElementById("next-scene")
+      .addEventListener("click", battle.thirdEnemy);
+  },
+  finalScene() {
+    mainContent.innerHTML = `<h2>This is the Final Scene</h2> 
+    <div id="victory" class="button">Victory</div>
+    <div id="game-over" class="button">Game Over</div>
+    `;
+    document.getElementById("victory").addEventListener("click", story.victory);
+    document
+      .getElementById("game-over")
+      .addEventListener("click", story.gameOver);
+  },
+  gameOver() {
+    mainContent.innerHTML = `<h2>Game Over</h2> 
+    <div id="return-to-title" class="button">Return To Title Screen</div>
+    `;
+    document
+      .getElementById("return-to-title")
+      .addEventListener("click", game.titleScreen);
+  },
+  victory() {
+    mainContent.innerHTML = `<h2>You Won!</h2> 
+    <div id="return-to-title" class="button">Return To Title Screen</div>
+    `;
+    document
+      .getElementById("return-to-title")
+      .addEventListener("click", game.titleScreen);
+  },
 };
 
 game.titleScreen();
