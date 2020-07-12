@@ -8,7 +8,7 @@ $gh-violet: #8c078c;
 $gh-gothicus: gothicus-roman, sans-serif;
 $gh-courier: courier-prime, monospace;
 
-$media-tablet: 788px;
+$media-tablet: 768px;
 $media-web: 1024px;
 
 * {
@@ -214,4 +214,62 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+// Footer Styles
+
+footer{
+  background-color: $gh-dark-red;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  @media(min-width: $media-tablet){
+    flex-direction: row;
+  }
+
+  .social, .hire-container{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  }
+  .hire{
+    width: 80%;
+    text-align: center;
+    h3{
+      font-family: $gh-courier;
+    }
+    p{
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 32px;
+    }
+  }
+
+  .social {
+  margin-top: 32px;
+  ul{
+    display: flex;
+    justify-content: center;
+    a{
+      line-height: 0;
+      color: white;
+      &:hover {
+        color: $gh-red;
+      }
+      &:active {
+        color: $gh-magenta;
+      }
+    }
+     li{
+      list-style: none;
+      display: inline-block;
+      margin-right: 20px;
+      font-size: 1.5rem;
+    }
+  }}
 }
