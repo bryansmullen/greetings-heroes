@@ -92,7 +92,7 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr; }
-  @media (min-width: 788px) {
+  @media (min-width: 768px) {
     .character-selection {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
@@ -133,10 +133,10 @@ p {
   .character-card img {
     height: 100px;
     margin: auto; }
-    @media (min-width: 788px) {
+    @media (min-width: 768px) {
       .character-card img {
         height: 200px; } }
-  @media (min-width: 788px) {
+  @media (min-width: 768px) {
     .character-card {
       width: 95%;
       height: 90%; } }
@@ -169,5 +169,49 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-around; }
+
+footer {
+  background-color: #800000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; }
+  @media (min-width: 768px) {
+    footer {
+      flex-direction: row; } }
+  footer .social, footer .hire-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; }
+  footer .hire {
+    width: 80%;
+    text-align: center; }
+    footer .hire h3 {
+      font-family: courier-prime, monospace; }
+    footer .hire p {
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 32px; }
+  footer .social {
+    margin-top: 32px; }
+    footer .social ul {
+      display: flex;
+      justify-content: center; }
+      footer .social ul a {
+        line-height: 0;
+        color: white; }
+        footer .social ul a:hover {
+          color: #991b00; }
+        footer .social ul a:active {
+          color: #99004c; }
+      footer .social ul li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 20px;
+        font-size: 1.5rem; }
 
 /*# sourceMappingURL=style.css.map */
