@@ -7,6 +7,25 @@ class Game {
   constructor() {
     this.character = undefined;
   }
+  toggleSoundIcon() {
+    const soundIcon = document.getElementById('toggle-sound');
+    if (soundIcon.classList.contains('fa-volume-mute')) {
+      soundIcon.classList.remove('fa-volume-mute')
+      soundIcon.classList.add('fa-volume-up')
+    } else {
+      soundIcon.classList.remove('fa-volume-up')
+      soundIcon.classList.add('fa-volume-mute')
+    }
+  }
+  toggleAudio() {
+    const audio = document.querySelector('audio');
+    if (audio.muted) {
+      audio.muted = false;
+    } else {
+      audio.muted = true;
+    }
+    this.toggleSoundIcon()
+  }
   titleScreen() {
     updateUi('title-screen')
     document.getElementById('play-game-button').addEventListener('click', () => {
@@ -31,6 +50,7 @@ class Game {
   chooseCharacter() {
     updateUi('character-screen')
     audio.play('1m01')
+    this.toggleSoundIcon()
     document.getElementById('bjorna').addEventListener('click', () => {
       this.character = 'bjorna'
 
@@ -182,7 +202,12 @@ class Game {
 }
 
 
-const myGame = new Game;
+const myGame = new Game
+document.getElementById('toggle-sound').addEventListener('click', () => {
+  myGame.toggleAudio(
+
+  )
+})
 myGame.titleScreen();
 
 // const music = document.getElementById('toggle-sound')
