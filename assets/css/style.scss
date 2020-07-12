@@ -273,3 +273,14 @@ footer{
     }
   }}
 }
+
+// UI Elements
+
+.ui-element{
+  display: flex;
+align-items: center;
+  flex-direction: column;
+}
+.hidden {
+  display: none;
+}

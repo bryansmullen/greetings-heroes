@@ -214,4 +214,12 @@ footer {
         margin-right: 20px;
         font-size: 1.5rem; }
 
+.ui-element {
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+
+.hidden {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */

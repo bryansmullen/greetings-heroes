@@ -1,17 +1,26 @@
-// GLOBAL CONSTANTS
-const mainContent = document.querySelector("#main-content");
-const bgMusic = document.getElementById('bg-music');
+import { updateUi } from "./ui.js";
+
+updateUi(document.getElementById('character-screen'))
+// const controls = {
+//   instructionsBtn: document.getElementById('instructions'),
+//   showInstructions() {
+//     updateUi(document.getElementById('information-screen'))
+//   }
+// }
+
+
+audio.isOn = false;
 const audio = {
   play(cue) {
     let currentlyPlaying = document.querySelector('audio');
     if (currentlyPlaying) {
       currentlyPlaying.remove();
     }
-    let currentTrack = document.createElement("audio");
-    currentTrack.loop = true;
-    currentTrack.src = `assets/audio/${cue}.mp3`;
-    currentTrack.play()
-    document.body.appendChild(currentTrack)
+    let newTrack = document.createElement("audio");
+    newTrack.loop = true;
+    newTrack.src = `assets/audio/${cue}.mp3`;
+    newTrack.play()
+    document.body.appendChild(newTrack)
   },
   track1() {
     audio.play('1m01')
@@ -27,18 +36,6 @@ const audio = {
   },
 }
 
-
-
-
-async function toggle() {
-  if (audio.currentTrack.paused) {
-    await audio.currentTrack.play();
-    document.getElementById("toggle-sound").innerText = "volume_up";
-  } else {
-    await audio.currentTrack.pause();
-    document.getElementById("toggle-sound").innerText = "volume_off";
-  }
-}
 // GLOBAL FUNCTIONS
 startGame = (character) => {
   let chosenCharacter = character;
@@ -53,9 +50,7 @@ const game = {
     if (currentlyPlaying) {
       currentlyPlaying.remove();
     }
-    mainContent.innerHTML = `<h2>Greetings Heroes</h2>
-    <div id="play-game-button" class="button">Play Game</div>
-    <div id="instructions-button" class="button">Instructions</div>
+    mainContent.innerHTML = `
     `;
     document
       .querySelector("#play-game-button")
@@ -71,43 +66,12 @@ const game = {
       .getElementById("exit-game")
       .addEventListener("click", game.titleScreen);
 
-    document.getElementById("toggle-sound").addEventListener("click", audio.track1);
   },
 
   // INFORMATION METHOD - DISPLAYS INSTRUCTIONS
-  information() {
+  information(instructions) {
     mainContent.innerHTML = `
-    <h2>Instructions</h2>
-      <p>
-        The game is played using only the mouse.
-      </p>
-
-      <p>
-        To begin, click on the "Start Game" button on the main menu. You will be
-        brought to the character selection screen
-      </p>
-      <p>
-        You may inspect the attributes of each of the characters by hovering
-        over each of them in turn, and when you have decided which character you
-        would like to play as, simply click on them to select, and confirm your
-        choice.
-      </p>
-      <p>
-        The game will begin, and you may advance through the story by clicking
-        the "next" button in the story window. When battles commence you may
-        choose from a list of commands - attack, magic, and item.
-      </p>
-      <p>
-        Once you make your selection your character will take their turn, after
-        which the computer gets a chance to retaliate. Both the player and the
-        computer take it in turns to use a command of their choice until one
-        person wins.
-      </p>
-      <p>
-        If the player wins, you will progress through the story until you defeat
-        the final enemy.
-      </p>
-      <div id="return-to-title" class="button">Return To Title Screen</div>
+    
     `;
     document
       .getElementById("return-to-title")
@@ -118,49 +82,7 @@ const game = {
   chooseCharacter() {
     audio.track1();
     mainContent.innerHTML = `
-    <h2 class="character-heading">Choose Your Hero</h2>
-    <div class="character-selection">
-      <div class="character-card bjorna">
-        <img src="assets/img/bjorna.png" alt="bjorna" />
-        <div class="stats">
-        <h3>Bjorna</h3>
-          <p>Name: Bjorna</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <h2>Bjorna</h2>
-      </div>
-      <div class="character-card jayna">
-        <img src="assets/img/jayna.png" alt="jayna" />
-        <div class="stats">
-        <h3>Jayna</h3>
-          <p>Name: Jayna</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <h2>Lady Jayna</h2>
-      </div>
-      <div class="character-card yolo">
-      <div class="stats">
-          <h3>Yolo</h3>
-          <p>Name: Yolo</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <img src="assets/img/yolo.png" alt="yolo" />
-        <h2>Yolo</h2>
-      </div>
-      <div class="character-card zazzerpan">
-      <div class="stats">
-          <h3>Zazzerpan</h3>
-          <p>Name: Zazzerpan</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <img src="assets/img/zazzerpan.png" alt="zazzerpan" />
-        <h2>Zazzerpan</h2>
-      </div>
-    </div>
+    
     `;
     const bjorna = document.querySelector(".character-card.bjorna");
     const jayna = document.querySelector(".character-card.jayna");
@@ -176,81 +98,21 @@ const game = {
 // BATTLE OBJECT - DISPLAYS BATTLE UI
 battle = {
   firstEnemy() {
-    mainContent.innerHTML = `<div class="battle-arena">
-    <div class="battle health">
-      <div class="character-stats">
-        <p>Player</p>
-        <progress value="100" max="100"></progress>
-        <progress value="100" max="100"></progress>
-      </div>
-      <div class="character-stats">
-        <p>Enemy</p>
-        <progress value="100" max="100"></progress>
-        <progress value="100" max="100"></progress>
-      </div>
-    </div>
-    <div class="battle status"><p>Vaaldorak Attacked!</p></div>
-    <div class="battle actions">
-      <div class="battle-command"><p>Attack</p></div>
-      <div class="battle-command"><p>Magic</p></div>
-      <div class="battle-command"><p>Item</p></div>
-    </div>
-  </div>
-    <div id="next-scene" class="button">Next Scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", story.sceneFour);
   },
   secondEnemy() {
-    mainContent.innerHTML = `<div class="battle-arena">
-    <div class="battle health">
-      <div class="character-stats">
-        <p>Player</p>
-        <progress value="100" max="100"></progress>
-        <progress value="100" max="100"></progress>
-      </div>
-      <div class="character-stats">
-        <p>Enemy</p>
-        <progress value="100" max="100"></progress>
-        <progress value="100" max="100"></progress>
-      </div>
-    </div>
-    <div class="battle status"><p>Vaaldorak Attacked!</p></div>
-    <div class="battle actions">
-      <div class="battle-command"><p>Attack</p></div>
-      <div class="battle-command"><p>Magic</p></div>
-      <div class="battle-command"><p>Item</p></div>
-    </div>
-  </div>
-    <div id="next-scene" class="button">Next Scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", story.sceneEight);
   },
   thirdEnemy() {
-    mainContent.innerHTML = `<div class="battle-arena">
-    <div class="battle health">
-      <div class="character-stats">
-        <p>Player</p>
-        <progress value="100" max="100"></progress>
-        <progress value="100" max="100"></progress>
-      </div>
-      <div class="character-stats">
-        <p>Enemy</p>
-        <progress value="100" max="100"></progress>
-        <progress value="100" max="100"></progress>
-      </div>
-    </div>
-    <div class="battle status"><p>Vaaldorak Attacked!</p></div>
-    <div class="battle actions">
-      <div class="battle-command"><p>Attack</p></div>
-      <div class="battle-command"><p>Magic</p></div>
-      <div class="battle-command"><p>Item</p></div>
-    </div>
-  </div>
-    <div id="next-scene" class="button">Next Scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
@@ -261,27 +123,21 @@ battle = {
 // STORY OBJECT - DISPLAYS NARRATIVE TO SCREEN
 const story = {
   sceneOne() {
-    mainContent.innerHTML = `<p class="story">A dread shadow stalks the land! Arch-Wizard Valderak, freed from his timeless prison, has come to wreak vengeance on the people of The Four Kingdoms.
-    </p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", story.sceneTwo);
   },
   sceneTwo() {
-    mainContent.innerHTML = `<p class="story">
-    From his tower deep in the Forest of Poison, he plots a terrible revenge.
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", story.sceneThree);
   },
   sceneThree() {
-    mainContent.innerHTML = `<p class="story">
-    Four heroes, the greatest from each of the Kingdoms, have been sent to thwart the schemes of the Arch-Wizard and restore peace to the land.</p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
@@ -289,36 +145,28 @@ const story = {
   },
   sceneFour() {
     audio.track2();
-    mainContent.innerHTML = `<p class="story">You and your party make your through the Forest of Poison, through foul waters and rotting trees. 
-</p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", story.sceneFive);
   },
   sceneFive() {
-    mainContent.innerHTML = `<p class="story">Before you, rising like a thorn from the putrid mire, stands the dark tower of Valderak, its arched windows filled with the green fire of his baleful magics.
-</p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", story.sceneSix);
   },
   sceneSix() {
-    mainContent.innerHTML = `<p class="story">You step inside the echoing tower and encounter the first of line of Valderak's defenses - the people of the forest, now corrupted by Valderak.
-</p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", battle.secondEnemy);
   },
   sceneSeven() {
-    mainContent.innerHTML = `<p class="story">Defeating the forest folk, you are able to free them from the influence of Valderak. Before fleeing the terrible tower they give you the key to the upper floors. Ascending the winding stairs your ears pick up a harsh, clanking sound. There is smoke on the air. Opening a door to an upper chamber, you encounter Valderak's lieutenant, an Engine of Chaos.
-</p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
@@ -326,45 +174,35 @@ const story = {
   },
   sceneEight() {
     audio.track3();
-    mainContent.innerHTML = `<p class="story">The Engine of Chaos is destroyed and from its wreckage you pluck the source of its power, a Gem of Annihilation.
-</p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", story.sceneNine);
   },
   sceneNine() {
-    mainContent.innerHTML = `<p class="story">Using it you dispel the wards and magics protecting the inner sanctum of Valderak, allowing you to enter the lair of the Arch-Wizard. 
-</p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", story.sceneTen);
   },
   sceneTen() {
-    mainContent.innerHTML = `<p class="story">You find him, hunched and wizened over his scrying table. 
-</p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", story.sceneEleven);
   },
   sceneEleven() {
-    mainContent.innerHTML = `<p class="story">With a screech of disgust he conjures his Poison Blade, and with one final curse on the Four Kingdoms, launches himself at you.
-</p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
       .addEventListener("click", story.sceneTwelve);
   },
   sceneTwelve() {
-    mainContent.innerHTML = `<p class="story">Battle is joined.
-</p>
-    <div id="next-scene" class="button">Progress to next scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("next-scene")
@@ -372,9 +210,7 @@ const story = {
   },
   finalScene() {
     audio.track4();
-    mainContent.innerHTML = `<h2>This is the Final Scene</h2> 
-    <div id="victory" class="button">Victory</div>
-    <div id="game-over" class="button">Game Over</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("victory")
@@ -384,70 +220,49 @@ const story = {
       .addEventListener("click", story.gameOverOne);
   },
   gameOverOne() {
-    mainContent.innerHTML = `<h2>Game Over</h2> 
-    <p class="story">All your valour, all your bravery, was for naught.
-</p>
-    <div id="return-to-title" class="button">Progress To Next Scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("return-to-title")
       .addEventListener("click", story.gameOverTwo);
   },
   gameOverTwo() {
-    mainContent.innerHTML = `<h2>Game Over</h2> 
-    <p class="story">You have been vanquished.
-</p>
-    <div id="return-to-title" class="button">Progress To Next Scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("return-to-title")
       .addEventListener("click", story.gameOverThree);
   },
   gameOverThree() {
-    mainContent.innerHTML = `<h2>Game Over</h2> 
-    <p class="story">It is a dark day for the Four Kingdoms as its greatest champions lie defeated, but there will be many dark days ahead, for now nothing stands in the way of Valderak's final victory.
-</p>
-    <div id="return-to-title" class="button">Progress To Next Scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("return-to-title")
       .addEventListener("click", story.gameOverFour);
   },
   gameOverFour() {
-    mainContent.innerHTML = `<h2>Game Over</h2> 
-    <p class="story">All is lost.
-</p>
-    <div id="return-to-title" class="button">Return To Title Screen</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("return-to-title")
       .addEventListener("click", game.titleScreen);
   },
   victoryOne() {
-    mainContent.innerHTML = `<h2>You Won!</h2> 
-    <p class="story">With a blood-curdling scream, the magics holding the Arch-Wizard together are sundered for good- in a great rush of cold green fire, the body falls, nothing more than a few rags and bones. The dark tower begins to shudder beneath your feet - without Valderak to maintain it, it is beginning to sink into the swamp.
-</p>
-    <div id="return-to-title" class="button">Progress To Next Scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("return-to-title")
       .addEventListener("click", story.victoryTwo);
   },
   victoryTwo() {
-    mainContent.innerHTML = `<h2>You Won!</h2> 
-    <p class="story">You fly for the exit, escaping just in time to see the sharp roof sink beneath the waters. 
-</p>
-    <div id="return-to-title" class="button">Progress To Next Scene</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("return-to-title")
       .addEventListener("click", story.victoryThree);
   },
   victoryThree() {
-    mainContent.innerHTML = `<h2>You Won!</h2> 
-    <p class="story">The stain on the landscape, the blight on the Four Kingdoms, Valderak the Arch-Wizard is no more.
-</p>
-    <div id="return-to-title" class="button">Return To Title Screen</div>
+    mainContent.innerHTML = `
     `;
     document
       .getElementById("return-to-title")
