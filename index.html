@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://kit.fontawesome.com/3ebd44cf5a.js" crossorigin="anonymous"></script>
-  <script src="assets/js/game.js" type="module" defer></script>
+  <script src="assets/js/application.js" type="module" defer></script>
   <title>Greetings Heroes</title>
 </head>
 
@@ -120,44 +120,42 @@
 
 
     <!-- First Enemy -->
-    <div id="title-screen" class='hidden ui-element'>
-      <div class="first-enemy">
-        <div class="battle-arena">
-          <div class="battle health">
-            <div class="character-stats">
-              <p>Player</p>
-              <progress value="100" max="100"></progress>
-              <progress value="100" max="100"></progress>
-            </div>
-            <div class="character-stats">
-              <p>Enemy</p>
-              <progress value="100" max="100"></progress>
-              <progress value="100" max="100"></progress>
-            </div>
+    <div id="battle-one" class='hidden ui-element'>
+      <div class="battle-arena">
+        <div class="battle health">
+          <div class="character-stats">
+            <p>Player</p>
+            <progress value="100" max="100"></progress>
+            <progress value="100" max="100"></progress>
           </div>
-          <div class="battle status">
-            <p>Vaaldorak Attacked!</p>
-          </div>
-          <div class="battle actions">
-            <div class="battle-command">
-              <p>Attack</p>
-            </div>
-            <div class="battle-command">
-              <p>Magic</p>
-            </div>
-            <div class="battle-command">
-              <p>Item</p>
-            </div>
+          <div class="character-stats">
+            <p>Enemy</p>
+            <progress value="100" max="100"></progress>
+            <progress value="100" max="100"></progress>
           </div>
         </div>
-        <div id="next-scene" class="button">Next Scene</div>
+        <div class="battle status">
+          <p>Vaaldorak Attacked!</p>
+        </div>
+        <div class="battle actions">
+          <div class="battle-command">
+            <p>Attack</p>
+          </div>
+          <div class="battle-command">
+            <p>Magic</p>
+          </div>
+          <div class="battle-command">
+            <p>Item</p>
+          </div>
+        </div>
       </div>
+      <div id="battle-one-progress" class="button">Next Scene</div>
     </div>
 
 
     <!-- Second Enemy -->
 
-    <div id="second-enemy" class='hidden ui-element'>
+    <div id="battle-two" class='hidden ui-element'>
       <div class="battle-arena">
         <div class="battle health">
           <div class="character-stats">
@@ -186,12 +184,12 @@
           </div>
         </div>
       </div>
-      <div id="next-scene" class="button">Next Scene</div>
+      <div id="battle-two-progress" class="button">Next Scene</div>
     </div>
 
 
     <!-- Third Enemy -->
-    <div id="third-enemy" class='hidden ui-element'>
+    <div id="battle-three" class='hidden ui-element'>
 
       <div class="battle-arena">
         <div class="battle health">
@@ -221,7 +219,7 @@
           </div>
         </div>
       </div>
-      <div id="next-scene" class="button">Next Scene</div>
+      <div id="battle-three-progress" class="button">Next Scene</div>
     </div>
 
 
