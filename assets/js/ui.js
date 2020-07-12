@@ -11,7 +11,7 @@ export const updateUi = (section) => {
             element.classList.add('hidden')
         }
     }
-    if (section.classList.contains('hidden')) {
-        section.classList.remove('hidden')
+    if (document.getElementById(section).classList.contains('hidden')) {
+        document.getElementById(section).classList.remove('hidden')
     }
 }

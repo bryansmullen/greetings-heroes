@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <i id='info' class="fas fa-info-circle"></i>
+    <i id='info-button' class="fas fa-info-circle"></i>
     <div class="sound-container">
       <i id='toggle-sound' class="fas fa-volume-mute"></i>
     </div>
@@ -29,7 +29,7 @@
     </div>
 
     <!-- Information Screen -->
-    <div id="information-screen" class='hidden ui-element'>
+    <div id="instructions-screen" class='hidden ui-element'>
       <h2>Instructions</h2>
       <p>
         The game is played using only the mouse.
@@ -73,7 +73,7 @@
       <div class="character-screen">
         <h2 class="character-heading">Choose Your Hero</h2>
         <div class="character-selection">
-          <div class="character-card bjorna">
+          <div id='bjorna' class="character-card bjorna">
             <img src="assets/img/bjorna.png" alt="bjorna" />
             <div class="stats">
               <h3>Bjorna</h3>
@@ -83,7 +83,7 @@
             </div>
             <h2>Bjorna</h2>
           </div>
-          <div class="character-card jayna">
+          <div id='jayna' class="character-card jayna">
             <img src="assets/img/jayna.png" alt="jayna" />
             <div class="stats">
               <h3>Jayna</h3>
@@ -93,7 +93,7 @@
             </div>
             <h2>Lady Jayna</h2>
           </div>
-          <div class="character-card yolo">
+          <div id='yolo' class="character-card yolo">
             <div class="stats">
               <h3>Yolo</h3>
               <p>Name: Yolo</p>
@@ -103,7 +103,7 @@
             <img src="assets/img/yolo.png" alt="yolo" />
             <h2>Yolo</h2>
           </div>
-          <div class="character-card zazzerpan">
+          <div id='zazzerpan' class="character-card zazzerpan">
             <div class="stats">
               <h3>Zazzerpan</h3>
               <p>Name: Zazzerpan</p>
@@ -230,41 +230,41 @@
       <p class="story">A dread shadow stalks the land! Arch-Wizard Valderak, freed from his timeless prison, has come to
         wreak vengeance on the people of The Four Kingdoms.
       </p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-one-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Second Story -->
     <div id="second-story" class='hidden ui-element'>
       <p class="story">
         From his tower deep in the Forest of Poison, he plots a terrible revenge.</p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-two-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Third Story -->
     <div id="third-story" class='hidden ui-element'>
       <p class="story">
         Four heroes, the greatest from each of the Kingdoms, have been sent to thwart the schemes of the Arch-Wizard and
         restore peace to the land.</p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-three-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Fourth Story -->
     <div id="fourth-story" class='hidden ui-element'>
       <p class="story">You and your party make your through the Forest of Poison, through foul waters and rotting trees.
       </p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-four-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Fifth Story -->
-    <div id="fourth-story" class='hidden ui-element'>
+    <div id="fifth-story" class='hidden ui-element'>
       <p class="story">Before you, rising like a thorn from the putrid mire, stands the dark tower of Valderak, its
         arched
         windows filled with the green fire of his baleful magics.
       </p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-five-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Sixth Story -->
     <div id="sixth-story" class='hidden ui-element'>
       <p class="story">You step inside the echoing tower and encounter the first of line of Valderak's defenses - the
         people of the forest, now corrupted by Valderak.
       </p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-six-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Seventh Story -->
     <div id="seventh-story" class='hidden ui-element'>
@@ -274,7 +274,7 @@
         harsh, clanking sound. There is smoke on the air. Opening a door to an upper chamber, you encounter Valderak's
         lieutenant, an Engine of Chaos.
       </p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-seven-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Eighth Story -->
     <div id="eighth-story" class='hidden ui-element'>
@@ -282,7 +282,7 @@
         of
         Annihilation.
       </p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-eight-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Ninth Story -->
     <div id="ninth-story" class='hidden ui-element'>
@@ -290,26 +290,26 @@
         to
         enter the lair of the Arch-Wizard.
       </p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-nine-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Tenth Story -->
     <div id="tenth-story" class='hidden ui-element'>
       <p class="story">You find him, hunched and wizened over his scrying table.
       </p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-ten-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Eleventh Story -->
     <div id="eleventh-story" class='hidden ui-element'>
       <p class="story">With a screech of disgust he conjures his Poison Blade, and with one final curse on the Four
         Kingdoms, launches himself at you.
       </p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-eleven-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Twelfth Story -->
     <div id="twelfth-story" class='hidden ui-element'>
       <p class="story">Battle is joined.
       </p>
-      <div id="next-scene" class="button">Progress to next scene</div>
+      <div id="scene-twelve-progress" class="button">Progress to next scene</div>
     </div>
     <!-- Final Scene -->
     <div id="final-scene" class='hidden ui-element'>
@@ -322,14 +322,14 @@
       <h2>Game Over</h2>
       <p class="story">All your valour, all your bravery, was for naught.
       </p>
-      <div id="return-to-title" class="button">Progress To Next Scene</div>
+      <div id="game-over-one-progress" class="button">Progress To Next Scene</div>
     </div>
     <!-- Game Over Two -->
     <div id="game-over-two" class='hidden ui-element'>
       <h2>Game Over</h2>
       <p class="story">You have been vanquished.
       </p>
-      <div id="return-to-title" class="button">Progress To Next Scene</div>
+      <div id="game-over-two-progress" class="button">Progress To Next Scene</div>
     </div>
     <!-- Game Over Three -->
     <div id="game-over-three" class='hidden ui-element'>
@@ -337,14 +337,14 @@
       <p class="story">It is a dark day for the Four Kingdoms as its greatest champions lie defeated, but there will be
         many dark days ahead, for now nothing stands in the way of Valderak's final victory.
       </p>
-      <div id="return-to-title" class="button">Progress To Next Scene</div>
+      <div id="game-over-three-progress" class="button">Progress To Next Scene</div>
     </div>
     <!-- Game Over Four -->
     <div id="game-over-four" class='hidden ui-element'>
       <h2>Game Over</h2>
       <p class="story">All is lost.
       </p>
-      <div id="return-to-title" class="button">Return To Title Screen</div>
+      <div id="game-over-four-progress" class="button">Return To Title Screen</div>
     </div>
     <!-- Victory One -->
     <div id="victory-one" class='hidden ui-element'>
@@ -355,21 +355,21 @@
         to
         shudder beneath your feet - without Valderak to maintain it, it is beginning to sink into the swamp.
       </p>
-      <div id="return-to-title" class="button">Progress To Next Scene</div>
+      <div id="victory-one-progress" class="button">Progress To Next Scene</div>
     </div>
     <!-- Victory Two -->
     <div id="victory-two" class='hidden ui-element'>
       <h2>You Won!</h2>
       <p class="story">You fly for the exit, escaping just in time to see the sharp roof sink beneath the waters.
       </p>
-      <div id="return-to-title" class="button">Progress To Next Scene</div>
+      <div id="victory-two-progress" class="button">Progress To Next Scene</div>
     </div>
     <!-- Victory Three -->
     <div id="victory-three" class='hidden ui-element'>
       <h2>You Won!</h2>
       <p class="story">The stain on the landscape, the blight on the Four Kingdoms, Valderak the Arch-Wizard is no more.
       </p>
-      <div id="return-to-title" class="button">Return To Title Screen</div>
+      <div id="victory-three-progress" class="button">Return To Title Screen</div>
     </div>
 
 

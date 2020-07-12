@@ -1,10 +1,189 @@
 import { updateUi } from "./ui.js";
 import { audio } from "./audio.js";
 
-updateUi(document.getElementById('title-screen'))
-
 audio.isOn = false;
 
+class Game {
+  constructor() {
+    this.character = undefined;
+  }
+  titleScreen() {
+    updateUi('title-screen')
+    document.getElementById('play-game-button').addEventListener('click', () => {
+      this.chooseCharacter();
+    })
+    document.getElementById('exit-game').addEventListener('click', () => {
+      this.titleScreen()
+    })
+    document.getElementById('instructions-button').addEventListener('click', () => {
+      this.instructionsScreen()
+    })
+    document.getElementById('info-button').addEventListener('click', () => {
+      this.instructionsScreen()
+    })
+  }
+  instructionsScreen() {
+    updateUi('instructions-screen')
+    document.getElementById('return-to-title').addEventListener('click', () => {
+      this.titleScreen()
+    })
+  }
+  chooseCharacter() {
+    updateUi('character-screen')
+    audio.play('1m01')
+    document.getElementById('bjorna').addEventListener('click', () => {
+      this.character = 'bjorna'
+
+      this.stage1();
+    })
+    document.getElementById('jayna').addEventListener('click', () => {
+      this.character = 'jayna'
+
+      this.stage1();
+    })
+    document.getElementById('yolo').addEventListener('click', () => {
+      this.character = 'yolo'
+
+      this.stage1();
+    })
+    document.getElementById('zazzerpan').addEventListener('click', () => {
+      this.character = 'zazzerpan'
+
+      this.stage1();
+    })
+  }
+  stage1() {
+    updateUi('first-story')
+    document.getElementById('scene-one-progress').addEventListener('click', () => {
+      this.stage2();
+    })
+  }
+  stage2() {
+    updateUi('second-story')
+    document.getElementById('scene-two-progress').addEventListener('click', () => {
+      this.stage3();
+    })
+  }
+  stage3() {
+    updateUi('third-story')
+    document.getElementById('scene-three-progress').addEventListener('click', () => {
+      this.stage4();
+    })
+  }
+  stage4() {
+    updateUi('fourth-story')
+    document.getElementById('scene-four-progress').addEventListener('click', () => {
+      this.stage5();
+    })
+  }
+  stage5() {
+    updateUi('fifth-story')
+    audio.play('1m02')
+    document.getElementById('scene-five-progress').addEventListener('click', () => {
+      this.stage6();
+    })
+  }
+  stage6() {
+    updateUi('sixth-story')
+    document.getElementById('scene-six-progress').addEventListener('click', () => {
+      this.stage7();
+    })
+  }
+  stage7() {
+    updateUi('seventh-story')
+    document.getElementById('scene-seven-progress').addEventListener('click', () => {
+      this.stage8();
+    })
+  }
+  stage8() {
+    updateUi('eighth-story')
+    audio.play('1m03')
+    document.getElementById('scene-eight-progress').addEventListener('click', () => {
+      this.stage9();
+    })
+  }
+  stage9() {
+    updateUi('ninth-story')
+    document.getElementById('scene-nine-progress').addEventListener('click', () => {
+      this.stage10();
+    })
+  }
+  stage10() {
+    updateUi('tenth-story')
+    document.getElementById('scene-ten-progress').addEventListener('click', () => {
+      this.stage11();
+    })
+  }
+  stage11() {
+    updateUi('eleventh-story')
+    document.getElementById('scene-eleven-progress').addEventListener('click', () => {
+      this.stage12();
+    })
+  }
+  stage12() {
+    updateUi('twelfth-story')
+    audio.play('1m04')
+    document.getElementById('scene-twelve-progress').addEventListener('click', () => {
+      this.finalStage();
+    })
+  }
+  finalStage() {
+    updateUi('final-scene')
+    document.getElementById('victory').addEventListener('click', () => {
+      this.victoryOne();
+    })
+    document.getElementById('game-over').addEventListener('click', () => {
+      this.gameOverOne();
+    })
+  }
+  victoryOne() {
+    updateUi('victory-one')
+    document.getElementById('victory-one-progress').addEventListener('click', () => {
+      this.victoryTwo();
+    })
+  }
+
+  victoryTwo() {
+    updateUi('victory-two')
+    document.getElementById('victory-two-progress').addEventListener('click', () => {
+      this.victoryThree();
+    })
+  }
+  victoryThree() {
+    updateUi('victory-three')
+    document.getElementById('victory-three-progress').addEventListener('click', () => {
+      this.titleScreen();
+    })
+  }
+  gameOverOne() {
+    updateUi('game-over-one')
+    document.getElementById('game-over-one-progress').addEventListener('click', () => {
+      this.gameOverTwo();
+    })
+  }
+  gameOverTwo() {
+    updateUi('game-over-two')
+    document.getElementById('game-over-two-progress').addEventListener('click', () => {
+      this.gameOverThree();
+    })
+  }
+  gameOverThree() {
+    updateUi('game-over-three')
+    document.getElementById('game-over-three-progress').addEventListener('click', () => {
+      this.gameOverFour();
+    })
+  }
+  gameOverFour() {
+    updateUi('game-over-four')
+    document.getElementById('game-over-four-progress').addEventListener('click', () => {
+      this.titleScreen();
+    })
+  }
+}
+
+
+const myGame = new Game;
+myGame.titleScreen();
 
 // const music = document.getElementById('toggle-sound')
 // music.addEventListener('click', () => {
