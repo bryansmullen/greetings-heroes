@@ -1,19 +1,44 @@
 // GLOBAL CONSTANTS
 const mainContent = document.querySelector("#main-content");
+const bgMusic = document.getElementById('bg-music');
+const audio = {
+  play(cue) {
+    let currentlyPlaying = document.querySelector('audio');
+    if (currentlyPlaying) {
+      currentlyPlaying.remove();
+    }
+    let currentTrack = document.createElement("audio");
+    currentTrack.loop = true;
+    currentTrack.src = `assets/audio/${cue}.mp3`;
+    currentTrack.play()
+    document.body.appendChild(currentTrack)
+  },
+  track1() {
+    audio.play('1m01')
+  },
+  track2() {
+    audio.play('1m02')
+  },
+  track3() {
+    audio.play('1m03')
+  },
+  track4() {
+    audio.play('1m04')
+  },
+}
 
-var myAudio = document.createElement("audio");
-myAudio.src = "assets/audio/temp-score.mp3";
+
+
 
 async function toggle() {
-  if (myAudio.paused) {
-    await myAudio.play();
+  if (audio.currentTrack.paused) {
+    await audio.currentTrack.play();
     document.getElementById("toggle-sound").innerText = "volume_up";
   } else {
-    await myAudio.pause();
+    await audio.currentTrack.pause();
     document.getElementById("toggle-sound").innerText = "volume_off";
   }
 }
-
 // GLOBAL FUNCTIONS
 startGame = (character) => {
   let chosenCharacter = character;
@@ -24,6 +49,10 @@ startGame = (character) => {
 const game = {
   // TITLE SCREEN METHOD - RESETS GAME TO TITLE SCREEN
   titleScreen() {
+    let currentlyPlaying = document.querySelector('audio');
+    if (currentlyPlaying) {
+      currentlyPlaying.remove();
+    }
     mainContent.innerHTML = `
     <div id="play-game-button" class="button">Play Game</div>
     <div id="instructions-button" class="button">Instructions</div>
@@ -42,7 +71,7 @@ const game = {
       .getElementById("exit-game")
       .addEventListener("click", game.titleScreen);
 
-    document.getElementById("toggle-sound").addEventListener("click", toggle);
+    document.getElementById("toggle-sound").addEventListener("click", audio.track1);
   },
 
   // INFORMATION METHOD - DISPLAYS INSTRUCTIONS
@@ -87,6 +116,7 @@ const game = {
 
   // CHOOSE CHARACTER - ALLOWS GAME TO BE STARTED WITH CHOICE OF CHARACTER
   chooseCharacter() {
+    audio.track1();
     mainContent.innerHTML = `
     <h2 class="character-heading">Choose Your Hero</h2>
     <div class="character-selection">
@@ -204,6 +234,7 @@ const story = {
       .addEventListener("click", battle.firstEnemy);
   },
   sceneFour() {
+    audio.track2();
     mainContent.innerHTML = `<p class="story">You and your party make your through the Forest of Poison, through foul waters and rotting trees. 
 </p>
     <div id="next-scene" class="button">Progress to next scene</div>
@@ -240,6 +271,7 @@ const story = {
       .addEventListener("click", story.sceneFour);
   },
   sceneEight() {
+    audio.track3();
     mainContent.innerHTML = `<p class="story">The Engine of Chaos is destroyed and from its wreckage you pluck the source of its power, a Gem of Annihilation.
 </p>
     <div id="next-scene" class="button">Progress to next scene</div>
@@ -285,6 +317,7 @@ const story = {
       .addEventListener("click", battle.thirdEnemy);
   },
   finalScene() {
+    audio.track4();
     mainContent.innerHTML = `<h2>This is the Final Scene</h2> 
     <div id="victory" class="button">Victory</div>
     <div id="game-over" class="button">Game Over</div>
