@@ -199,6 +199,44 @@ export class Game {
   }
   battle1() {
     updateUi('battle-one')
+    // ==========================================================//
+
+    const attack = document.querySelector('.attack')
+    attack.addEventListener('click', () => { console.log('attack') })
+    const defend = document.querySelector('.defend')
+    defend.addEventListener('click', () => { console.log('defend') })
+    const special = document.querySelector('.special')
+    special.addEventListener('click', () => { console.log('special') })
+    const playerHealthReadout = document.getElementById('player-health')
+    const enemyHealthReadout = document.getElementById('enemy-health')
+
+    const player = {
+      healthStat: 100,
+      defenceStat: 50,
+      attackStat: 70,
+      attack() {
+        enemy.health -= 10
+        console.dir(enemyHealthReadout)
+
+      }
+    }
+    const enemy = {
+      health: 60,
+      defence: 40,
+      attack: 50
+    }
+
+
+
+
+
+
+
+
+
+    // ==========================================================//
+
+
     document.getElementById('battle-one-progress').addEventListener('click', () => {
       this.stage7();
     })

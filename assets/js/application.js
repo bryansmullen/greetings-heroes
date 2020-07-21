@@ -7,3 +7,4 @@ document.getElementById('toggle-sound').addEventListener('click', () => {
     )
 })
 myGame.titleScreen();
+// myGame.battle1();

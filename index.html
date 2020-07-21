@@ -1,409 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/3ebd44cf5a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/application.js" type="module" defer></script>
+    <title>Greetings Heroes</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="https://kit.fontawesome.com/3ebd44cf5a.js" crossorigin="anonymous"></script>
-  <script src="assets/js/application.js" type="module" defer></script>
-  <title>Greetings Heroes</title>
-</head>
-
-<body>
-  <header>
-    <i id='info-button' class="fas fa-info-circle"></i>
-    <div class="sound-container">
-      <i id='toggle-sound' class="fas fa-volume-mute"></i>
-    </div>
-    <i id='exit-game' class="fas fa-sign-out-alt"></i>
-  </header>
-  <main id="main-content">
-    <!-- Title Screen -->
-
-    <div id="title-screen" class='ui-element'>
-      <h2>Greetings Heroes</h2>
-      <div id="play-game-button" class="button">Play Game</div>
-      <div id="instructions-button" class="button">Instructions</div>
-
-    </div>
-
-    <!-- Information Screen -->
-    <div id="instructions-screen" class='hidden ui-element'>
-      <h2>Instructions</h2>
-      <p>
-        The game is played using only the mouse.
-      </p>
-
-      <p>
-        To begin, click on the "Start Game" button on the main menu. You will be
-        brought to the character selection screen
-      </p>
-      <p>
-        You may inspect the attributes of each of the characters by hovering
-        over each of them in turn, and when you have decided which character you
-        would like to play as, simply click on them to select, and confirm your
-        choice.
-      </p>
-      <p>
-        The game will begin, and you may advance through the story by clicking
-        the "next" button in the story window. When battles commence you may
-        choose from a list of commands - attack, magic, and item.
-      </p>
-      <p>
-        Once you make your selection your character will take their turn, after
-        which the computer gets a chance to retaliate. Both the player and the
-        computer take it in turns to use a command of their choice until one
-        person wins.
-      </p>
-      <p>
-        If the player wins, you will progress through the story until you defeat
-        the final enemy.
-      </p>
-      <div id="return-to-title" class="button">
-        Return To Title Screen
+  <body>
+    <header>
+      <i id="info-button" class="fas fa-info-circle"></i>
+      <div class="sound-container">
+        <i id="toggle-sound" class="fas fa-volume-mute"></i>
       </div>
-    </div>
+      <i id="exit-game" class="fas fa-sign-out-alt"></i>
+    </header>
+    <main id="main-content">
+      <!-- Title Screen -->
 
+      <div id="title-screen" class="ui-element">
+        <h2>Greetings Heroes</h2>
+        <div id="play-game-button" class="button button-text">Play Game</div>
+        <div id="instructions-button" class="button button-text">
+          Instructions
+        </div>
+      </div>
 
+      <!-- Information Screen -->
+      <div id="instructions-screen" class="hidden ui-element">
+        <h2>Instructions</h2>
+        <p>
+          The game is played using only the mouse.
+        </p>
 
+        <p>
+          To begin, click on the "Start Game" button on the main menu. You will
+          be brought to the character selection screen
+        </p>
+        <p>
+          You may inspect the attributes of each of the characters by hovering
+          over each of them in turn, and when you have decided which character
+          you would like to play as, simply click on them to select, and confirm
+          your choice.
+        </p>
+        <p>
+          The game will begin, and you may advance through the story by clicking
+          the "next" button in the story window. When battles commence you may
+          choose from a list of commands - attack, magic, and item.
+        </p>
+        <p>
+          Once you make your selection your character will take their turn,
+          after which the computer gets a chance to retaliate. Both the player
+          and the computer take it in turns to use a command of their choice
+          until one person wins.
+        </p>
+        <p>
+          If the player wins, you will progress through the story until you
+          defeat the final enemy.
+        </p>
+        <div id="return-to-title" class="button button-text">
+          Return To Title Screen
+        </div>
+      </div>
 
-    <!-- Character Screen -->
-    <div id="character-screen" class='hidden ui-element'>
-      <div class="character-screen">
-        <h2 class="character-heading">Choose Your Hero</h2>
-        <div class="character-selection">
-          <div id='bjorna' class="character-card bjorna">
-            <img src="assets/img/bjorna.png" alt="bjorna" />
-            <div class="stats">
-              <h3>Bjorna</h3>
-              <p>Name: Bjorna</p>
-              <p>Strength: 100</p>
-              <p>Health: 200</p>
+      <!-- Character Screen -->
+      <div id="character-screen" class="hidden ui-element">
+        <div class="character-screen">
+          <h2 class="character-heading">Choose Your Hero</h2>
+          <div class="character-selection">
+            <div id="bjorna" class="character-card bjorna">
+              <img src="assets/img/bjorna.png" alt="bjorna" />
+              <div class="stats">
+                <h3>Bjorna</h3>
+                <p>Name: Bjorna</p>
+                <p>Strength: 100</p>
+                <p>Health: 200</p>
+              </div>
+              <h2>Bjorna</h2>
             </div>
-            <h2>Bjorna</h2>
-          </div>
-          <div id='jayna' class="character-card jayna">
-            <img src="assets/img/jayna.png" alt="jayna" />
-            <div class="stats">
-              <h3>Jayna</h3>
-              <p>Name: Jayna</p>
-              <p>Strength: 100</p>
-              <p>Health: 200</p>
+            <div id="jayna" class="character-card jayna">
+              <img src="assets/img/jayna.png" alt="jayna" />
+              <div class="stats">
+                <h3>Jayna</h3>
+                <p>Name: Jayna</p>
+                <p>Strength: 100</p>
+                <p>Health: 200</p>
+              </div>
+              <h2>Lady Jayna</h2>
             </div>
-            <h2>Lady Jayna</h2>
-          </div>
-          <div id='yolo' class="character-card yolo">
-            <div class="stats">
-              <h3>Yolo</h3>
-              <p>Name: Yolo</p>
-              <p>Strength: 100</p>
-              <p>Health: 200</p>
+            <div id="yolo" class="character-card yolo">
+              <div class="stats">
+                <h3>Yolo</h3>
+                <p>Name: Yolo</p>
+                <p>Strength: 100</p>
+                <p>Health: 200</p>
+              </div>
+              <img src="assets/img/yolo.png" alt="yolo" />
+              <h2>Yolo</h2>
             </div>
-            <img src="assets/img/yolo.png" alt="yolo" />
-            <h2>Yolo</h2>
-          </div>
-          <div id='zazzerpan' class="character-card zazzerpan">
-            <div class="stats">
-              <h3>Zazzerpan</h3>
-              <p>Name: Zazzerpan</p>
-              <p>Strength: 100</p>
-              <p>Health: 200</p>
+            <div id="zazzerpan" class="character-card zazzerpan">
+              <div class="stats">
+                <h3>Zazzerpan</h3>
+                <p>Name: Zazzerpan</p>
+                <p>Strength: 100</p>
+                <p>Health: 200</p>
+              </div>
+              <img src="assets/img/zazzerpan.png" alt="zazzerpan" />
+              <h2>Zazzerpan</h2>
             </div>
-            <img src="assets/img/zazzerpan.png" alt="zazzerpan" />
-            <h2>Zazzerpan</h2>
           </div>
         </div>
       </div>
-    </div>
 
-
-
-    <!-- First Enemy -->
-    <div id="battle-one" class='hidden ui-element'>
-      <div class="battle-arena">
-        <div class="battle health">
-          <div class="character-stats">
-            <p>Player</p>
-            <progress value="100" max="100"></progress>
-            <progress value="100" max="100"></progress>
+      <!-- First Enemy -->
+      <div id="battle-one" class="hidden ui-element">
+        <div class="battle-arena">
+          <div class="battle health">
+            <div class="character-stats">
+              <p>Player</p>
+              <progress id="player-health" value="100" max="100"></progress>
+            </div>
+            <div class="character-stats">
+              <p>Enemy</p>
+              <progress id="enemy-health" value="100" max="100"></progress>
+            </div>
           </div>
-          <div class="character-stats">
-            <p>Enemy</p>
-            <progress value="100" max="100"></progress>
-            <progress value="100" max="100"></progress>
+          <div class="battle status">
+            <p>Vaaldorak Attacked!</p>
+          </div>
+          <div class="battle actions">
+            <div class="battle-command attack">
+              <p>Attack</p>
+            </div>
+            <div class="battle-command defend">
+              <p>Defend</p>
+            </div>
+            <div class="battle-command special">
+              <p>Special</p>
+            </div>
           </div>
         </div>
-        <div class="battle status">
-          <p>Vaaldorak Attacked!</p>
-        </div>
-        <div class="battle actions">
-          <div class="battle-command">
-            <p>Attack</p>
-          </div>
-          <div class="battle-command">
-            <p>Magic</p>
-          </div>
-          <div class="battle-command">
-            <p>Item</p>
-          </div>
-        </div>
-      </div>
-      <div id="battle-one-progress" class="button">Next Scene</div>
-    </div>
-
-
-    <!-- Second Enemy -->
-
-    <div id="battle-two" class='hidden ui-element'>
-      <div class="battle-arena">
-        <div class="battle health">
-          <div class="character-stats">
-            <p>Player</p>
-            <progress value="100" max="100"></progress>
-            <progress value="100" max="100"></progress>
-          </div>
-          <div class="character-stats">
-            <p>Enemy</p>
-            <progress value="100" max="100"></progress>
-            <progress value="100" max="100"></progress>
-          </div>
-        </div>
-        <div class="battle status">
-          <p>Vaaldorak Attacked!</p>
-        </div>
-        <div class="battle actions">
-          <div class="battle-command">
-            <p>Attack</p>
-          </div>
-          <div class="battle-command">
-            <p>Magic</p>
-          </div>
-          <div class="battle-command">
-            <p>Item</p>
-          </div>
+        <div id="battle-one-progress" class="button button-text">
+          Next Scene
         </div>
       </div>
-      <div id="battle-two-progress" class="button">Next Scene</div>
-    </div>
 
+      <!-- Second Enemy -->
 
-    <!-- Third Enemy -->
-    <div id="battle-three" class='hidden ui-element'>
-
-      <div class="battle-arena">
-        <div class="battle health">
-          <div class="character-stats">
-            <p>Player</p>
-            <progress value="100" max="100"></progress>
-            <progress value="100" max="100"></progress>
+      <div id="battle-two" class="hidden ui-element">
+        <div class="battle-arena">
+          <div class="battle health">
+            <div class="character-stats">
+              <p>Player</p>
+              <progress value="100" max="100"></progress>
+            </div>
+            <div class="character-stats">
+              <p>Enemy</p>
+              <progress value="100" max="100"></progress>
+            </div>
           </div>
-          <div class="character-stats">
-            <p>Enemy</p>
-            <progress value="100" max="100"></progress>
-            <progress value="100" max="100"></progress>
+          <div class="battle status">
+            <p>Vaaldorak Attacked!</p>
+          </div>
+          <div class="battle actions">
+            <div class="battle-command">
+              <p>Attack</p>
+            </div>
+            <div class="battle-command">
+              <p>Magic</p>
+            </div>
+            <div class="battle-command">
+              <p>Item</p>
+            </div>
           </div>
         </div>
-        <div class="battle status">
-          <p>Vaaldorak Attacked!</p>
-        </div>
-        <div class="battle actions">
-          <div class="battle-command">
-            <p>Attack</p>
-          </div>
-          <div class="battle-command">
-            <p>Magic</p>
-          </div>
-          <div class="battle-command">
-            <p>Item</p>
-          </div>
+        <div id="battle-two-progress" class="button button-text">
+          Next Scene
         </div>
       </div>
-      <div id="battle-three-progress" class="button">Next Scene</div>
-    </div>
 
-
-    <!-- First Story -->
-    <div id="first-story" class='hidden ui-element'>
-      <p class="story">A dread shadow stalks the land! Arch-Wizard Valderak, freed from his timeless prison, has come to
-        wreak vengeance on the people of The Four Kingdoms.
-      </p>
-      <div id="scene-one-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Second Story -->
-    <div id="second-story" class='hidden ui-element'>
-      <p class="story">
-        From his tower deep in the Forest of Poison, he plots a terrible revenge.</p>
-      <div id="scene-two-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Third Story -->
-    <div id="third-story" class='hidden ui-element'>
-      <p class="story">
-        Four heroes, the greatest from each of the Kingdoms, have been sent to thwart the schemes of the Arch-Wizard and
-        restore peace to the land.</p>
-      <div id="scene-three-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Fourth Story -->
-    <div id="fourth-story" class='hidden ui-element'>
-      <p class="story">You and your party make your through the Forest of Poison, through foul waters and rotting trees.
-      </p>
-      <div id="scene-four-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Fifth Story -->
-    <div id="fifth-story" class='hidden ui-element'>
-      <p class="story">Before you, rising like a thorn from the putrid mire, stands the dark tower of Valderak, its
-        arched
-        windows filled with the green fire of his baleful magics.
-      </p>
-      <div id="scene-five-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Sixth Story -->
-    <div id="sixth-story" class='hidden ui-element'>
-      <p class="story">You step inside the echoing tower and encounter the first of line of Valderak's defenses - the
-        people of the forest, now corrupted by Valderak.
-      </p>
-      <div id="scene-six-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Seventh Story -->
-    <div id="seventh-story" class='hidden ui-element'>
-      <p class="story">Defeating the forest folk, you are able to free them from the influence of Valderak. Before
-        fleeing
-        the terrible tower they give you the key to the upper floors. Ascending the winding stairs your ears pick up a
-        harsh, clanking sound. There is smoke on the air. Opening a door to an upper chamber, you encounter Valderak's
-        lieutenant, an Engine of Chaos.
-      </p>
-      <div id="scene-seven-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Eighth Story -->
-    <div id="eighth-story" class='hidden ui-element'>
-      <p class="story">The Engine of Chaos is destroyed and from its wreckage you pluck the source of its power, a Gem
-        of
-        Annihilation.
-      </p>
-      <div id="scene-eight-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Ninth Story -->
-    <div id="ninth-story" class='hidden ui-element'>
-      <p class="story">Using it you dispel the wards and magics protecting the inner sanctum of Valderak, allowing you
-        to
-        enter the lair of the Arch-Wizard.
-      </p>
-      <div id="scene-nine-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Tenth Story -->
-    <div id="tenth-story" class='hidden ui-element'>
-      <p class="story">You find him, hunched and wizened over his scrying table.
-      </p>
-      <div id="scene-ten-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Eleventh Story -->
-    <div id="eleventh-story" class='hidden ui-element'>
-      <p class="story">With a screech of disgust he conjures his Poison Blade, and with one final curse on the Four
-        Kingdoms, launches himself at you.
-      </p>
-      <div id="scene-eleven-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Twelfth Story -->
-    <div id="twelfth-story" class='hidden ui-element'>
-      <p class="story">Battle is joined.
-      </p>
-      <div id="scene-twelve-progress" class="button">Progress to next scene</div>
-    </div>
-    <!-- Final Scene -->
-    <div id="final-scene" class='hidden ui-element'>
-      <h2>This is the Final Scene</h2>
-      <div id="victory" class="button">Victory</div>
-      <div id="game-over" class="button">Game Over</div>
-    </div>
-    <!-- Game Over One -->
-    <div id="game-over-one" class='hidden ui-element'>
-      <h2>Game Over</h2>
-      <p class="story">All your valour, all your bravery, was for naught.
-      </p>
-      <div id="game-over-one-progress" class="button">Progress To Next Scene</div>
-    </div>
-    <!-- Game Over Two -->
-    <div id="game-over-two" class='hidden ui-element'>
-      <h2>Game Over</h2>
-      <p class="story">You have been vanquished.
-      </p>
-      <div id="game-over-two-progress" class="button">Progress To Next Scene</div>
-    </div>
-    <!-- Game Over Three -->
-    <div id="game-over-three" class='hidden ui-element'>
-      <h2>Game Over</h2>
-      <p class="story">It is a dark day for the Four Kingdoms as its greatest champions lie defeated, but there will be
-        many dark days ahead, for now nothing stands in the way of Valderak's final victory.
-      </p>
-      <div id="game-over-three-progress" class="button">Progress To Next Scene</div>
-    </div>
-    <!-- Game Over Four -->
-    <div id="game-over-four" class='hidden ui-element'>
-      <h2>Game Over</h2>
-      <p class="story">All is lost.
-      </p>
-      <div id="game-over-four-progress" class="button">Return To Title Screen</div>
-    </div>
-    <!-- Victory One -->
-    <div id="victory-one" class='hidden ui-element'>
-      <h2>You Won!</h2>
-      <p class="story">With a blood-curdling scream, the magics holding the Arch-Wizard together are sundered for good-
-        in
-        a great rush of cold green fire, the body falls, nothing more than a few rags and bones. The dark tower begins
-        to
-        shudder beneath your feet - without Valderak to maintain it, it is beginning to sink into the swamp.
-      </p>
-      <div id="victory-one-progress" class="button">Progress To Next Scene</div>
-    </div>
-    <!-- Victory Two -->
-    <div id="victory-two" class='hidden ui-element'>
-      <h2>You Won!</h2>
-      <p class="story">You fly for the exit, escaping just in time to see the sharp roof sink beneath the waters.
-      </p>
-      <div id="victory-two-progress" class="button">Progress To Next Scene</div>
-    </div>
-    <!-- Victory Three -->
-    <div id="victory-three" class='hidden ui-element'>
-      <h2>You Won!</h2>
-      <p class="story">The stain on the landscape, the blight on the Four Kingdoms, Valderak the Arch-Wizard is no more.
-      </p>
-      <div id="victory-three-progress" class="button">Return To Title Screen</div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-    <!-- Footer -->
-
-  </main>
-  <footer>
-    <div class="hire-container">
-      <div class="hire">
-        <h3>Hire</h3>
-        <p>I am ready to work on your new, exciting project, get in touch now about hiring me!</p>
+      <!-- Third Enemy -->
+      <div id="battle-three" class="hidden ui-element">
+        <div class="battle-arena">
+          <div class="battle health">
+            <div class="character-stats">
+              <p>Player</p>
+              <progress value="100" max="100"></progress>
+              <progress value="100" max="100"></progress>
+            </div>
+            <div class="character-stats">
+              <p>Enemy</p>
+              <progress value="100" max="100"></progress>
+              <progress value="100" max="100"></progress>
+            </div>
+          </div>
+          <div class="battle status">
+            <p>Vaaldorak Attacked!</p>
+          </div>
+          <div class="battle actions">
+            <div class="battle-command">
+              <p>Attack</p>
+            </div>
+            <div class="battle-command">
+              <p>Magic</p>
+            </div>
+            <div class="battle-command">
+              <p>Item</p>
+            </div>
+          </div>
+        </div>
+        <div id="battle-three-progress" class="button button-text">
+          Next Scene
+        </div>
       </div>
-    </div>
-    <div class="social">
-      <ul class="social-links">
-        <a href="https://github.com/bryansmullen" target="_blank" rel="noopener noreferrer">
-          <li class=github>
-            <i class="fab fa-github-square"></i></li>
-        </a>
-        <a href="https://www.linkedin.com/in/bryansmullen/" target="_blank" rel="noopener noreferrer">
-          <li class=linkedin><i class="fab fa-linkedin"></i></li>
-        </a>
-      </ul>
-    </div>
 
+      <!-- First Story -->
+      <div id="first-story" class="hidden ui-element story">
+        <p>
+          A dread shadow stalks the land! Arch-Wizard Valderak, freed from his
+          timeless prison, has come to wreak vengeance on the people of The Four
+          Kingdoms.
+        </p>
+        <div id="scene-one-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Second Story -->
+      <div id="second-story" class="hidden ui-element story">
+        <p>
+          From his tower deep in the Forest of Poison, he plots a terrible
+          revenge.
+        </p>
+        <div id="scene-two-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Third Story -->
+      <div id="third-story" class="hidden ui-element story">
+        <p>
+          Four heroes, the greatest from each of the Kingdoms, have been sent to
+          thwart the schemes of the Arch-Wizard and restore peace to the land.
+        </p>
+        <div id="scene-three-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Fourth Story -->
+      <div id="fourth-story" class="hidden ui-element story">
+        <p>
+          You and your party make your through the Forest of Poison, through
+          foul waters and rotting trees.
+        </p>
+        <div id="scene-four-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Fifth Story -->
+      <div id="fifth-story" class="hidden ui-element story">
+        <p>
+          Before you, rising like a thorn from the putrid mire, stands the dark
+          tower of Valderak, its arched windows filled with the green fire of
+          his baleful magics.
+        </p>
+        <div id="scene-five-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Sixth Story -->
+      <div id="sixth-story" class="hidden ui-element story">
+        <p>
+          You step inside the echoing tower and encounter the first of line of
+          Valderak's defenses - the people of the forest, now corrupted by
+          Valderak.
+        </p>
+        <div id="scene-six-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Seventh Story -->
+      <div id="seventh-story" class="hidden ui-element story">
+        <p>
+          Defeating the forest folk, you are able to free them from the
+          influence of Valderak. Before fleeing the terrible tower they give you
+          the key to the upper floors. Ascending the winding stairs your ears
+          pick up a harsh, clanking sound. There is smoke on the air. Opening a
+          door to an upper chamber, you encounter Valderak's lieutenant, an
+          Engine of Chaos.
+        </p>
+        <div id="scene-seven-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Eighth Story -->
+      <div id="eighth-story" class="hidden ui-element story">
+        <p>
+          The Engine of Chaos is destroyed and from its wreckage you pluck the
+          source of its power, a Gem of Annihilation.
+        </p>
+        <div id="scene-eight-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Ninth Story -->
+      <div id="ninth-story" class="hidden ui-element story">
+        <p>
+          Using it you dispel the wards and magics protecting the inner sanctum
+          of Valderak, allowing you to enter the lair of the Arch-Wizard.
+        </p>
+        <div id="scene-nine-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Tenth Story -->
+      <div id="tenth-story" class="hidden ui-element story">
+        <p>
+          You find him, hunched and wizened over his scrying table.
+        </p>
+        <div id="scene-ten-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Eleventh Story -->
+      <div id="eleventh-story" class="hidden ui-element story">
+        <p>
+          With a screech of disgust he conjures his Poison Blade, and with one
+          final curse on the Four Kingdoms, launches himself at you.
+        </p>
+        <div id="scene-eleven-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Twelfth Story -->
+      <div id="twelfth-story" class="hidden ui-element story">
+        <p>Battle is joined.</p>
+        <div id="scene-twelve-progress" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Final Scene -->
+      <div id="final-scene" class="hidden ui-element story">
+        <h2>This is the Final Scene</h2>
+        <div id="victory" class="button button-text">Victory</div>
+        <div id="game-over" class="button button-text">Game Over</div>
+      </div>
+      <!-- Game Over One -->
+      <div id="game-over-one" class="hidden ui-element">
+        <h2>Game Over</h2>
+        <p>All your valour, all your bravery, was for naught.</p>
+        <div id="game-over-one-progress" class="button button-text">
+          Progress To Next Scene
+        </div>
+      </div>
+      <!-- Game Over Two -->
+      <div id="game-over-two" class="hidden ui-element">
+        <h2>Game Over</h2>
+        <p>You have been vanquished.</p>
+        <div id="game-over-two-progress" class="button button-text">
+          Progress To Next Scene
+        </div>
+      </div>
+      <!-- Game Over Three -->
+      <div id="game-over-three" class="hidden ui-element">
+        <h2>Game Over</h2>
+        <p>
+          It is a dark day for the Four Kingdoms as its greatest champions lie
+          defeated, but there will be many dark days ahead, for now nothing
+          stands in the way of Valderak's final victory.
+        </p>
+        <div id="game-over-three-progress" class="button button-text">
+          Progress To Next Scene
+        </div>
+      </div>
+      <!-- Game Over Four -->
+      <div id="game-over-four" class="hidden ui-element">
+        <h2>Game Over</h2>
+        <p>All is lost.</p>
+        <div id="game-over-four-progress" class="button button-text">
+          Return To Title Screen
+        </div>
+      </div>
+      <!-- Victory One -->
+      <div id="victory-one" class="hidden ui-element">
+        <h2>You Won!</h2>
+        <p>
+          With a blood-curdling scream, the magics holding the Arch-Wizard
+          together are sundered for good- in a great rush of cold green fire,
+          the body falls, nothing more than a few rags and bones. The dark tower
+          begins to shudder beneath your feet - without Valderak to maintain it,
+          it is beginning to sink into the swamp.
+        </p>
+        <div id="victory-one-progress" class="button button-text">
+          Progress To Next Scene
+        </div>
+      </div>
+      <!-- Victory Two -->
+      <div id="victory-two" class="hidden ui-element">
+        <h2>You Won!</h2>
+        <p>
+          You fly for the exit, escaping just in time to see the sharp roof sink
+          beneath the waters.
+        </p>
+        <div id="victory-two-progress" class="button button-text">
+          Progress To Next Scene
+        </div>
+      </div>
+      <!-- Victory Three -->
+      <div id="victory-three" class="hidden ui-element">
+        <h2>You Won!</h2>
+        <p>
+          The stain on the landscape, the blight on the Four Kingdoms, Valderak
+          the Arch-Wizard is no more.
+        </p>
+        <div id="victory-three-progress" class="button button-text">
+          Return To Title Screen
+        </div>
+      </div>
 
-
-  </footer>
-</body>
-
+      <!-- Footer -->
+    </main>
+    <footer>
+      <div class="hire-container">
+        <div class="hire">
+          <h3>Hire</h3>
+          <p>
+            I am ready to work on your new, exciting project, get in touch now
+            about hiring me!
+          </p>
+        </div>
+      </div>
+      <div class="social">
+        <ul class="social-links">
+          <a
+            href="https://github.com/bryansmullen"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <li class="github">
+              <i class="fab fa-github-square"></i>
+            </li>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/bryansmullen/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <li class="linkedin"><i class="fab fa-linkedin"></i></li>
+          </a>
+        </ul>
+      </div>
+    </footer>
+  </body>
 </html>
