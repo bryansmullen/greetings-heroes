@@ -75,7 +75,7 @@ main {
       max-width: 80%; }
   main .story {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 200px);
     display: grid;
     justify-items: center;
     align-items: center;
@@ -141,33 +141,33 @@ main {
       main .character-card {
         width: 95%;
         height: 90%; } }
-  main .battle-arena {
+  main .battle {
+    display: flex;
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-rows: 3fr 1fr 3fr; }
-    main .battle-arena .battle {
-      display: flex;
+    justify-content: space-around;
+    font-size: 2rem;
+    align-items: center; }
+    main .battle .battle-arena {
       width: 100%;
-      height: 100%;
-      justify-content: space-around;
-      font-size: 2rem;
-      align-items: center; }
-    main .battle-arena .battle-command {
-      color: white;
-      background: #800000;
-      width: 200px;
-      height: 100px;
-      text-align: center;
-      cursor: pointer; }
-      main .battle-arena .battle-command:hover {
-        background-color: #8f4836; }
-      main .battle-arena .battle-command:active {
-        background-color: #99004c; }
-  main .character-stats {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around; }
+      height: calc(100% - 30px);
+      display: grid;
+      grid-template-rows: 3fr 1fr 3fr; }
+      main .battle .battle-arena .battle-command {
+        color: white;
+        background: #800000;
+        width: 200px;
+        height: 100px;
+        text-align: center;
+        cursor: pointer; }
+        main .battle .battle-arena .battle-command:hover {
+          background-color: #8f4836; }
+        main .battle .battle-arena .battle-command:active {
+          background-color: #99004c; }
+    main .battle .character-stats {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; }
 
 footer {
   background-color: #800000;
