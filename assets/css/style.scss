@@ -1,5 +1,7 @@
+// IMPORTS
 @import url("https://use.typekit.net/twt4nji.css");
 
+// VARIABLES
 $gh-earth: #8f4836;
 $gh-red: #991b00;
 $gh-dark-red: #800000;
@@ -8,33 +10,41 @@ $gh-violet: #8c078c;
 $gh-gothicus: gothicus-roman, sans-serif;
 $gh-courier: courier-prime, monospace;
 
-$media-tablet: 788px;
+// MEDIA QUERY SIZES
+$media-tablet: 768px;
 $media-web: 1024px;
 
+// DOCUMENT CONFIG
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+html,
+body {
+  min-width: 300px;
+  height: 100%;
+}
+
 body {
   background-image: url(../img/bg-image.png);
   background-color: black;
   background-size: cover;
-  min-width: 300px;
-  width: 100vw;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: center;
+  display: grid;
+  grid-template-rows: 60px 1fr 100px;
 }
 
+// HEADER STYLES
 header {
   background-color: $gh-dark-red;
-  height: 80px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   padding: 0 10%;
   align-items: center;
+  top: 0;
   i {
     color: white;
     cursor: pointer;
@@ -44,133 +54,268 @@ header {
   }
 }
 
+// MAIN CONTENT STYLES
 main {
-  width: 90vw;
-  height: 80vh;
-  border: 5px solid green;
-  margin: 100px auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   display: flex;
   justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-}
 
-.button {
-  padding: 20px 40px;
-  margin: 2px;
-  background-color: $gh-dark-red;
-  color: white;
-  font-family: $gh-courier;
-  width: 80%;
-  border-radius: 10px;
-  text-align: center;
+  // Utiliity style to hide all ui elements
+  // This style is overwritten by javascript to display relevant screens at the appropriate time
+  // 'Important' is necessary here because otherwise refactoring of the code could break the entire layout, and it is in fact important
 
-  &:hover {
-    background-color: $gh-earth;
-    cursor: pointer;
+  .hidden {
+    display: none !important;
   }
-  &:active {
-    background-color: $gh-violet;
+
+  // UI Elements
+  .ui-element {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    // BUTTON GENERAL STYLES
+    .button {
+      background-color: $gh-dark-red;
+      padding: 20px 40px;
+      margin: 2px;
+      width: 80%;
+      border-radius: 10px;
+      &:hover {
+        background-color: $gh-earth;
+        cursor: pointer;
+      }
+      &:active {
+        background-color: $gh-violet;
+      }
+    }
+    // BUTTON TEXT STYLES
+    .button-text {
+      font-family: $gh-courier;
+      color: white;
+      text-align: center;
+    }
+    .button-row {
+      grid-row: 3;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    // MAIN CONTENT TEXT STYLES
+    h2 {
+      font-family: $gh-gothicus;
+      text-align: center;
+      color: $gh-dark-red;
+      font-size: 4rem;
+    }
+    p {
+      margin: 1rem;
+      text-align: center;
+      font-family: $gh-courier;
+      color: white;
+      max-width: 80%;
+    }
   }
-}
 
-#backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  opacity: 1;
-  pointer-events: none;
-}
+  // STORY CONTENT GENERAL STYLES
 
-h2 {
-  font-family: $gh-gothicus;
-  text-align: center;
-  color: $gh-dark-red;
-  font-size: 4rem;
-}
-
-p {
-  margin: 16px;
-  text-align: center;
-  color: white;
-  font-family: $gh-courier;
-  max-width: 80%;
-}
-
-.character-heading {
-  font-family: "gothicus-roman";
-  font-size: 2rem;
-  color: $gh-dark-red;
-}
-
-.character-selection {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-
-  @media (min-width: $media-tablet) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+  .story {
+    width: 100%;
+    height: calc(100% - 200px);
+    display: grid;
     justify-items: center;
     align-items: center;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    @media (min-width: $media-tablet) {
+      grid-template-rows: 2fr 1fr 1fr 1fr;
+    }
+    p {
+      grid-row: 2;
+      font-size: 1.3rem;
+    }
+    .button {
+      grid-row: 3;
+    }
+  }
+  .character-selection {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+
+    @media (min-width: $media-tablet) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      justify-items: center;
+      align-items: center;
+    }
+  }
+
+  .character-card {
+    cursor: pointer;
+    background-color: $gh-dark-red;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    border: 2px solid orange;
+    cursor: pointer;
+    h2 {
+      font-size: 2rem;
+      color: white;
+      grid-row: 1;
+      grid-column: 2;
+      font-family: $gh-gothicus;
+      margin: auto 0;
+    }
+    .stats {
+      display: none;
+      color: white;
+      text-align: center;
+      margin: auto;
+      font-family: $gh-courier;
+      p {
+        margin: 0;
+      }
+    }
+    &:hover {
+      background-color: $gh-earth;
+      img {
+        display: none;
+      }
+      .stats {
+        display: block;
+      }
+    }
+    &:active {
+      background-color: $gh-magenta;
+    }
+    img {
+      height: 100px;
+      margin: auto;
+      @media (min-width: $media-tablet) {
+        height: 200px;
+      }
+    }
+    @media (min-width: $media-tablet) {
+      width: 95%;
+      height: 90%;
+    }
+  }
+
+  // Battle styles
+
+  .battle {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    font-size: 2rem;
+    align-items: center;
+    .battle-arena {
+      width: 100%;
+      height: calc(100% - 30px);
+      display: grid;
+      grid-template-rows: 3fr 1fr 3fr;
+      .battle-command {
+        color: white;
+        background: $gh-dark-red;
+        width: 200px;
+        height: 100px;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+          background-color: $gh-earth;
+        }
+        &:active {
+          background-color: $gh-magenta;
+        }
+      }
+    }
+
+    .character-stats {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
   }
 }
 
-.character-card {
-  cursor: pointer;
+// Footer Styles
+
+footer {
   background-color: $gh-dark-red;
-  display: grid;
+  color: white;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  height: 100%;
-  border: 2px solid orange;
-  cursor: pointer;
-  h2 {
-    font-size: 2rem;
-    color: white;
-    grid-row: 1;
-    grid-column: 2;
-    font-family: $gh-gothicus;
-    margin: auto 0;
-  }
-  .stats {
-    display: none;
-    color: white;
-    text-align: center;
-    margin: auto;
-    font-family: $gh-courier;
-    p {
-      margin: 0;
-    }
-  }
-  &:hover {
-    background-color: $gh-earth;
-    img {
-      display: none;
-    }
-    .stats {
-      display: block;
-    }
-  }
-  &:active {
-    background-color: $gh-magenta;
-  }
-  img {
-    height: 100px;
-    margin: auto;
-    @media (min-width: $media-tablet) {
-      height: 200px;
-    }
-  }
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   @media (min-width: $media-tablet) {
-    width: 95%;
-    height: 90%;
+    flex-direction: row;
+  }
+
+  .social,
+  .hire-container {
+    margin: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hire {
+    width: 80%;
+    text-align: center;
+
+    h3 {
+      font-family: $gh-courier;
+      font-size: 1rem;
+    }
+
+    p {
+      text-align: center;
+      font-size: 0.7rem;
+    }
+  }
+
+  .social {
+    .social-links {
+      width: 20%;
+      justify-content: space-between;
+    }
+    ul {
+      display: flex;
+
+      a {
+        line-height: 0;
+        color: white;
+        &:hover {
+          color: $gh-red;
+        }
+        &:active {
+          color: $gh-magenta;
+        }
+      }
+
+      a {
+        list-style: none;
+        display: inline-block;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    }
   }
 }

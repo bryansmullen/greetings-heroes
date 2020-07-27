@@ -1,263 +1,232 @@
-// GLOBAL CONSTANTS
-const mainContent = document.querySelector("#main-content");
+import { audio } from "./audio.js";
+import { updateUi, listen, updateAndListen } from "./utility.js";
 
-var myAudio = document.createElement("audio");
-myAudio.src = "assets/audio/temp-score.mp3";
+export class Game {
+  constructor() {
+    this.character = undefined;
+  }
 
-async function toggle() {
-  if (myAudio.paused) {
-    await myAudio.play();
-    document.getElementById("toggle-sound").innerText = "volume_up";
-  } else {
-    await myAudio.pause();
-    document.getElementById("toggle-sound").innerText = "volume_off";
+  toggleSoundIcon() {
+    const soundIcon = document.getElementById("toggle-sound");
+    if (soundIcon.classList.contains("fa-volume-mute")) {
+      soundIcon.classList.remove("fa-volume-mute");
+      soundIcon.classList.add("fa-volume-up");
+    } else {
+      soundIcon.classList.remove("fa-volume-up");
+      soundIcon.classList.add("fa-volume-mute");
+    }
+  }
+  toggleAudio() {
+    const audio = document.querySelector("audio");
+    if (audio.muted) {
+      audio.muted = false;
+    } else {
+      audio.muted = true;
+    }
+    this.toggleSoundIcon();
+  }
+  titleScreen() {
+    updateUi("title-screen");
+    listen("play-game-button", this.prelude.bind(this));
+    listen("exit-game", this.titleScreen.bind(this));
+    listen("instructions-button", this.instructionsScreen.bind(this));
+    listen("info-button", this.instructionsScreen.bind(this));
+  }
+  instructionsScreen() {
+    updateAndListen("instructions-screen", "return-to-title", this.titleScreen.bind(this));
+  }
+
+  chooseCharacter() {
+    audio.play("1m01");
+    this.toggleSoundIcon();
+    updateUi("character-screen");
+    listen("bjorna", this.bjorna.bind(this));
+    listen("jayna", this.jayna.bind(this));
+    listen("zazzerpan", this.zazzerpan.bind(this));
+    listen("yolo", this.yolo.bind(this));
+  }
+  bjorna() {
+    this.character = "bjorna";
+    updateAndListen("choose-bjorna", "bjorna-progress", this.stage1.bind(this));
+  }
+  jayna() {
+    this.character = "jayna";
+    updateAndListen("choose-jayna", "jayna-progress", this.stage1.bind(this));
+  }
+  yolo() {
+    this.character = "yolo";
+    updateAndListen("choose-yolo", "yolo-progress", this.stage1.bind(this));
+  }
+  zazzerpan() {
+    this.character = "zazzerpan";
+    updateAndListen("choose-zazzerpan", "zazzerpan-progress", this.stage1.bind(this));
+  }
+
+  prelude() {
+    updateAndListen("prelude", "prelude-progress", this.chooseCharacter.bind(this));
+  }
+
+  stage1() {
+    const diceRoll = Math.ceil(Math.random() * 3);
+    updateAndListen("first-story", "scene-one-progress", this.stage2.bind(this), diceRoll);
+  }
+  stage2(diceRoll) {
+    switch (diceRoll) {
+      case 1:
+        updateAndListen("second-story-a", "scene-two-a-progress", this.battle1.bind(this), "forest");
+        break;
+      case 2:
+        updateAndListen("second-story-b", "scene-two-b-progress", this.battle1.bind(this), "melwunt");
+        break;
+      default:
+        updateAndListen("second-story-c", "scene-two-c-progress", this.battle1.bind(this), "wretcheddead");
+        break;
+    }
+  }
+  battle1(enemy) {
+    console.log(enemy);
+    switch (enemy) {
+      case "forest":
+        updateAndListen("battle-forest", "battle-one-progress-a", this.stage3.bind(this), "a");
+        break;
+      case "melwunt":
+        updateAndListen("battle-melwunt", "battle-one-progress-b", this.stage3.bind(this), "b");
+      case "wretcheddead":
+        updateAndListen("battle-wretcheddead", "battle-one-progress-c", this.stage3.bind(this), "c");
+    }
+  }
+  stage3(enemyDefeated) {
+    audio.play("1m02");
+
+    const reward = Math.ceil(Math.random() * 3);
+    switch (enemyDefeated) {
+      case "a":
+        updateAndListen("third-story-a", "scene-three-a-progress", this.stage4.bind(this), reward);
+        break;
+      case "b":
+        updateAndListen("third-story-b", "scene-three-b-progress", this.stage4.bind(this), reward);
+        break;
+      case "c":
+        updateAndListen("third-story-c", "scene-three-c-progress", this.stage4.bind(this), reward);
+        break;
+    }
+  }
+  stage4(reward) {
+    switch (reward) {
+      case 1:
+        updateAndListen("fourth-story-a", "scene-four-progress-a", this.stage5.bind(this));
+        break;
+      case 2:
+        updateAndListen("fourth-story-b", "scene-four-progress-b", this.stage5.bind(this));
+        break;
+      case 3:
+        updateAndListen("fourth-story-c", "scene-four-progress-c", this.stage5.bind(this));
+        break;
+    }
+  }
+  stage5() {
+    updateUi("fifth-story");
+    document.getElementById("scene-five-progress-a").addEventListener("click", () => {
+      this.stage6("ruby");
+    });
+    document.getElementById("scene-five-progress-b").addEventListener("click", () => {
+      this.stage6("aquamarine");
+    });
+    document.getElementById("scene-five-progress-c").addEventListener("click", () => {
+      this.stage6("topaz");
+    });
+  }
+  stage6(doorChoice) {
+    switch (doorChoice) {
+      case "ruby":
+        updateAndListen("sixth-story-a", "scene-six-progress-a", this.battle2.bind(this), "ruby");
+        break;
+      case "aquamarine":
+        updateAndListen("sixth-story-b", "scene-six-progress-b", this.battle2.bind(this), "aquamarine");
+        break;
+      case "topaz":
+        updateAndListen("sixth-story-c", "scene-six-progress-c", this.battle2.bind(this), "topaz");
+        break;
+    }
+  }
+  battle2(doorChoice) {
+    updateAndListen("battle-two", "battle-two-progress", this.stage7.bind(this), doorChoice);
+  }
+  stage7(doorChoice) {
+    audio.play("1m04");
+    switch (doorChoice) {
+      case "ruby":
+        updateAndListen("seventh-story-a", "scene-seven-progress-a", this.stage8.bind(this));
+        break;
+      case "aquamarine":
+        updateAndListen("seventh-story-b", "scene-seven-progress-b", this.stage8.bind(this));
+        break;
+      case "topaz":
+        updateAndListen("seventh-story-c", "scene-seven-progress-c", this.stage8.bind(this));
+        break;
+    }
+  }
+  stage8() {
+    updateAndListen("eighth-story", "scene-eight-progress", this.stage9.bind(this));
+  }
+  stage9() {
+    switch (this.character) {
+      case "jayna":
+        updateAndListen("ninth-story-a", "scene-nine-progress-a", this.stage10.bind(this));
+        break;
+      case "bjorna":
+        updateAndListen("ninth-story-b", "scene-nine-progress-b", this.stage10.bind(this));
+        break;
+      case "zazzerpan":
+        updateAndListen("ninth-story-c", "scene-nine-progress-c", this.stage10.bind(this));
+        break;
+      case "yolo":
+        updateAndListen("ninth-story-d", "scene-nine-progress-d", this.stage10.bind(this));
+        break;
+    }
+  }
+
+  stage10() {
+    updateAndListen("tenth-story", "scene-ten-progress", this.battle3.bind(this));
+  }
+  battle3() {
+    updateUi("battle-three");
+    listen("result-victory", this.victory.bind(this));
+    listen("result-game-over", this.gameOver.bind(this));
+  }
+
+  victory() {
+    audio.play("1m03");
+    switch (this.character) {
+      case "bjorna":
+        updateAndListen("victory", "victory-progress", this.epilogueBjorna.bind(this));
+        break;
+      case "jayna":
+        updateAndListen("victory", "victory-progress", this.epilogueJayna.bind(this));
+        break;
+      case "zazzerpan":
+        updateAndListen("victory", "victory-progress", this.epilogueZazzerpan.bind(this));
+        break;
+      case "yolo":
+        updateAndListen("victory", "victory-progress", this.epilogueYolo.bind(this));
+        break;
+    }
+  }
+
+  gameOver() {
+    audio.play("1m03");
+    updateAndListen("game-over", "game-over-progress", this.titleScreen.bind(this));
+  }
+  epilogueBjorna() {
+    updateAndListen("epilogue-bjorna", "epilogue-bjorna-progress", this.titleScreen.bind(this));
+  }
+  epilogueJayna() {
+    updateAndListen("epilogue-jayna", "epilogue-jayna-progress", this.titleScreen.bind(this));
+  }
+  epilogueZazzerpan() {
+    updateAndListen("epilogue-zazzerpan", "epilogue-zazzerpan-progress", this.titleScreen.bind(this));
+  }
+  epilogueYolo() {
+    updateAndListen("epilogue-yolo", "epilogue-yolo-progress", this.titleScreen.bind(this));
   }
 }
-
-// GLOBAL FUNCTIONS
-startGame = (character) => {
-  let chosenCharacter = character;
-  story.sceneOne();
-};
-
-// GAME OBJECT
-const game = {
-  // TITLE SCREEN METHOD - RESETS GAME TO TITLE SCREEN
-  titleScreen() {
-    mainContent.innerHTML = `
-    <div id="play-game-button" class="button">Play Game</div>
-    <div id="instructions-button" class="button">Instructions</div>
-    `;
-    document
-      .querySelector("#play-game-button")
-      .addEventListener("click", game.chooseCharacter);
-
-    // THESE INITIALISE HEADER UI
-    document
-      .getElementById("instructions-button")
-      .addEventListener("click", game.information);
-    document.getElementById("info").addEventListener("click", game.information);
-
-    document
-      .getElementById("exit-game")
-      .addEventListener("click", game.titleScreen);
-
-    document.getElementById("toggle-sound").addEventListener("click", toggle);
-  },
-
-  // INFORMATION METHOD - DISPLAYS INSTRUCTIONS
-  information() {
-    mainContent.innerHTML = `
-    <h2>Instructions</h2>
-      <p>
-        The game is played using only the mouse.
-      </p>
-
-      <p>
-        To begin, click on the "Start Game" button on the main menu. You will be
-        brought to the character selection screen
-      </p>
-      <p>
-        You may inspect the attributes of each of the characters by hovering
-        over each of them in turn, and when you have decided which character you
-        would like to play as, simply click on them to select, and confirm your
-        choice.
-      </p>
-      <p>
-        The game will begin, and you may advance through the story by clicking
-        the "next" button in the story window. When battles commence you may
-        choose from a list of commands - attack, magic, and item.
-      </p>
-      <p>
-        Once you make your selection your character will take their turn, after
-        which the computer gets a chance to retaliate. Both the player and the
-        computer take it in turns to use a command of their choice until one
-        person wins.
-      </p>
-      <p>
-        If the player wins, you will progress through the story until you defeat
-        the final enemy.
-      </p>
-      <div id="return-to-title" class="button">Return To Title Screen</div>
-    `;
-    document
-      .getElementById("return-to-title")
-      .addEventListener("click", game.titleScreen);
-  },
-
-  // CHOOSE CHARACTER - ALLOWS GAME TO BE STARTED WITH CHOICE OF CHARACTER
-  chooseCharacter() {
-    mainContent.innerHTML = `
-    <h2 class="character-heading">Choose Your Hero</h2>
-    <div class="character-selection">
-      <div class="character-card bjorna">
-        <img src="assets/img/bjorna.png" alt="bjorna" />
-        <div class="stats">
-        <h3>Bjorna</h3>
-          <p>Name: Bjorna</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <h2>Bjorna</h2>
-      </div>
-      <div class="character-card jayna">
-        <img src="assets/img/jayna.png" alt="jayna" />
-        <div class="stats">
-        <h3>Jayna</h3>
-          <p>Name: Jayna</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <h2>Lady Jayna</h2>
-      </div>
-      <div class="character-card yolo">
-      <div class="stats">
-          <h3>Yolo</h3>
-          <p>Name: Yolo</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <img src="assets/img/yolo.png" alt="yolo" />
-        <h2>Yolo</h2>
-      </div>
-      <div class="character-card zazzerpan">
-      <div class="stats">
-          <h3>Zazzerpan</h3>
-          <p>Name: Zazzerpan</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <img src="assets/img/zazzerpan.png" alt="zazzerpan" />
-        <h2>Zazzerpan</h2>
-      </div>
-    </div>
-    `;
-    const bjorna = document.querySelector(".character-card.bjorna");
-    const jayna = document.querySelector(".character-card.jayna");
-    const yolo = document.querySelector(".character-card.yolo");
-    const zazzerpan = document.querySelector(".character-card.zazzerpan");
-    bjorna.addEventListener("click", startGame.bind(null, bjorna));
-    jayna.addEventListener("click", startGame.bind(null, bjorna));
-    yolo.addEventListener("click", startGame.bind(null, bjorna));
-    zazzerpan.addEventListener("click", startGame.bind(null, bjorna));
-  },
-};
-
-// BATTLE OBJECT - DISPLAYS BATTLE UI
-battle = {
-  firstEnemy() {
-    mainContent.innerHTML = `<h2>This will be the battle screen with enemy 1</h2>
-    <div>The UI Will Go Here</div>
-    <div id="next-scene" class="button">Next Scene</div>
-    `;
-    document
-      .getElementById("next-scene")
-      .addEventListener("click", story.sceneFive);
-  },
-  secondEnemy() {
-    mainContent.innerHTML = `<h2>This will be the battle screen with enemy 2</h2>
-    <div>The UI Will Go Here</div>
-    <div id="next-scene" class="button">Next Scene</div>
-    `;
-    document
-      .getElementById("next-scene")
-      .addEventListener("click", story.sceneSeven);
-  },
-  thirdEnemy() {
-    mainContent.innerHTML = `<h2>This will be the battle screen with enemy 3</h2>
-    <div>The UI Will Go Here</div>
-    <div id="next-scene" class="button">Next Scene</div>
-    `;
-    document
-      .getElementById("next-scene")
-      .addEventListener("click", story.finalScene);
-  },
-};
-
-// STORY OBJECT - DISPLAYS NARRATIVE TO SCREEN
-const story = {
-  sceneOne() {
-    mainContent.innerHTML = `<h2>This is scene one</h2> 
-    <div id="next-scene" class="button">Progress to next scene</div>
-    `;
-    document
-      .getElementById("next-scene")
-      .addEventListener("click", story.sceneTwo);
-  },
-  sceneTwo() {
-    mainContent.innerHTML = `<h2>This is scene two</h2> 
-    <div id="next-scene" class="button">Progress to next scene</div>
-    `;
-    document
-      .getElementById("next-scene")
-      .addEventListener("click", story.sceneThree);
-  },
-  sceneThree() {
-    mainContent.innerHTML = `<h2>This is scene three</h2> 
-    <div id="next-scene" class="button">Progress to next scene</div>
-    `;
-    document
-      .getElementById("next-scene")
-      .addEventListener("click", story.sceneFour);
-  },
-  sceneFour() {
-    mainContent.innerHTML = `<h2>This is scene four</h2> 
-    <div id="next-scene" class="button">Progress to next scene</div>
-    `;
-    document
-      .getElementById("next-scene")
-      .addEventListener("click", battle.firstEnemy);
-  },
-  sceneFive() {
-    mainContent.innerHTML = `<h2>This is scene Five</h2> 
-    <div id="next-scene" class="button">Progress to next scene</div>
-    `;
-    document
-      .getElementById("next-scene")
-      .addEventListener("click", story.sceneSix);
-  },
-  sceneSix() {
-    mainContent.innerHTML = `<h2>This is scene Six</h2> 
-    <div id="next-scene" class="button">Progress to next scene</div>
-    `;
-    document
-      .getElementById("next-scene")
-      .addEventListener("click", battle.secondEnemy);
-  },
-  sceneSeven() {
-    mainContent.innerHTML = `<h2>This is scene Seven</h2> 
-    <div id="next-scene" class="button">Progress to next scene</div>
-    `;
-    document
-      .getElementById("next-scene")
-      .addEventListener("click", battle.thirdEnemy);
-  },
-  finalScene() {
-    mainContent.innerHTML = `<h2>This is the Final Scene</h2> 
-    <div id="victory" class="button">Victory</div>
-    <div id="game-over" class="button">Game Over</div>
-    `;
-    document.getElementById("victory").addEventListener("click", story.victory);
-    document
-      .getElementById("game-over")
-      .addEventListener("click", story.gameOver);
-  },
-  gameOver() {
-    mainContent.innerHTML = `<h2>Game Over</h2> 
-    <div id="return-to-title" class="button">Return To Title Screen</div>
-    `;
-    document
-      .getElementById("return-to-title")
-      .addEventListener("click", game.titleScreen);
-  },
-  victory() {
-    mainContent.innerHTML = `<h2>You Won!</h2> 
-    <div id="return-to-title" class="button">Return To Title Screen</div>
-    `;
-    document
-      .getElementById("return-to-title")
-      .addEventListener("click", game.titleScreen);
-  },
-};
-
-game.titleScreen();
