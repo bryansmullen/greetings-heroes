@@ -1,16 +1,5 @@
-import { updateUi } from "./ui.js";
 import { audio } from "./audio.js";
-
-const listen = (listenElementId, triggeredEvent) => {
-  document.getElementById(listenElementId).addEventListener("click", () => {
-    triggeredEvent();
-  });
-};
-
-const updateAndListen = (uiToUpdate, listenElementId, triggeredEvent) => {
-  updateUi(uiToUpdate);
-  listen(listenElementId, triggeredEvent);
-};
+import { updateUi, listen, updateAndListen } from "./utility.js";
 
 export class Game {
   constructor() {
@@ -78,72 +67,62 @@ export class Game {
   }
 
   stage1() {
-    updateUi("first-story");
-    document.getElementById("scene-one-progress").addEventListener("click", () => {
-      const diceRoll = Math.ceil(Math.random() * 3);
-      this.stage2(diceRoll);
-    });
+    const diceRoll = Math.ceil(Math.random() * 3);
+    updateAndListen("first-story", "scene-one-progress", this.stage2.bind(this), diceRoll);
   }
   stage2(diceRoll) {
     switch (diceRoll) {
       case 1:
-        updateUi("second-story-a");
-        document.getElementById("scene-two-a-progress").addEventListener("click", () => {
-          this.battle1("forest");
-        });
+        updateAndListen("second-story-a", "scene-two-a-progress", this.battle1.bind(this), "forest");
         break;
       case 2:
-        updateUi("second-story-b");
-        document.getElementById("scene-two-b-progress").addEventListener("click", () => {
-          this.battle1("melwunt");
-        });
+        updateAndListen("second-story-b", "scene-two-b-progress", this.battle1.bind(this), "melwunt");
         break;
       default:
-        updateUi("second-story-c");
-        document.getElementById("scene-two-c-progress").addEventListener("click", () => {
-          this.battle1("wretcheddead");
-        });
+        updateAndListen("second-story-c", "scene-two-c-progress", this.battle1.bind(this), "wretcheddead");
         break;
     }
   }
+  battle1(enemy) {
+    console.log(enemy);
+    switch (enemy) {
+      case "forest":
+        updateAndListen("battle-forest", "battle-one-progress-a", this.stage3.bind(this), "a");
+        break;
+      case "melwunt":
+        updateAndListen("battle-melwunt", "battle-one-progress-b", this.stage3.bind(this), "b");
+      case "wretcheddead":
+        updateAndListen("battle-wretcheddead", "battle-one-progress-c", this.stage3.bind(this), "c");
+    }
+  }
   stage3(enemyDefeated) {
+    audio.play("1m02");
+
+    const reward = Math.ceil(Math.random() * 3);
     switch (enemyDefeated) {
       case "a":
-        updateUi("third-story-a");
+        updateAndListen("third-story-a", "scene-three-a-progress", this.stage4.bind(this), reward);
         break;
       case "b":
-        updateUi("third-story-b");
+        updateAndListen("third-story-b", "scene-three-b-progress", this.stage4.bind(this), reward);
         break;
       case "c":
-        updateUi("third-story-c");
+        updateAndListen("third-story-c", "scene-three-c-progress", this.stage4.bind(this), reward);
         break;
     }
-    const reward = Math.ceil(Math.random() * 3);
-    document.getElementById("scene-three-a-progress").addEventListener("click", () => {
-      this.stage4(reward);
-    });
-    document.getElementById("scene-three-b-progress").addEventListener("click", () => {
-      this.stage4(reward);
-    });
-    document.getElementById("scene-three-c-progress").addEventListener("click", () => {
-      this.stage4(reward);
-    });
   }
   stage4(reward) {
     switch (reward) {
       case 1:
-        updateUi("fourth-story-a");
+        updateAndListen("fourth-story-a", "scene-four-progress-a", this.stage5.bind(this));
         break;
       case 2:
-        updateUi("fourth-story-b");
+        updateAndListen("fourth-story-b", "scene-four-progress-b", this.stage5.bind(this));
         break;
       case 3:
-        updateUi("fourth-story-c");
+        updateAndListen("fourth-story-c", "scene-four-progress-c", this.stage5.bind(this));
         break;
     }
-    listen("scene-four-progress-a", this.stage5.bind(this));
-    listen("scene-four-progress-b", this.stage5.bind(this));
-    listen("scene-four-progress-c", this.stage5.bind(this));
   }
   stage5() {
     updateUi("fifth-story");
@@ -160,27 +139,21 @@ export class Game {
   stage6(doorChoice) {
     switch (doorChoice) {
       case "ruby":
-        updateUi("sixth-story-a");
-        document.getElementById("scene-six-progress-a").addEventListener("click", () => {
-          this.battle2("ruby");
-        });
+        updateAndListen("sixth-story-a", "scene-six-progress-a", this.battle2.bind(this), "ruby");
         break;
       case "aquamarine":
-        updateUi("sixth-story-b");
-        document.getElementById("scene-six-progress-b").addEventListener("click", () => {
-          this.battle2("aquamarine");
-        });
+        updateAndListen("sixth-story-b", "scene-six-progress-b", this.battle2.bind(this), "aquamarine");
         break;
       case "topaz":
-        updateUi("sixth-story-c");
-        document.getElementById("scene-six-progress-c").addEventListener("click", () => {
-          this.battle2("topaz");
-        });
+        updateAndListen("sixth-story-c", "scene-six-progress-c", this.battle2.bind(this), "topaz");
         break;
     }
   }
+  battle2(doorChoice) {
+    updateAndListen("battle-two", "battle-two-progress", this.stage7.bind(this), doorChoice);
+  }
   stage7(doorChoice) {
-    audio.play("1m02");
+    audio.play("1m04");
     switch (doorChoice) {
       case "ruby":
         updateAndListen("seventh-story-a", "scene-seven-progress-a", this.stage8.bind(this));
@@ -194,7 +167,6 @@ export class Game {
     }
   }
   stage8() {
-    audio.play("1m03");
     updateAndListen("eighth-story", "scene-eight-progress", this.stage9.bind(this));
   }
   stage9() {
@@ -217,21 +189,14 @@ export class Game {
   stage10() {
     updateAndListen("tenth-story", "scene-ten-progress", this.battle3.bind(this));
   }
-
-  epilogueBjorna() {
-    updateAndListen("epilogue-bjorna", "epilogue-bjorna-progress", this.titleScreen.bind(this));
-  }
-  epilogueJayna() {
-    updateAndListen("epilogue-jayna", "epilogue-jayna-progress", this.titleScreen.bind(this));
-  }
-  epilogueZazzerpan() {
-    updateAndListen("epilogue-zazzerpan", "epilogue-zazzerpan-progress", this.titleScreen.bind(this));
-  }
-  epilogueYolo() {
-    updateAndListen("epilogue-yolo", "epilogue-yolo-progress", this.titleScreen.bind(this));
+  battle3() {
+    updateUi("battle-three");
+    listen("result-victory", this.victory.bind(this));
+    listen("result-game-over", this.gameOver.bind(this));
   }
 
   victory() {
+    audio.play("1m03");
     switch (this.character) {
       case "bjorna":
         updateAndListen("victory", "victory-progress", this.epilogueBjorna.bind(this));
@@ -249,73 +214,19 @@ export class Game {
   }
 
   gameOver() {
+    audio.play("1m03");
     updateAndListen("game-over", "game-over-progress", this.titleScreen.bind(this));
   }
-
-  battle1(enemy) {
-    console.log(enemy);
-    switch (enemy) {
-      case "forest":
-        updateUi("battle-forest");
-        break;
-      case "melwunt":
-        updateUi("battle-melwunt");
-      case "wretcheddead":
-        updateUi("battle-wretcheddead");
-    }
-    // ==========================================================//
-
-    const attack = document.querySelector(".attack");
-    attack.addEventListener("click", () => {
-      console.log("attack");
-    });
-    const defend = document.querySelector(".defend");
-    defend.addEventListener("click", () => {
-      console.log("defend");
-    });
-    const special = document.querySelector(".special");
-    special.addEventListener("click", () => {
-      console.log("special");
-    });
-    const playerHealthReadout = document.getElementById("player-health");
-    const enemyHealthReadout = document.getElementById("enemy-health");
-
-    const player = {
-      healthStat: 100,
-      defenceStat: 50,
-      attackStat: 70,
-      attack() {
-        enemy.health -= 10;
-        console.dir(enemyHealthReadout);
-      },
-    };
-    // const enemy = {
-    //   health: 60,
-    //   defence: 40,
-    //   attack: 50,
-    // };
-
-    // ==========================================================//
-
-    document.querySelector(".battle-one-progress-a").addEventListener("click", () => {
-      this.stage3("a");
-    });
-    document.querySelector(".battle-one-progress-b").addEventListener("click", () => {
-      this.stage3("b");
-    });
-    document.querySelector(".battle-one-progress-c").addEventListener("click", () => {
-      this.stage3("c");
-    });
+  epilogueBjorna() {
+    updateAndListen("epilogue-bjorna", "epilogue-bjorna-progress", this.titleScreen.bind(this));
   }
-  battle2(doorChoice) {
-    updateUi("battle-two");
-    document.getElementById("battle-two-progress").addEventListener("click", () => {
-      this.stage7(doorChoice);
-    });
+  epilogueJayna() {
+    updateAndListen("epilogue-jayna", "epilogue-jayna-progress", this.titleScreen.bind(this));
   }
-  battle3() {
-    updateUi("battle-three");
-    listen("result-victory", this.victory.bind(this));
-    listen("result-game-over", this.gameOver.bind(this));
+  epilogueZazzerpan() {
+    updateAndListen("epilogue-zazzerpan", "epilogue-zazzerpan-progress", this.titleScreen.bind(this));
+  }
+  epilogueYolo() {
+    updateAndListen("epilogue-yolo", "epilogue-yolo-progress", this.titleScreen.bind(this));
   }
 }
