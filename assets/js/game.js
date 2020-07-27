@@ -1,6 +1,12 @@
 import { updateUi } from "./ui.js";
 import { audio } from "./audio.js";
 
+const listen = (listenElementId, triggeredEvent) => {
+  document.getElementById(listenElementId).addEventListener("click", () => {
+    triggeredEvent();
+  });
+};
+
 export class Game {
   constructor() {
     this.character = undefined;
@@ -83,9 +89,7 @@ export class Game {
   }
   bjorna() {
     updateUi("choose-bjorna");
-    document.getElementById("bjorna-progress").addEventListener("click", () => {
-      this.stage1();
-    });
+    listen("bjorna-progress", this.stage1);
   }
   jayna() {
     updateUi("choose-jayna");
