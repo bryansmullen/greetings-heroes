@@ -289,7 +289,7 @@
             </div>
           </div>
           <div class="battle status">
-            <p>Vaaldorak Attacked!</p>
+            <p>The Engine Of Chaos Attacked!</p>
           </div>
           <div class="battle actions">
             <div class="battle-command">
@@ -338,9 +338,8 @@
             </div>
           </div>
         </div>
-        <div id="battle-three-progress" class="button button-text">
-          Next Scene
-        </div>
+        <div id="result-victory" class="button button-text">Victory</div>
+        <div id="result-game-over" class="button button-text">Game Over</div>
       </div>
 
       <!-- First Story -->
@@ -420,7 +419,7 @@
           Your foe leaves behind a powerful artefact: The Wand of Azzerthoth,
           crackling with violet energies [ATTACK UP]
         </p>
-        <div id="scene-four-progress" class="button button-text">
+        <div id="scene-four-progress-a" class="button button-text">
           Progress to next scene
         </div>
       </div>
@@ -430,7 +429,7 @@
           Your foe leaves behind a powerful artefact: The Brazen Helm of
           Caargolos, the demon-mask of a dead god [DEFENSE UP]
         </p>
-        <div id="scene-four-progress" class="button button-text">
+        <div id="scene-four-progress-b" class="button button-text">
           Progress to next scene
         </div>
       </div>
@@ -440,167 +439,256 @@
           Your foe leaves behind a powerful artefact: The Philtre of Gnomon - a
           glass vial filled with moonlight [HEALING]
         </p>
-        <div id="scene-four-progress" class="button button-text">
+        <div id="scene-four-progress-c" class="button button-text">
           Progress to next scene
         </div>
       </div>
       <!-- Fifth Story -->
       <div id="fifth-story" class="hidden ui-element story">
         <p>
-          Before you, rising like a thorn from the putrid mire, stands the dark
-          tower of Valderak, its arched windows filled with the green fire of
-          his baleful magics.
+          Hidden in the wreckage you find the key to the upper floors. Ascending
+          the winding stairs your ears pick up a harsh, clanking sound. There is
+          smoke upon the air. You are greeted by three doors - to your left a
+          door of ruby, to your right a door of aquamarine, and between, a door
+          of topaz.
         </p>
-        <div id="scene-five-progress" class="button button-text">
+        <div class="button-row">
+          <div
+            id="scene-five-progress-a"
+            class="button button-text button-option"
+          >
+            Proceed through ruby door
+          </div>
+          <div
+            id="scene-five-progress-b"
+            class="button button-text button-option"
+          >
+            Proceed through aquamarine door
+          </div>
+          <div
+            id="scene-five-progress-c"
+            class="button button-text button-option"
+          >
+            Proceed through topaz door
+          </div>
+        </div>
+      </div>
+      <!-- Sixth Story a-->
+      <div id="sixth-story-a" class="hidden ui-element story">
+        <p>
+          Opening the ruby door to an upper chamber cloaked in scarlet cloth you
+          encounter Valderak's lieutenant, an Engine of Chaos, powered by the
+          elemental fury of fire.
+        </p>
+        <div id="scene-six-progress-a" class="button button-text">
           Progress to next scene
         </div>
       </div>
-      <!-- Sixth Story -->
-      <div id="sixth-story" class="hidden ui-element story">
+      <!-- Sixth Story a-->
+      <div id="sixth-story-b" class="hidden ui-element story">
         <p>
-          You step inside the echoing tower and encounter the first of line of
-          Valderak's defenses - the people of the forest, now corrupted by
-          Valderak.
+          Opening the aquamarine door to an upper chamber riven with streams you
+          encounter Valderak's lieutenant, an Engine of Chaos, powered by the
+          elemental fury of water
         </p>
-        <div id="scene-six-progress" class="button button-text">
+        <div id="scene-six-progress-b" class="button button-text">
           Progress to next scene
         </div>
       </div>
-      <!-- Seventh Story -->
-      <div id="seventh-story" class="hidden ui-element story">
+      <!-- Sixth Story a-->
+      <div id="sixth-story-c" class="hidden ui-element story">
         <p>
-          Defeating the forest folk, you are able to free them from the
-          influence of Valderak. Before fleeing the terrible tower they give you
-          the key to the upper floors. Ascending the winding stairs your ears
-          pick up a harsh, clanking sound. There is smoke on the air. Opening a
-          door to an upper chamber, you encounter Valderak's lieutenant, an
-          Engine of Chaos.
+          Opening the topaz door to an upper chamber choked with sand you
+          encounter Valderak's lieutenant, an Engine of Chaos, powered by the
+          elemental fury of lightning
         </p>
-        <div id="scene-seven-progress" class="button button-text">
+        <div id="scene-six-progress-c" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Seventh Story a-->
+      <div id="seventh-story-a" class="hidden ui-element story">
+        <p>
+          The Engine of Chaos is destroyed. From its wreckage you pluck the
+          source of its power, a Gem of Annihilation. It pulses with the power
+          of fire
+        </p>
+        <div id="scene-seven-progress-a" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Seventh Story b-->
+      <div id="seventh-story-b" class="hidden ui-element story">
+        <p>
+          The Engine of Chaos is destroyed. From its wreckage you pluck the
+          source of its power, a Gem of Annihilation. It pulses with the power
+          of water
+        </p>
+        <div id="scene-seven-progress-b" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Seventh Story c-->
+      <div id="seventh-story-c" class="hidden ui-element story">
+        <p>
+          The Engine of Chaos is destroyed. From its wreckage you pluck the
+          source of its power, a Gem of Annihilation. It pulses with the power
+          of lightning
+        </p>
+        <div id="scene-seven-progress-c" class="button button-text">
           Progress to next scene
         </div>
       </div>
       <!-- Eighth Story -->
       <div id="eighth-story" class="hidden ui-element story">
         <p>
-          The Engine of Chaos is destroyed and from its wreckage you pluck the
-          source of its power, a Gem of Annihilation.
+          Using it you dispel the wards and magics protecting the inner sanctum
+          of Valderak. Entering the lair of the Arch-Wizard, you find him,
+          hunched over his scrying table. He turns and addresses you.
         </p>
         <div id="scene-eight-progress" class="button button-text">
           Progress to next scene
         </div>
       </div>
-      <!-- Ninth Story -->
-      <div id="ninth-story" class="hidden ui-element story">
+      <!-- Ninth Story-a -->
+      <div id="ninth-story-a" class="hidden ui-element story">
         <p>
-          Using it you dispel the wards and magics protecting the inner sanctum
-          of Valderak, allowing you to enter the lair of the Arch-Wizard.
+          All your efforts are in vain, little one. Aquilae will be the first to
+          fall. Your father is doomed - and you shall live just long enough to
+          see him perish!
         </p>
-        <div id="scene-nine-progress" class="button button-text">
+        <div id="scene-nine-progress-a" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Ninth Story-b -->
+      <div id="ninth-story-b" class="hidden ui-element story">
+        <p>
+          Foolish wretch - your tribe is lost in the seas of time! I may not
+          have been able to best their strength, but now they are somewhere
+          their meagre intellect will not save them. Do you truly think one of
+          you can defeat me? After all your people joined as one, failed?
+        </p>
+        <div id="scene-nine-progress-b" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Ninth Story-c -->
+      <div id="ninth-story-c" class="hidden ui-element story">
+        <p>
+          You dare to disturb the dread Valderak? For what end? To thwart me in
+          my plans? Foolish dolt - you cannot defeat me! All magic is mine! All
+          magic flows through me!
+        </p>
+        <div id="scene-nine-progress-c" class="button button-text">
+          Progress to next scene
+        </div>
+      </div>
+      <!-- Ninth Story-d -->
+      <div id="ninth-story-d" class="hidden ui-element story">
+        <p>
+          Wait. I know you. Didn't you break into my tower before? Yes! you're
+          the one who stole my record collection! You took all my precious,
+          priceless Bob Dylan records!
+        </p>
+        <div id="scene-nine-progress-d" class="button button-text">
           Progress to next scene
         </div>
       </div>
       <!-- Tenth Story -->
       <div id="tenth-story" class="hidden ui-element story">
         <p>
-          You find him, hunched and wizened over his scrying table.
+          With a screech of disgust he conjures his Poison Blade, and with one
+          final curse on the Four Kingdoms, launches himself at you. Battle is
+          joined.
         </p>
         <div id="scene-ten-progress" class="button button-text">
           Progress to next scene
         </div>
       </div>
-      <!-- Eleventh Story -->
-      <div id="eleventh-story" class="hidden ui-element story">
+      <!-- Epilogue Jayna -->
+      <div id="epilogue-jayna" class="hidden ui-element story">
         <p>
-          With a screech of disgust he conjures his Poison Blade, and with one
-          final curse on the Four Kingdoms, launches himself at you.
+          You return to the Kingdom of Aquilae to find the ravages of the dread
+          Arch-Wizard fading from the land. Your father has been restored to
+          health. With the death of his twin brother Valderak, peace now
+          reigns... for about a fortnight until your evil twin sister escapes...
         </p>
-        <div id="scene-eleven-progress" class="button button-text">
-          Progress to next scene
-        </div>
-      </div>
-      <!-- Twelfth Story -->
-      <div id="twelfth-story" class="hidden ui-element story">
-        <p>Battle is joined.</p>
-        <div id="scene-twelve-progress" class="button button-text">
-          Progress to next scene
-        </div>
-      </div>
-      <!-- Final Scene -->
-      <div id="final-scene" class="hidden ui-element story">
-        <h2>This is the Final Scene</h2>
-        <div id="victory" class="button button-text">Victory</div>
-        <div id="game-over" class="button button-text">Game Over</div>
-      </div>
-      <!-- Game Over One -->
-      <div id="game-over-one" class="hidden ui-element">
-        <h2>Game Over</h2>
-        <p>All your valour, all your bravery, was for naught.</p>
-        <div id="game-over-one-progress" class="button button-text">
-          Progress To Next Scene
-        </div>
-      </div>
-      <!-- Game Over Two -->
-      <div id="game-over-two" class="hidden ui-element">
-        <h2>Game Over</h2>
-        <p>You have been vanquished.</p>
-        <div id="game-over-two-progress" class="button button-text">
-          Progress To Next Scene
-        </div>
-      </div>
-      <!-- Game Over Three -->
-      <div id="game-over-three" class="hidden ui-element">
-        <h2>Game Over</h2>
-        <p>
-          It is a dark day for the Four Kingdoms as its greatest champions lie
-          defeated, but there will be many dark days ahead, for now nothing
-          stands in the way of Valderak's final victory.
-        </p>
-        <div id="game-over-three-progress" class="button button-text">
-          Progress To Next Scene
-        </div>
-      </div>
-      <!-- Game Over Four -->
-      <div id="game-over-four" class="hidden ui-element">
-        <h2>Game Over</h2>
-        <p>All is lost.</p>
-        <div id="game-over-four-progress" class="button button-text">
+        <div id="epilogue-jayna-progress" class="button button-text">
           Return To Title Screen
         </div>
       </div>
-      <!-- Victory One -->
-      <div id="victory-one" class="hidden ui-element">
+      <!-- Epilogue Bjorna -->
+      <div id="epilogue-bjorna" class="hidden ui-element story">
+        <p>
+          In your hand you hold the Dispelling Arch, and returning to the Realm
+          of Harthingfjord, you use it to pluck your tribe from the rivers of
+          time. They are safe, but the Arch demands a sacrifice - you find
+          yourself lost in time and space.
+        </p>
+        <div id="epilogue-bjorna-progress" class="button button-text">
+          Return To Title Screen
+        </div>
+      </div>
+      <!-- Epilogue Zazzerpan -->
+      <div id="epilogue-zazzerpan" class="hidden ui-element story">
+        <p>
+          In your hands the great tome Mallifax belches, swollen with the stolen
+          magics of Valderak. But returning to Fizzlesnip, you find it in
+          disarray. You have done your job too well - all magic has been drained
+          from the Four Kingdoms and beyond. The world is saved but Zazzerpan,
+          you're going to have do what your father's always said. Get a real
+          job.
+        </p>
+        <div id="epilogue-zazzerpan-progress" class="button button-text">
+          Return To Title Screen
+        </div>
+      </div>
+      <!-- Epilogue Yolo -->
+      <div id="epilogue-yolo" class="hidden ui-element story">
+        <p>
+          You make it through the swamp with your sack of stolen artefacts.
+          Resting for the night you look at your swag. Surely it wouldn't hurt
+          to try on the Ring of Destruction? And maybe the Crown of Pain would
+          compliment it... and the Cloak of Daggers too. Your team-mates raise
+          concerns, but you wave them away, accidentally obliterating them. Your
+          hands course with power. The dark reign of Yolo the Magnificent has
+          begun.
+        </p>
+        <div id="epilogue-yolo-progress" class="button button-text">
+          Return To Title Screen
+        </div>
+      </div>
+
+      <!-- Game Over -->
+      <div id="game-over" class="hidden ui-element">
+        <h2>Game Over</h2>
+        <p>
+          All your valour, all your bravery, was for naught. You have been
+          vanquished. It is a dark day for the Four Kingdoms as its greatest
+          champions lie defeated. There will be many more dark days ahead, for
+          now nothing stands in the way of Valderak's final victory. All is
+          lost.
+        </p>
+        <div id="game-over-progress" class="button button-text">
+          Return To Title Screen
+        </div>
+      </div>
+
+      <!-- Victory -->
+      <div id="victory" class="hidden ui-element">
         <h2>You Won!</h2>
         <p>
           With a blood-curdling scream, the magics holding the Arch-Wizard
-          together are sundered for good- in a great rush of cold green fire,
+          together are sundered for good. In a great rush of cold green fire,
           the body falls, nothing more than a few rags and bones. The dark tower
-          begins to shudder beneath your feet - without Valderak to maintain it,
-          it is beginning to sink into the swamp.
+          begins to shudder beneath your feet. Without Valderak to maintain it,
+          it is beginning to sink into the swamp. You fly for the exit, escaping
+          just in time to see the sharp roof sink beneath the waters. The stain
+          on the landscape, the blight on the Four Kingdoms, Valderak the
+          Arch-Wizard is no more.
         </p>
-        <div id="victory-one-progress" class="button button-text">
-          Progress To Next Scene
-        </div>
-      </div>
-      <!-- Victory Two -->
-      <div id="victory-two" class="hidden ui-element">
-        <h2>You Won!</h2>
-        <p>
-          You fly for the exit, escaping just in time to see the sharp roof sink
-          beneath the waters.
-        </p>
-        <div id="victory-two-progress" class="button button-text">
-          Progress To Next Scene
-        </div>
-      </div>
-      <!-- Victory Three -->
-      <div id="victory-three" class="hidden ui-element">
-        <h2>You Won!</h2>
-        <p>
-          The stain on the landscape, the blight on the Four Kingdoms, Valderak
-          the Arch-Wizard is no more.
-        </p>
-        <div id="victory-three-progress" class="button button-text">
+        <div id="victory-progress" class="button button-text">
           Return To Title Screen
         </div>
       </div>

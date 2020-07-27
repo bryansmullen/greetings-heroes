@@ -186,7 +186,17 @@ export class Game {
         break;
     }
     document
-      .getElementById("scene-four-progress")
+      .getElementById("scene-four-progress-a")
+      .addEventListener("click", () => {
+        this.stage5();
+      });
+    document
+      .getElementById("scene-four-progress-b")
+      .addEventListener("click", () => {
+        this.stage5();
+      });
+    document
+      .getElementById("scene-four-progress-c")
       .addEventListener("click", () => {
         this.stage5();
       });
@@ -194,27 +204,80 @@ export class Game {
   stage5() {
     updateUi("fifth-story");
     document
-      .getElementById("scene-five-progress")
+      .getElementById("scene-five-progress-a")
       .addEventListener("click", () => {
-        this.stage6();
+        this.stage6("ruby");
       });
-  }
-  stage6() {
-    updateUi("sixth-story");
     document
-      .getElementById("scene-six-progress")
+      .getElementById("scene-five-progress-b")
       .addEventListener("click", () => {
-        this.battle1();
+        this.stage6("aquamarine");
+      });
+    document
+      .getElementById("scene-five-progress-c")
+      .addEventListener("click", () => {
+        this.stage6("topaz");
       });
   }
-  stage7() {
-    updateUi("seventh-story");
+  stage6(doorChoice) {
+    switch (doorChoice) {
+      case "ruby":
+        updateUi("sixth-story-a");
+        document
+          .getElementById("scene-six-progress-a")
+          .addEventListener("click", () => {
+            this.battle2("ruby");
+          });
+        break;
+      case "aquamarine":
+        updateUi("sixth-story-b");
+        document
+          .getElementById("scene-six-progress-b")
+          .addEventListener("click", () => {
+            this.battle2("aquamarine");
+          });
+        break;
+      case "topaz":
+        updateUi("sixth-story-c");
+        document
+          .getElementById("scene-six-progress-c")
+          .addEventListener("click", () => {
+            this.battle2("topaz");
+          });
+        break;
+    }
+  }
+  stage7(doorChoice) {
     audio.play("1m02");
-    document
-      .getElementById("scene-seven-progress")
-      .addEventListener("click", () => {
-        this.battle2();
-      });
+    switch (doorChoice) {
+      case "ruby":
+        updateUi("seventh-story-a");
+        document
+          .getElementById("scene-seven-progress-a")
+          .addEventListener("click", () => {
+            this.stage8();
+          });
+        break;
+      case "aquamarine":
+        updateUi("seventh-story-b");
+        document
+          .getElementById("scene-seven-progress-b")
+          .addEventListener("click", () => {
+            this.stage8();
+          });
+        break;
+      case "topaz":
+        updateUi("seventh-story-c");
+        document
+          .getElementById("scene-seven-progress-c")
+          .addEventListener("click", () => {
+            this.stage8();
+          });
+        break;
+
+      default:
+        break;
+    }
   }
   stage8() {
     updateUi("eighth-story");
@@ -222,108 +285,131 @@ export class Game {
     document
       .getElementById("scene-eight-progress")
       .addEventListener("click", () => {
-        this.stage9();
+        this.stage9(this.character);
       });
   }
   stage9() {
-    updateUi("ninth-story");
-    document
-      .getElementById("scene-nine-progress")
-      .addEventListener("click", () => {
-        this.stage10();
-      });
+    switch (this.character) {
+      case "jayna":
+        updateUi("ninth-story-a");
+        document
+          .getElementById("scene-nine-progress-a")
+          .addEventListener("click", () => {
+            this.stage10();
+          });
+        break;
+      case "bjorna":
+        updateUi("ninth-story-b");
+        document
+          .getElementById("scene-nine-progress-b")
+          .addEventListener("click", () => {
+            this.stage10();
+          });
+        break;
+      case "zazzerpan":
+        updateUi("ninth-story-c");
+        document
+          .getElementById("scene-nine-progress-c")
+          .addEventListener("click", () => {
+            this.stage10();
+          });
+        break;
+      case "yolo":
+        updateUi("ninth-story-d");
+        document
+          .getElementById("scene-nine-progress-d")
+          .addEventListener("click", () => {
+            this.stage10();
+          });
+        break;
+    }
   }
+
   stage10() {
     updateUi("tenth-story");
     document
       .getElementById("scene-ten-progress")
       .addEventListener("click", () => {
-        this.stage11();
-      });
-  }
-  stage11() {
-    updateUi("eleventh-story");
-    document
-      .getElementById("scene-eleven-progress")
-      .addEventListener("click", () => {
-        this.stage12();
-      });
-  }
-  stage12() {
-    updateUi("twelfth-story");
-    audio.play("1m04");
-    document
-      .getElementById("scene-twelve-progress")
-      .addEventListener("click", () => {
         this.battle3();
       });
   }
-  finalStage() {
-    updateUi("final-scene");
-    document.getElementById("victory").addEventListener("click", () => {
-      this.victoryOne();
-    });
-    document.getElementById("game-over").addEventListener("click", () => {
-      this.gameOverOne();
-    });
-  }
-  victoryOne() {
-    updateUi("victory-one");
+
+  epilogueBjorna() {
+    updateUi("epilogue-bjorna");
     document
-      .getElementById("victory-one-progress")
+      .getElementById("epilogue-bjorna-progress")
       .addEventListener("click", () => {
-        this.victoryTwo();
+        this.titleScreen();
+      });
+  }
+  epilogueJayna() {
+    updateUi("epilogue-jayna");
+    document
+      .getElementById("epilogue-jayna-progress")
+      .addEventListener("click", () => {
+        this.titleScreen();
+      });
+  }
+  epilogueZazzerpan() {
+    updateUi("epilogue-zazzerpan");
+    document
+      .getElementById("epilogue-zazzerpan-progress")
+      .addEventListener("click", () => {
+        this.titleScreen();
+      });
+  }
+  epilogueYolo() {
+    updateUi("epilogue-yolo");
+    document
+      .getElementById("epilogue-yolo-progress")
+      .addEventListener("click", () => {
+        this.titleScreen();
       });
   }
 
-  victoryTwo() {
-    updateUi("victory-two");
-    document
-      .getElementById("victory-two-progress")
-      .addEventListener("click", () => {
-        this.victoryThree();
-      });
+  victory() {
+    updateUi("victory");
+    switch (this.character) {
+      case "bjorna":
+        document
+          .getElementById("victory-progress")
+          .addEventListener("click", () => {
+            this.epilogueBjorna();
+          });
+        break;
+      case "jayna":
+        document
+          .getElementById("victory-progress")
+          .addEventListener("click", () => {
+            this.epilogueJayna();
+          });
+        break;
+      case "zazzerpan":
+        document
+          .getElementById("victory-progress")
+          .addEventListener("click", () => {
+            this.epilogueZazzerpan();
+          });
+        break;
+      case "yolo":
+        document
+          .getElementById("victory-progress")
+          .addEventListener("click", () => {
+            this.epilogueYolo();
+          });
+        break;
+    }
   }
-  victoryThree() {
-    updateUi("victory-three");
+
+  gameOver() {
+    updateUi("game-over");
     document
-      .getElementById("victory-three-progress")
-      .addEventListener("click", () => {
-        this.titleScreen();
-      });
-  }
-  gameOverOne() {
-    updateUi("game-over-one");
-    document
-      .getElementById("game-over-one-progress")
-      .addEventListener("click", () => {
-        this.gameOverTwo();
-      });
-  }
-  gameOverTwo() {
-    updateUi("game-over-two");
-    document
-      .getElementById("game-over-two-progress")
-      .addEventListener("click", () => {
-        this.gameOverThree();
-      });
-  }
-  gameOverThree() {
-    updateUi("game-over-three");
-    document
-      .getElementById("game-over-three-progress")
-      .addEventListener("click", () => {
-        this.gameOverFour();
-      });
-  }
-  gameOverFour() {
-    updateUi("game-over-four");
-    document
-      .getElementById("game-over-four-progress")
+      .getElementById("game-over-progress")
       .addEventListener("click", () => {
         this.titleScreen();
       });
   }
+
   battle1(enemy) {
     console.log(enemy);
     switch (enemy) {
@@ -385,20 +471,23 @@ export class Game {
         this.stage3("c");
       });
   }
-  battle2() {
+  battle2(doorChoice) {
     updateUi("battle-two");
     document
       .getElementById("battle-two-progress")
       .addEventListener("click", () => {
-        this.stage8();
+        this.stage7(doorChoice);
       });
   }
   battle3() {
     updateUi("battle-three");
+    document.getElementById("result-victory").addEventListener("click", () => {
+      this.victory();
+    });
     document
-      .getElementById("battle-three-progress")
+      .getElementById("result-game-over")
       .addEventListener("click", () => {
-        this.finalStage();
+        this.gameOver();
       });
   }
 }

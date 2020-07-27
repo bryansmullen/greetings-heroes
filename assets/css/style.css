@@ -62,6 +62,10 @@ main {
       font-family: courier-prime, monospace;
       color: white;
       text-align: center; }
+    main .ui-element .button-row {
+      grid-row: 3;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr; }
     main .ui-element h2 {
       font-family: gothicus-roman, sans-serif;
       text-align: center;

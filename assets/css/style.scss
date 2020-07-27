@@ -101,6 +101,11 @@ main {
       color: white;
       text-align: center;
     }
+    .button-row {
+      grid-row: 3;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
 
     // MAIN CONTENT TEXT STYLES
     h2 {
