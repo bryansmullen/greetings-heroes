@@ -5,6 +5,14 @@ export class Game {
   constructor() {
     this.character = undefined;
   }
+
+  updateScreen(screenToUpdateTo, buttonToAddListenerTo, methodToCall) {
+    updateUi(screenToUpdateTo);
+    document
+      .getElementById(buttonToAddListenerTo)
+      .addEventListener("click", methodToCall);
+  }
+
   toggleSoundIcon() {
     const soundIcon = document.getElementById("toggle-sound");
     if (soundIcon.classList.contains("fa-volume-mute")) {
@@ -326,12 +334,7 @@ export class Game {
   }
 
   stage10() {
-    updateUi("tenth-story");
-    document
-      .getElementById("scene-ten-progress")
-      .addEventListener("click", () => {
-        this.battle3();
-      });
+    this.updateScreen("tenth-story", "scene-ten-progress", this.battle3());
   }
 
   epilogueBjorna() {
