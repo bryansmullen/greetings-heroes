@@ -7,16 +7,14 @@ const listen = (listenElementId, triggeredEvent) => {
   });
 };
 
+const updateAndListen = (uiToUpdate, listenElementId, triggeredEvent) => {
+  updateUi(uiToUpdate);
+  listen(listenElementId, triggeredEvent);
+};
+
 export class Game {
   constructor() {
     this.character = undefined;
-  }
-
-  updateScreen(screenToUpdateTo, buttonToAddListenerTo, methodToCall) {
-    updateUi(screenToUpdateTo);
-    document
-      .getElementById(buttonToAddListenerTo)
-      .addEventListener("click", methodToCall);
   }
 
   toggleSoundIcon() {
@@ -40,119 +38,71 @@ export class Game {
   }
   titleScreen() {
     updateUi("title-screen");
-    document
-      .getElementById("play-game-button")
-      .addEventListener("click", () => {
-        this.prelude();
-      });
-    document.getElementById("exit-game").addEventListener("click", () => {
-      this.titleScreen();
-    });
-    document
-      .getElementById("instructions-button")
-      .addEventListener("click", () => {
-        this.instructionsScreen();
-      });
-    document.getElementById("info-button").addEventListener("click", () => {
-      this.instructionsScreen();
-    });
+    listen("play-game-button", this.prelude.bind(this));
+    listen("exit-game", this.titleScreen.bind(this));
+    listen("instructions-button", this.instructionsScreen.bind(this));
+    listen("info-button", this.instructionsScreen.bind(this));
   }
   instructionsScreen() {
-    updateUi("instructions-screen");
-    document.getElementById("return-to-title").addEventListener("click", () => {
-      this.titleScreen();
-    });
+    updateAndListen("instructions-screen", "return-to-title", this.titleScreen.bind(this));
   }
+
   chooseCharacter() {
-    updateUi("character-screen");
     audio.play("1m01");
     this.toggleSoundIcon();
-    document.getElementById("bjorna").addEventListener("click", () => {
-      this.character = "bjorna";
-      this.bjorna();
-    });
-    document.getElementById("jayna").addEventListener("click", () => {
-      this.character = "jayna";
-
-      this.jayna();
-    });
-    document.getElementById("yolo").addEventListener("click", () => {
-      this.character = "yolo";
-
-      this.yolo();
-    });
-    document.getElementById("zazzerpan").addEventListener("click", () => {
-      this.character = "zazzerpan";
-
-      this.zazzerpan();
-    });
+    updateUi("character-screen");
+    listen("bjorna", this.bjorna.bind(this));
+    listen("jayna", this.jayna.bind(this));
+    listen("zazzerpan", this.zazzerpan.bind(this));
+    listen("yolo", this.yolo.bind(this));
   }
   bjorna() {
-    updateUi("choose-bjorna");
-    listen("bjorna-progress", this.stage1);
+    this.character = "bjorna";
+    updateAndListen("choose-bjorna", "bjorna-progress", this.stage1.bind(this));
   }
   jayna() {
-    updateUi("choose-jayna");
-    document.getElementById("jayna-progress").addEventListener("click", () => {
-      this.stage1();
-    });
+    this.character = "jayna";
+    updateAndListen("choose-jayna", "jayna-progress", this.stage1.bind(this));
   }
   yolo() {
-    updateUi("choose-yolo");
-    document.getElementById("yolo-progress").addEventListener("click", () => {
-      this.stage1();
-    });
+    this.character = "yolo";
+    updateAndListen("choose-yolo", "yolo-progress", this.stage1.bind(this));
   }
   zazzerpan() {
-    updateUi("choose-zazzerpan");
-    document
-      .getElementById("zazzerpan-progress")
-      .addEventListener("click", () => {
-        this.stage1();
-      });
+    this.character = "zazzerpan";
+    updateAndListen("choose-zazzerpan", "zazzerpan-progress", this.stage1.bind(this));
   }
+
   prelude() {
-    updateUi("prelude");
-    document
-      .getElementById("prelude-progress")
-      .addEventListener("click", () => {
-        this.chooseCharacter();
-      });
+    updateAndListen("prelude", "prelude-progress", this.chooseCharacter.bind(this));
   }
+
   stage1() {
     updateUi("first-story");
-    document
-      .getElementById("scene-one-progress")
-      .addEventListener("click", () => {
-        const diceRoll = Math.ceil(Math.random() * 3);
-        this.stage2(diceRoll);
-      });
+    document.getElementById("scene-one-progress").addEventListener("click", () => {
+      const diceRoll = Math.ceil(Math.random() * 3);
+      this.stage2(diceRoll);
+    });
   }
   stage2(diceRoll) {
     switch (diceRoll) {
       case 1:
         updateUi("second-story-a");
-        document
-          .getElementById("scene-two-a-progress")
-          .addEventListener("click", () => {
-            this.battle1("forest");
-          });
+        document.getElementById("scene-two-a-progress").addEventListener("click", () => {
+          this.battle1("forest");
+        });
         break;
       case 2:
         updateUi("second-story-b");
-        document
-          .getElementById("scene-two-b-progress")
-          .addEventListener("click", () => {
-            this.battle1("melwunt");
-          });
+        document.getElementById("scene-two-b-progress").addEventListener("click", () => {
+          this.battle1("melwunt");
+        });
         break;
       default:
         updateUi("second-story-c");
-        document
-          .getElementById("scene-two-c-progress")
-          .addEventListener("click", () => {
-            this.battle1("wretcheddead");
-          });
+        document.getElementById("scene-two-c-progress").addEventListener("click", () => {
+          this.battle1("wretcheddead");
+        });
         break;
     }
   }
@@ -169,21 +119,15 @@ export class Game {
         break;
     }
     const reward = Math.ceil(Math.random() * 3);
-    document
-      .getElementById("scene-three-a-progress")
-      .addEventListener("click", () => {
-        this.stage4(reward);
-      });
-    document
-      .getElementById("scene-three-b-progress")
-      .addEventListener("click", () => {
-        this.stage4(reward);
-      });
-    document
-      .getElementById("scene-three-c-progress")
-      .addEventListener("click", () => {
-        this.stage4(reward);
-      });
+    document.getElementById("scene-three-a-progress").addEventListener("click", () => {
+      this.stage4(reward);
+    });
+    document.getElementById("scene-three-b-progress").addEventListener("click", () => {
+      this.stage4(reward);
+    });
+    document.getElementById("scene-three-c-progress").addEventListener("click", () => {
+      this.stage4(reward);
+    });
   }
   stage4(reward) {
     switch (reward) {
@@ -197,65 +141,41 @@ export class Game {
         updateUi("fourth-story-c");
         break;
     }
-    document
-      .getElementById("scene-four-progress-a")
-      .addEventListener("click", () => {
-        this.stage5();
-      });
-    document
-      .getElementById("scene-four-progress-b")
-      .addEventListener("click", () => {
-        this.stage5();
-      });
-    document
-      .getElementById("scene-four-progress-c")
-      .addEventListener("click", () => {
-        this.stage5();
-      });
+    listen("scene-four-progress-a", this.stage5.bind(this));
+    listen("scene-four-progress-b", this.stage5.bind(this));
+    listen("scene-four-progress-c", this.stage5.bind(this));
   }
   stage5() {
     updateUi("fifth-story");
-    document
-      .getElementById("scene-five-progress-a")
-      .addEventListener("click", () => {
-        this.stage6("ruby");
-      });
-    document
-      .getElementById("scene-five-progress-b")
-      .addEventListener("click", () => {
-        this.stage6("aquamarine");
-      });
-    document
-      .getElementById("scene-five-progress-c")
-      .addEventListener("click", () => {
-        this.stage6("topaz");
-      });
+    document.getElementById("scene-five-progress-a").addEventListener("click", () => {
+      this.stage6("ruby");
+    });
+    document.getElementById("scene-five-progress-b").addEventListener("click", () => {
+      this.stage6("aquamarine");
+    });
+    document.getElementById("scene-five-progress-c").addEventListener("click", () => {
+      this.stage6("topaz");
+    });
   }
   stage6(doorChoice) {
     switch (doorChoice) {
       case "ruby":
         updateUi("sixth-story-a");
-        document
-          .getElementById("scene-six-progress-a")
-          .addEventListener("click", () => {
-            this.battle2("ruby");
-          });
+        document.getElementById("scene-six-progress-a").addEventListener("click", () => {
+          this.battle2("ruby");
+        });
         break;
       case "aquamarine":
         updateUi("sixth-story-b");
-        document
-          .getElementById("scene-six-progress-b")
-          .addEventListener("click", () => {
-            this.battle2("aquamarine");
-          });
+        document.getElementById("scene-six-progress-b").addEventListener("click", () => {
+          this.battle2("aquamarine");
+        });
         break;
       case "topaz":
         updateUi("sixth-story-c");
-        document
-          .getElementById("scene-six-progress-c")
-          .addEventListener("click", () => {
-            this.battle2("topaz");
-          });
+        document.getElementById("scene-six-progress-c").addEventListener("click", () => {
+          this.battle2("topaz");
+        });
         break;
     }
   }
@@ -263,158 +183,73 @@ export class Game {
     audio.play("1m02");
     switch (doorChoice) {
       case "ruby":
-        updateUi("seventh-story-a");
-        document
-          .getElementById("scene-seven-progress-a")
-          .addEventListener("click", () => {
-            this.stage8();
-          });
+        updateAndListen("seventh-story-a", "scene-seven-progress-a", this.stage8.bind(this));
         break;
       case "aquamarine":
-        updateUi("seventh-story-b");
-        document
-          .getElementById("scene-seven-progress-b")
-          .addEventListener("click", () => {
-            this.stage8();
-          });
+        updateAndListen("seventh-story-b", "scene-seven-progress-b", this.stage8.bind(this));
         break;
       case "topaz":
-        updateUi("seventh-story-c");
-        document
-          .getElementById("scene-seven-progress-c")
-          .addEventListener("click", () => {
-            this.stage8();
-          });
-        break;
-
-      default:
+        updateAndListen("seventh-story-c", "scene-seven-progress-c", this.stage8.bind(this));
         break;
     }
   }
   stage8() {
-    updateUi("eighth-story");
     audio.play("1m03");
-    document
-      .getElementById("scene-eight-progress")
-      .addEventListener("click", () => {
-        this.stage9(this.character);
-      });
+    updateAndListen("eighth-story", "scene-eight-progress", this.stage9.bind(this));
   }
   stage9() {
     switch (this.character) {
       case "jayna":
-        updateUi("ninth-story-a");
-        document
-          .getElementById("scene-nine-progress-a")
-          .addEventListener("click", () => {
-            this.stage10();
-          });
+        updateAndListen("ninth-story-a", "scene-nine-progress-a", this.stage10.bind(this));
         break;
       case "bjorna":
-        updateUi("ninth-story-b");
-        document
-          .getElementById("scene-nine-progress-b")
-          .addEventListener("click", () => {
-            this.stage10();
-          });
+        updateAndListen("ninth-story-b", "scene-nine-progress-b", this.stage10.bind(this));
         break;
       case "zazzerpan":
-        updateUi("ninth-story-c");
-        document
-          .getElementById("scene-nine-progress-c")
-          .addEventListener("click", () => {
-            this.stage10();
-          });
+        updateAndListen("ninth-story-c", "scene-nine-progress-c", this.stage10.bind(this));
         break;
       case "yolo":
-        updateUi("ninth-story-d");
-        document
-          .getElementById("scene-nine-progress-d")
-          .addEventListener("click", () => {
-            this.stage10();
-          });
+        updateAndListen("ninth-story-d", "scene-nine-progress-d", this.stage10.bind(this));
         break;
     }
   }
 
   stage10() {
-    this.updateScreen("tenth-story", "scene-ten-progress", this.battle3());
+    updateAndListen("tenth-story", "scene-ten-progress", this.battle3.bind(this));
   }
 
   epilogueBjorna() {
-    updateUi("epilogue-bjorna");
-    document
-      .getElementById("epilogue-bjorna-progress")
-      .addEventListener("click", () => {
-        this.titleScreen();
-      });
+    updateAndListen("epilogue-bjorna", "epilogue-bjorna-progress", this.titleScreen.bind(this));
   }
   epilogueJayna() {
-    updateUi("epilogue-jayna");
-    document
-      .getElementById("epilogue-jayna-progress")
-      .addEventListener("click", () => {
-        this.titleScreen();
-      });
+    updateAndListen("epilogue-jayna", "epilogue-jayna-progress", this.titleScreen.bind(this));
   }
   epilogueZazzerpan() {
-    updateUi("epilogue-zazzerpan");
-    document
-      .getElementById("epilogue-zazzerpan-progress")
-      .addEventListener("click", () => {
-        this.titleScreen();
-      });
+    updateAndListen("epilogue-zazzerpan", "epilogue-zazzerpan-progress", this.titleScreen.bind(this));
   }
   epilogueYolo() {
-    updateUi("epilogue-yolo");
-    document
-      .getElementById("epilogue-yolo-progress")
-      .addEventListener("click", () => {
-        this.titleScreen();
-      });
+    updateAndListen("epilogue-yolo", "epilogue-yolo-progress", this.titleScreen.bind(this));
   }
 
   victory() {
-    updateUi("victory");
     switch (this.character) {
       case "bjorna":
-        document
-          .getElementById("victory-progress")
-          .addEventListener("click", () => {
-            this.epilogueBjorna();
-          });
+        updateAndListen("victory", "victory-progress", this.epilogueBjorna.bind(this));
         break;
       case "jayna":
-        document
-          .getElementById("victory-progress")
-          .addEventListener("click", () => {
-            this.epilogueJayna();
-          });
+        updateAndListen("victory", "victory-progress", this.epilogueJayna.bind(this));
         break;
       case "zazzerpan":
-        document
-          .getElementById("victory-progress")
-          .addEventListener("click", () => {
-            this.epilogueZazzerpan();
-          });
+        updateAndListen("victory", "victory-progress", this.epilogueZazzerpan.bind(this));
         break;
       case "yolo":
-        document
-          .getElementById("victory-progress")
-          .addEventListener("click", () => {
-            this.epilogueYolo();
-          });
+        updateAndListen("victory", "victory-progress", this.epilogueYolo.bind(this));
         break;
     }
   }
 
   gameOver() {
-    updateUi("game-over");
-    document
-      .getElementById("game-over-progress")
-      .addEventListener("click", () => {
-        this.titleScreen();
-      });
+    updateAndListen("game-over", "game-over-progress", this.titleScreen.bind(this));
   }
 
   battle1(enemy) {
@@ -462,39 +297,25 @@ export class Game {
 
     // ==========================================================//
 
-    document
-      .querySelector(".battle-one-progress-a")
-      .addEventListener("click", () => {
-        this.stage3("a");
-      });
-    document
-      .querySelector(".battle-one-progress-b")
-      .addEventListener("click", () => {
-        this.stage3("b");
-      });
-    document
-      .querySelector(".battle-one-progress-c")
-      .addEventListener("click", () => {
-        this.stage3("c");
-      });
+    document.querySelector(".battle-one-progress-a").addEventListener("click", () => {
+      this.stage3("a");
+    });
+    document.querySelector(".battle-one-progress-b").addEventListener("click", () => {
+      this.stage3("b");
+    });
+    document.querySelector(".battle-one-progress-c").addEventListener("click", () => {
+      this.stage3("c");
+    });
   }
   battle2(doorChoice) {
     updateUi("battle-two");
-    document
-      .getElementById("battle-two-progress")
-      .addEventListener("click", () => {
-        this.stage7(doorChoice);
-      });
+    document.getElementById("battle-two-progress").addEventListener("click", () => {
+      this.stage7(doorChoice);
+    });
   }
   battle3() {
     updateUi("battle-three");
-    document.getElementById("result-victory").addEventListener("click", () => {
-      this.victory();
-    });
-    document
-      .getElementById("result-game-over")
-      .addEventListener("click", () => {
-        this.gameOver();
-      });
+    listen("result-victory", this.victory.bind(this));
+    listen("result-game-over", this.gameOver.bind(this));
   }
 }
