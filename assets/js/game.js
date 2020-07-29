@@ -65,7 +65,7 @@ class Battle {
   }
   run() {
     this.initialiseBattleCommand(this.attackBtn, this.defendBtn, this.specialBtn);
-    updateAndListen(this.battleUi, this.progressBtn, this.nextStage.bind(this), this.option);
+    updateAndListen(this.battleUi, this.progressBtn, this.nextStage, this.option);
   }
 }
 export class Game {
@@ -177,7 +177,7 @@ export class Game {
           special1a,
           "battle-forest",
           "battle-one-progress-a",
-          this.stage3,
+          this.stage3.bind(this),
           "forest-people-health",
           "a"
         );
@@ -194,7 +194,7 @@ export class Game {
           special1b,
           "battle-melwunt",
           "battle-one-progress-b",
-          this.stage3,
+          this.stage3.bind(this),
           "melwunt-tribe-health",
           "a"
         );
@@ -211,127 +211,11 @@ export class Game {
           special1c,
           "battle-wretched",
           "battle-one-progress-c",
-          this.stage3,
+          this.stage3.bind(this),
           "wretched-dead-health",
           "a"
         );
         wretchedBattle.run();
-        break;
-      // const attack1a = document.getElementById();
-      // const defend1a = document.getElementById();
-      // const special1a = document.getElementById();
-
-      // playerMove = function (choice) {
-      //   switch (choice) {
-      //     case "attack":
-      //       enemy1.health -= 10;
-      //       console.dir(enemy1);
-      //       enemy1Health = document.getElementById("forest-people-health");
-      //       enemy1Health.value = (enemy1.health / enemy1.maxHealth) * 100;
-      //       break;
-      //     case "defend":
-      //       console.log("defend");
-      //       break;
-      //     case "special":
-      //       console.log("special");
-      //       break;
-      //   }
-      // };
-      // checkHealth = function () {
-      //   if (enemy1.health <= 0) {
-      //     const proceedToStage3 = document.getElementById("battle-one-progress-a");
-      //     proceedToStage3.classList.remove("hidden");
-      //   }
-      // };
-
-      //  END SECTION BEING ABSTRACTED, BUT CONTINUES WITH SWITCH ========================================================================================================
-
-      case "melwunt-tribe":
-        console.log(enemy);
-        this.initialiseBattleCommand("battle-1b-attack", "battle-1b-defend", "battle-1b-special");
-
-        // const attack1b = document.getElementById("battle-1b-attack");
-        // const defend1b = document.getElementById("battle-1b-defend");
-        // const special1b = document.getElementById("battle-1b-special");
-        checkHealth = function () {
-          if (enemy1.health <= 0) {
-            const proceedToStage3 = document.getElementById("battle-one-progress-b");
-            proceedToStage3.classList.remove("hidden");
-          }
-        };
-        playerMove = function (choice) {
-          switch (choice) {
-            case "attack":
-              enemy1.health -= 10;
-              console.dir(enemy1);
-              enemy1Health = document.getElementById("melwunt-tribe-health");
-              enemy1Health.value = (enemy1.health / enemy1.maxHealth) * 100;
-              break;
-            case "defend":
-              console.log("defend");
-              break;
-            case "special":
-              console.log("special");
-              break;
-          }
-        };
-        attack1b.addEventListener("click", () => {
-          playerMove("attack");
-          checkHealth();
-        });
-        defend1b.addEventListener("click", () => {
-          playerMove("defend");
-          checkHealth();
-        });
-        special1b.addEventListener("click", () => {
-          playerMove("special");
-          checkHealth();
-        });
-        updateAndListen("battle-melwunt", "battle-one-progress-b", this.stage3.bind(this), "b");
-
-        break;
-      case "wretched-dead":
-        console.log(enemy);
-        // this.initialiseBattleCommand("battle-1c-attack", "battle-1c-defend", "battle-1c-special");
-
-        // const attack1c = document.getElementById("battle-1c-attack");
-        // const defend1c = document.getElementById("battle-1c-defend");
-        // const special1c = document.getElementById("battle-1c-special");
-        checkHealth = function () {
-          if (enemy1.health <= 0) {
-            const proceedToStage3 = document.getElementById("battle-one-progress-c");
-            proceedToStage3.classList.remove("hidden");
-          }
-        };
-        playerMove = function (choice) {
-          switch (choice) {
-            case "attack":
-              enemy1.health -= 10;
-              console.dir(enemy1);
-              enemy1Health = document.getElementById("wretched-dead-health");
-              enemy1Health.value = (enemy1.health / enemy1.maxHealth) * 100;
-              break;
-            case "defend":
-              console.log("defend");
-              break;
-            case "special":
-              console.log("special");
-              break;
-          }
-        };
-        attackBtn.addEventListener("click", () => {
-          playerMove("attack");
-          checkHealth();
-        });
-        defendBtn.addEventListener("click", () => {
-          playerMove("defend");
-          checkHealth();
-        });
-        specialBtn.addEventListener("click", () => {
-          playerMove("special");
-          checkHealth();
-        });
-        updateAndListen("battle-wretcheddead", "battle-one-progress-c", this.stage3.bind(this), "c");
         break;
     }
   }
@@ -393,61 +277,58 @@ export class Game {
     }
   }
   battle2(doorChoice) {
-    updateUi("battle-two");
-
+    const attack2 = document.getElementById("battle-2-attack");
+    const defend2 = document.getElementById("battle-2-defend");
+    const special2 = document.getElementById("battle-2-special");
     let enemy2;
     switch (doorChoice) {
       case "ruby":
         enemy2 = new Enemy("The Engine Of Chaos - Fire", 10, 10, 10, 100);
+        let rubyBattle = new Battle(
+          new Enemy(enemy2, 10, 10, 10, 100),
+          attack2,
+          defend2,
+          special2,
+          "battle-two",
+          "battle-two-progress",
+          this.stage7.bind(this),
+          "engine-of-chaos-health",
+          "ruby"
+        );
+        rubyBattle.run();
         break;
+
       case "aquamarine":
         enemy2 = new Enemy("The Engine Of Chaos - Water", 10, 10, 10, 100);
-
+        let aquamarineBattle = new Battle(
+          new Enemy(enemy2, 10, 10, 10, 100),
+          attack2,
+          defend2,
+          special2,
+          "battle-two",
+          "battle-two-progress",
+          this.stage7.bind(this),
+          "engine-of-chaos-health",
+          "ruby"
+        );
+        aquamarineBattle.run();
         break;
       case "topaz":
         enemy2 = new Enemy("The Engine Of Chaos - Lightning", 10, 10, 10, 100);
+        let topazBattle = new Battle(
+          new Enemy(enemy2, 10, 10, 10, 100),
+          attack2,
+          defend2,
+          special2,
+          "battle-two",
+          "battle-two-progress",
+          this.stage7.bind(this),
+          "engine-of-chaos-health",
+          "ruby"
+        );
+        topazBattle.run();
         break;
     }
-    let enemy2Health;
-    let checkHealth;
-    let playerMove;
-    const attack2 = document.getElementById("battle-2-attack");
-    const defend2 = document.getElementById("battle-2-defend");
-    const special2 = document.getElementById("battle-2-special");
-    checkHealth = function () {
-      if (enemy2.health <= 0) {
-        const proceedToStage7 = document.getElementById("battle-two-progress");
-        proceedToStage7.classList.remove("hidden");
-      }
-    };
-    playerMove = function (choice) {
-      switch (choice) {
-        case "attack":
-          enemy2.health -= 10;
-          console.dir(enemy2);
-          enemy2Health = document.getElementById("engine-of-chaos-health");
-          enemy2Health.value = (enemy2.health / enemy2.maxHealth) * 100;
-          break;
-        case "defend":
-          console.log("defend");
-          break;
-        case "special":
-          console.log("special");
-          break;
-      }
-    };
-    attack2.addEventListener("click", () => {
-      playerMove("attack");
-      checkHealth();
-    });
-    defend2.addEventListener("click", () => {
-      playerMove("defend");
-      checkHealth();
-    });
-    special2.addEventListener("click", () => {
-      playerMove("special");
-      checkHealth();
-    });
   }
   stage7(doorChoice) {
     audio.play("1m04");
