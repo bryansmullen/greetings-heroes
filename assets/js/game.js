@@ -209,7 +209,7 @@ export class Game {
           attack1c,
           defend1c,
           special1c,
-          "battle-wretched",
+          "battle-wretcheddead",
           "battle-one-progress-c",
           this.stage3.bind(this),
           "wretched-dead-health",
@@ -330,6 +330,7 @@ export class Game {
         break;
     }
   }
+
   stage7(doorChoice) {
     audio.play("1m04");
     switch (doorChoice) {
@@ -348,19 +349,22 @@ export class Game {
     updateAndListen("eighth-story", "scene-eight-progress", this.stage9.bind(this));
   }
   stage9() {
-    switch (this.character) {
-      case "jayna":
+    console.dir(this.character.name);
+    switch (this.character.name) {
+      case "Jayna":
         updateAndListen("ninth-story-a", "scene-nine-progress-a", this.stage10.bind(this));
         break;
-      case "bjorna":
+      case "Bjorna":
         updateAndListen("ninth-story-b", "scene-nine-progress-b", this.stage10.bind(this));
         break;
-      case "zazzerpan":
+      case "Zazzerpan":
         updateAndListen("ninth-story-c", "scene-nine-progress-c", this.stage10.bind(this));
         break;
-      case "yolo":
+      case "Yolo":
         updateAndListen("ninth-story-d", "scene-nine-progress-d", this.stage10.bind(this));
         break;
+      default:
+        console.log("DEFAULT");
     }
   }
 
@@ -369,25 +373,37 @@ export class Game {
   }
   battle3() {
     updateUi("battle-three");
-    let enemy3 = new Enemy("Valderak", 10, 10, 10, 100);
-    console.log(enemy3);
-    listen("result-victory", this.victory.bind(this));
-    listen("result-game-over", this.gameOver.bind(this));
-  }
 
+    const attack3 = document.getElementById("battle-3-attack");
+    const defend3 = document.getElementById("battle-3-defend");
+    const special3 = document.getElementById("battle-3-special");
+    let enemy3;
+    enemy3 = new Enemy("The Engine Of Chaos - Fire", 10, 10, 10, 100);
+    let finalBattle = new Battle(
+      enemy3,
+      attack3,
+      defend3,
+      special3,
+      "battle-three",
+      "result-victory",
+      this.victory.bind(this),
+      "valderak-health"
+    );
+    finalBattle.run();
+  }
   victory() {
     audio.play("1m03");
-    switch (this.character) {
-      case "bjorna":
+    switch (this.character.name) {
+      case "Bjorna":
         updateAndListen("victory", "victory-progress", this.epilogueBjorna.bind(this));
         break;
-      case "jayna":
+      case "Jayna":
         updateAndListen("victory", "victory-progress", this.epilogueJayna.bind(this));
         break;
-      case "zazzerpan":
+      case "Zazzerpan":
         updateAndListen("victory", "victory-progress", this.epilogueZazzerpan.bind(this));
         break;
-      case "yolo":
+      case "Yolo":
         updateAndListen("victory", "victory-progress", this.epilogueYolo.bind(this));
         break;
     }

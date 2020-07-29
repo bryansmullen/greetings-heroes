@@ -294,37 +294,35 @@
         </div>
       </div>
       <!-- Third Enemy -->
-      <div id="battle-three" class="hidden ui-element">
+      <div id="battle-three" class="battle hidden ui-element">
         <div class="battle-arena">
           <div class="battle health">
             <div class="character-stats">
               <p>Player</p>
-              <progress value="100" max="100"></progress>
-              <progress value="100" max="100"></progress>
+              <progress class="player-health" value="100" max="100"></progress>
             </div>
             <div class="character-stats">
               <p>Enemy</p>
-              <progress value="100" max="100"></progress>
-              <progress value="100" max="100"></progress>
+              <progress id="valderak-health" value="100" max="100"></progress>
             </div>
           </div>
           <div class="battle status">
-            <p>Valderak Attacked!</p>
+            <p>Valkerak Attacked!</p>
           </div>
           <div class="battle actions">
-            <div class="battle-command" id="battle-3-attack">
+            <div class="battle-command attack" id="battle-3-attack">
               <p>Attack</p>
             </div>
-            <div class="battle-command" id="battle-3-defend">
-              <p>Magic</p>
+            <div class="battle-command defend" id="battle-3-defend">
+              <p>Defend</p>
             </div>
-            <div class="battle-command" id="battle-3-special">
-              <p>Item</p>
+            <div class="battle-command special" id="battle-3-special">
+              <p>Special</p>
             </div>
           </div>
         </div>
-        <div id="result-victory" class="button button-text">Victory</div>
-        <div id="result-game-over" class="button button-text">Game Over</div>
+        <div id="result-victory" class="button button-text hidden">Victory</div>
+        <div id="result-game-over" class="button button-text hidden">Game Over</div>
       </div>
 
       <!-- First Story -->
