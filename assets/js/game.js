@@ -10,13 +10,77 @@ const updateEnemyHealth = function (enemy) {
   enemyHealth = document.getElementById(`${enemy}-health`);
   enemyHealth.value = (enemy.health / enemy.maxHealth) * 100;
 };
-export class Game {
-  constructor() {
-    this.character = undefined;
+
+
+// THIS SECTION IS WORK IN PROGRESS - ATTEMPTING TO ABSTRACT BATTLE 1A INTO REUSABLE CLASS =================================================
+class Battle {
+  constructor(attackBtn, defendBtn, specialBtn) {
+    this.attackBtn = attackBtn;
+    this.defendBtn = defendBtn;
+    this.specialBtn = specialBtn;
   }
   updateHealth() {
     this.health -= 10;
   }
+  initialiseBattleCommand(attackButton, defendButton, specialButton) {
+    const attackBtn = document.getElementById(attackButton);
+    const defendBtn = document.getElementById(defendButton);
+    const specialBtn = document.getElementById(specialButton);
+    attackBtn.addEventListener("click", () => {
+      battle.playerMove(enemy1, "forest-people-health", "attack");
+      checkHealth();
+    });
+    defendBtn.addEventListener("click", () => {
+      battle.playerMove(enemy1, "forest-people-health", "attack");
+      checkHealth();
+    });
+    specialBtn.addEventListener("click", () => {
+      battle.playerMove(enemy1, "forest-people-health", "attack");
+      checkHealth();
+    });
+  }
+  playerMove = function (enemy, enemyHealthBar, choice) {
+    switch (choice) {
+      case "attack":
+        enemy.health -= 10;
+        console.dir(enemy1);
+        enemyHealthBar = document.getElementById(enemyHealthBarId);
+        enemyHealthBar.value = (enemy.health / enemy.maxHealth) * 100;
+        break;
+      case "defend":
+        console.log("defend");
+        break;
+      case "special":
+        console.log("special");
+        break;
+    }
+  };
+  checkHealth = function (stageToProceedToId) {
+    if (enemy.health <= 0) {
+      const stageToProceedTo = document.getElementById(stageToProceedToId);
+      stageToProceedTo.classList.remove("hidden");
+    }
+  };
+  battle.initialiseBattleCommand("battle-1a-attack", "battle-1a-defend", "battle-1a-special");
+
+}
+
+
+
+
+export class Game {
+  constructor() {
+    this.character = undefined;
+  }
+  // updateHealth() {
+  //   this.health -= 10;
+  // }
+  // initialiseBattleCommand(attackButton, defendButton, specialButton) {
+  //   const attackBtn = document.getElementById(attackButton);
+  //   const defendBtn = document.getElementById(defendButton);
+  //   const specialBtn = document.getElementById(specialButton);
+  // }
+
   toggleSoundIcon() {
     const soundIcon = document.getElementById("toggle-sound");
     if (soundIcon.classList.contains("fa-volume-mute")) {
@@ -98,9 +162,16 @@ export class Game {
         break;
     }
   }
-  battle1(enemy) {
-    let enemy1 = new Enemy(enemy, 10, 10, 10, 100);
 
+
+
+
+
+
+// THIS SECTION IS WORK IN PROGRESS - ATTEMPTING TO ABSTRACT BATTLE 1A INTO REUSABLE CLASS =================================================
+battle1(enemy) {
+    let enemy1 = new Enemy(enemy, 10, 10, 10, 100);
+    let battle = new Battle();
     this.character.health -= 10;
     console.dir(this.character);
     console.dir(this.character);
@@ -110,52 +181,49 @@ export class Game {
     let playerMove;
     switch (enemy) {
       case "forest-people":
-        console.log(enemy);
-        const attack1a = document.getElementById("battle-1a-attack");
-        const defend1a = document.getElementById("battle-1a-defend");
-        const special1a = document.getElementById("battle-1a-special");
-        checkHealth = function () {
-          if (enemy1.health <= 0) {
-            const proceedToStage3 = document.getElementById("battle-one-progress-a");
-            proceedToStage3.classList.remove("hidden");
-          }
-        };
-        playerMove = function (choice) {
-          switch (choice) {
-            case "attack":
-              enemy1.health -= 10;
-              console.dir(enemy1);
-              enemy1Health = document.getElementById("forest-people-health");
-              enemy1Health.value = (enemy1.health / enemy1.maxHealth) * 100;
-              break;
-            case "defend":
-              console.log("defend");
-              break;
-            case "special":
-              console.log("special");
-              break;
-          }
-        };
-        attack1a.addEventListener("click", () => {
-          playerMove("attack");
-          checkHealth();
-        });
-        defend1a.addEventListener("click", () => {
-          playerMove("defend");
-          checkHealth();
-        });
-        special1a.addEventListener("click", () => {
-          playerMove("special");
-          checkHealth();
-        });
+        let forestBattle = new Battle();
+        forestBattle.run();
+        // const attack1a = document.getElementById();
+        // const defend1a = document.getElementById();
+        // const special1a = document.getElementById();
+
+        // playerMove = function (choice) {
+        //   switch (choice) {
+        //     case "attack":
+        //       enemy1.health -= 10;
+        //       console.dir(enemy1);
+        //       enemy1Health = document.getElementById("forest-people-health");
+        //       enemy1Health.value = (enemy1.health / enemy1.maxHealth) * 100;
+        //       break;
+        //     case "defend":
+        //       console.log("defend");
+        //       break;
+        //     case "special":
+        //       console.log("special");
+        //       break;
+        //   }
+        // };
+        // checkHealth = function () {
+        //   if (enemy1.health <= 0) {
+        //     const proceedToStage3 = document.getElementById("battle-one-progress-a");
+        //     proceedToStage3.classList.remove("hidden");
+        //   }
+        // };
+
         updateAndListen("battle-forest", "battle-one-progress-a", this.stage3.bind(this), "a");
 
         break;
+
+
+//  END SECTION BEING ABSTRACTED, BUT CONTINUES WITH SWITCH ========================================================================================================
+
       case "melwunt-tribe":
         console.log(enemy);
-        const attack1b = document.getElementById("battle-1b-attack");
-        const defend1b = document.getElementById("battle-1b-defend");
-        const special1b = document.getElementById("battle-1b-special");
+        this.initialiseBattleCommand("battle-1b-attack", "battle-1b-defend", "battle-1b-special");
+
+        // const attack1b = document.getElementById("battle-1b-attack");
+        // const defend1b = document.getElementById("battle-1b-defend");
+        // const special1b = document.getElementById("battle-1b-special");
         checkHealth = function () {
           if (enemy1.health <= 0) {
             const proceedToStage3 = document.getElementById("battle-one-progress-b");
@@ -195,9 +263,11 @@ export class Game {
         break;
       case "wretched-dead":
         console.log(enemy);
-        const attack1c = document.getElementById("battle-1c-attack");
-        const defend1c = document.getElementById("battle-1c-defend");
-        const special1c = document.getElementById("battle-1c-special");
+        this.initialiseBattleCommand("battle-1c-attack", "battle-1c-defend", "battle-1c-special");
+
+        // const attack1c = document.getElementById("battle-1c-attack");
+        // const defend1c = document.getElementById("battle-1c-defend");
+        // const special1c = document.getElementById("battle-1c-special");
         checkHealth = function () {
           if (enemy1.health <= 0) {
             const proceedToStage3 = document.getElementById("battle-one-progress-c");
@@ -220,15 +290,15 @@ export class Game {
               break;
           }
         };
-        attack1c.addEventListener("click", () => {
+        attackBtn.addEventListener("click", () => {
           playerMove("attack");
           checkHealth();
         });
-        defend1c.addEventListener("click", () => {
+        defendBtn.addEventListener("click", () => {
           playerMove("defend");
           checkHealth();
         });
-        special1c.addEventListener("click", () => {
+        specialBtn.addEventListener("click", () => {
           playerMove("special");
           checkHealth();
         });
@@ -236,6 +306,11 @@ export class Game {
         break;
     }
   }
+
+
+
+  //  END SWITCH  ========================================================================================================
+
   stage3(enemyDefeated) {
     audio.play("1m02");
 
@@ -291,7 +366,8 @@ export class Game {
     }
   }
   battle2(doorChoice) {
-    updateAndListen("battle-two", "battle-two-progress", this.stage7.bind(this), doorChoice);
+    updateUi("battle-two");
+
     let enemy2;
     switch (doorChoice) {
       case "ruby":
@@ -345,8 +421,6 @@ export class Game {
       playerMove("special");
       checkHealth();
     });
-
-    console.log(enemy2);
   }
   stage7(doorChoice) {
     audio.play("1m04");
