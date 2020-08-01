@@ -35,6 +35,69 @@ function drawNarrative(stageToDraw) {
   return stageToDraw;
 }
 
+/**
+ *
+ * @param {Object} stageToDraw The current stage which the game should draw as a title screen
+ */
+function drawTitle(stageToDraw) {
+  const injector = document.createElement("div");
+  const container = document.createElement("div");
+  const heading = document.createElement("h2");
+  heading.innerText = stageToDraw.text;
+  container.classList.add("ui-element", "title");
+
+  const choices = stageToDraw.choices;
+  container.appendChild(heading);
+  injector.appendChild(container);
+  const main = document.getElementById("main-content");
+  main.innerHTML = injector.innerHTML;
+
+  choices.forEach((choice) => {
+    const choiceElement = document.createElement("div");
+    choiceElement.classList.add("button", "button-text");
+    choiceElement.innerText = choice.text;
+    main.firstChild.appendChild(choiceElement);
+    choiceElement.addEventListener("click", () => {});
+  });
+  return stageToDraw;
+}
+
+/**
+ *
+ * @param {Object} stageToDraw The current stage which the game should draw as an instructionsT screen
+ */
+export function drawInstructions(stageToDraw = stage["instructions"]) {
+  const injector = document.createElement("div");
+  const container = document.createElement("div");
+  const heading = document.createElement("h2");
+  heading.innerText = stageToDraw.text;
+  container.classList.add("ui-element", "instructions");
+  container.appendChild(heading);
+
+  const paragraphs = stageToDraw.paragraphs;
+  paragraphs.forEach((paragraph) => {
+    const paragraphElement = document.createElement("p");
+    paragraphElement.innerText = paragraph;
+    container.appendChild(paragraphElement);
+  });
+
+  const choices = stageToDraw.choices;
+  injector.appendChild(container);
+  const main = document.getElementById("main-content");
+  main.innerHTML = injector.innerHTML;
+
+  choices.forEach((choice) => {
+    const choiceElement = document.createElement("div");
+    choiceElement.classList.add("button", "button-text");
+    choiceElement.innerText = choice.text;
+    main.firstChild.appendChild(choiceElement);
+    choiceElement.addEventListener("click", () => {
+      choice.action();
+    });
+  });
+  return stageToDraw;
+}
+
 function drawBattle(stageToDraw) {
   const htmlString = `
   <div class="battle ui-element">
@@ -168,58 +231,6 @@ function drawCharacter() {
   });
 }
 
-function drawTitle() {
-  const htmlString = `
-  <div id="title-screen" class="ui-element">
-  <h2>Greetings Heroes</h2>
-  <div id="play-game" class="button button-text">Play Game</div>
-  <div id="instructions-button" class="button button-text">
-    Instructions
-  </div>
-</div>
-  `;
-  document.getElementById("main-content").innerHTML = htmlString;
-  const playGame = document.getElementById("play-game");
-
-  playGame.addEventListener("click", startGame);
-}
-
-function drawInstructions() {
-  currentStage = currentStage;
-  const htmlString = `
-  <div id="instructions-screen" class=" ui-element">
-        <h2>Instructions</h2>
-        <p>
-          The game is played using only the mouse.
-        </p>
-
-        <p>
-          To begin, click on the "Start Game" button on the main menu. You will be brought to the character selection screen
-        </p>
-        <p>
-          You may inspect the attributes of each of the characters by hovering over each of them in turn, and when you have decided which character you would
-          like to play as, simply click on them to select, and confirm your choice.
-        </p>
-        <p>
-          The game will begin, and you may advance through the story by clicking the "next" button in the story window. When battles commence you may choose
-          from a list of commands - attack, magic, and item.
-        </p>
-        <p>
-          Once you make your selection your character will take their turn, after which the computer gets a chance to retaliate. Both the player and the
-          computer take it in turns to use a command of their choice until one person wins.
-        </p>
-        <p>
-          If the player wins, you will progress through the story until you defeat the final enemy.
-        </p>
-        <div id="return" class="button button-text">
-          Return To Title Screen
-        </div>
-      </div>
-`;
-  document.getElementById("main-content").innerHTML = htmlString;
-  const returnToPrevious = document.getElementById("return");
-  returnToPrevious.addEventListener("click", renderToScreen);
-}
 function renderToScreen(currentStage) {
   // Logic To Render Appropriate Screen Type
   if (currentStage.type == "character") {
@@ -257,7 +268,7 @@ const toggleAudio = () => {
   toggleSoundIcon();
 };
 
-function startGame() {
+export function startGame() {
   // Set Up Game Variables
   const randomNumber = Math.ceil(Math.random() * 3);
   switch (randomNumber) {
@@ -278,12 +289,15 @@ function startGame() {
 }
 
 const playGame = document.getElementById("play-game");
-const instructions = document.getElementById("info-button");
+const info = document.getElementById("info-button");
 const exitGame = document.getElementById("exit");
 
 exitGame.addEventListener("click", () => {
-  drawTitle();
+  drawTitle(stage["title"]);
   return;
 });
-instructions.addEventListener("click", drawInstructions);
-playGame.addEventListener("click", startGame);
+
+info.addEventListener("click", () => {
+  drawInstructions();
+});
+drawTitle(stage["title"]);

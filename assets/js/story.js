@@ -1,6 +1,36 @@
+import { startGame, drawInstructions } from "./application.js";
 export const stage = {
   title: {
     type: "title",
+    text: "Greetings Heroes",
+    choices: [
+      {
+        text: "Play Game",
+        action: startGame,
+      },
+      {
+        text: "Instructions",
+        action: drawInstructions,
+      },
+    ],
+  },
+  instructions: {
+    type: "instructions",
+    text: "Instructions",
+    choices: [
+      {
+        text: "Return To Title",
+        action: startGame,
+      },
+    ],
+    paragraphs: [
+      "The game is played using only the mouse.",
+      "To begin, click on the 'Start Game' button on the main menu. You will be brought to the character selection screen",
+      "You may inspect the attributes of each of the characters by hovering over each of them in turn, and when you have decided which character you would like to play as, simply click on them to select, and confirm your choice.",
+      "The game will begin, and you may advance through the story by clicking the 'next' button in the story window. When battles commence you may choose from a list of commands - attack, magic, and item.",
+      "Once you make your selection your character will take their turn, after which the computer gets a chance to retaliate. Both the player and the computer take it in turns to use a command of their choice until one person wins.",
+      "If the player wins, you will progress through the story until you defeat the final enemy.",
+    ],
   },
   character: {
     type: "character",
@@ -24,14 +54,6 @@ export const stage = {
       {
         text: "Proceed To Next Scene",
         action: "2a",
-      },
-      {
-        text: "Proceed To Next Scene",
-        action: "2b",
-      },
-      {
-        text: "Proceed To Next Scene",
-        action: "2c",
       },
     ],
     type: "story",
