@@ -1,7 +1,6 @@
 import { audio } from "./audio.js";
 import { updateUi, listen, updateAndListen } from "./utility.js";
 import { Player, Enemy } from "./battle.js";
-import { story } from "./story.js";
 
 export class Game {
   constructor() {
@@ -10,7 +9,7 @@ export class Game {
     this.stage = "1";
   }
 
-  renderUi(mystage) {
+  renderUi(nameOfStage) {
     // Create Injector
     const injector = document.createElement("div");
 
@@ -21,7 +20,7 @@ export class Game {
     // Create Narrative Block
     const narrative = document.createElement("p");
 
-    narrative.innerText = story[mystage];
+    narrative.innerText = story[nameOfStage];
     narrative.id = "story";
 
     // Create Progress Button Block
@@ -204,26 +203,28 @@ export class Game {
   // }
 
   // // THIS SECTION IS WORK IN PROGRESS - ATTEMPTING TO ABSTRACT BATTLE 1A INTO REUSABLE CLASS =================================================
-  // battle1(enemy) {
-  //   audio.play("1m04");
-  //   switch (enemy) {
-  //     case "forest-people":
-  //       const attack1a = document.getElementById("battle-1a-attack");
-  //       const defend1a = document.getElementById("battle-1a-defend");
-  //       const special1a = document.getElementById("battle-1a-special");
-  //       let forestBattle = new Battle(
-  //         new Enemy(enemy, 10, 10, 10, 100),
-  //         attack1a,
-  //         defend1a,
-  //         special1a,
-  //         "battle-forest",
-  //         "battle-one-progress-a",
-  //         this.stage3.bind(this),
-  //         "forest-people-health",
-  //         "a"
-  //       );
-  //       forestBattle.run();
-  //       break;
+  battle1(enemy) {
+    audio.play("1m04");
+    switch (enemy) {
+      case "forest-people":
+        const attack1a = document.getElementById("battle-1a-attack");
+        const defend1a = document.getElementById("battle-1a-defend");
+        const special1a = document.getElementById("battle-1a-special");
+        let forestBattle = new Battle(
+          new Enemy(enemy, 10, 10, 10, 100),
+          attack1a,
+          defend1a,
+          special1a,
+          "battle-forest",
+          "battle-one-progress-a",
+          this.stage3.bind(this),
+          "forest-people-health",
+          "a"
+        );
+        forestBattle.run();
+        break;
+    }
+  }
   //     case "melwunt-tribe":
   //       const attack1b = document.getElementById("battle-1b-attack");
   //       const defend1b = document.getElementById("battle-1b-defend");

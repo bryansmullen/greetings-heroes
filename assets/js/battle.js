@@ -25,15 +25,12 @@ export class Enemy {
 // Battle Logic
 
 export class Battle {
-  constructor(enemy, attackBtn, defendBtn, specialBtn, battleUi, progressBtn, nextStage, enemyHealthBarId, option) {
+  constructor(enemy, attackBtn, defendBtn, specialBtn, progressBtn, enemyHealthBarId) {
+    this.enemy = enemy;
     this.attackBtn = attackBtn;
     this.defendBtn = defendBtn;
     this.specialBtn = specialBtn;
-    this.battleUi = battleUi;
     this.progressBtn = progressBtn;
-    this.nextStage = nextStage;
-    this.option = option;
-    this.enemy = enemy;
     this.enemyHealthBarId = enemyHealthBarId;
   }
   updateHealth() {
@@ -77,6 +74,5 @@ export class Battle {
   }
   run() {
     this.initialiseBattleCommand(this.attackBtn, this.defendBtn, this.specialBtn);
-    updateAndListen(this.battleUi, this.progressBtn, this.nextStage, this.option);
   }
 }
