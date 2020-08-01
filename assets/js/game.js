@@ -120,25 +120,25 @@ export class Game {
     main.innerHTML = injector.innerHTML;
   }
 
-  // toggleSoundIcon() {
-  //   const soundIcon = document.getElementById("toggle-sound");
-  //   if (soundIcon.classList.contains("fa-volume-mute")) {
-  //     soundIcon.classList.remove("fa-volume-mute");
-  //     soundIcon.classList.add("fa-volume-up");
-  //   } else {
-  //     soundIcon.classList.remove("fa-volume-up");
-  //     soundIcon.classList.add("fa-volume-mute");
-  //   }
-  // }
-  // toggleAudio() {
-  //   const audio = document.querySelector("audio");
-  //   if (audio.muted) {
-  //     audio.muted = false;
-  //   } else {
-  //     audio.muted = true;
-  //   }
-  //   this.toggleSoundIcon();
-  // }
+  toggleSoundIcon() {
+    const soundIcon = document.getElementById("toggle-sound");
+    if (soundIcon.classList.contains("fa-volume-mute")) {
+      soundIcon.classList.remove("fa-volume-mute");
+      soundIcon.classList.add("fa-volume-up");
+    } else {
+      soundIcon.classList.remove("fa-volume-up");
+      soundIcon.classList.add("fa-volume-mute");
+    }
+  }
+  toggleAudio() {
+    const audio = document.querySelector("audio");
+    if (audio.muted) {
+      audio.muted = false;
+    } else {
+      audio.muted = true;
+    }
+    this.toggleSoundIcon();
+  }
   // titleScreen() {
   //   updateUi("title-screen");
   //   listen("play-game-button", this.prelude.bind(this));

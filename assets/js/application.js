@@ -1,6 +1,7 @@
 import { Battle } from "./battle.js";
 import { stage } from "./story.js";
 import { Player, Enemy } from "./characters.js";
+import { audio } from "./audio.js";
 let currentStage;
 let chosenCharacter;
 
@@ -254,6 +255,26 @@ function renderToScreen() {
   }
 }
 
+const toggleSoundIcon = () => {
+  const soundIcon = document.getElementById("toggle-sound");
+  if (soundIcon.classList.contains("fa-volume-mute")) {
+    soundIcon.classList.remove("fa-volume-mute");
+    soundIcon.classList.add("fa-volume-up");
+  } else {
+    soundIcon.classList.remove("fa-volume-up");
+    soundIcon.classList.add("fa-volume-mute");
+  }
+};
+const toggleAudio = () => {
+  const audio = document.querySelector("audio");
+  if (audio.muted) {
+    audio.muted = false;
+  } else {
+    audio.muted = true;
+  }
+  toggleSoundIcon();
+};
+
 function startGame() {
   // Set Up Game Variables
   const randomNumber = Math.ceil(Math.random() * 3);
@@ -270,10 +291,14 @@ function startGame() {
   }
   currentStage = stage["character"];
   renderToScreen();
+  audio.play("1m01");
+  toggleSoundIcon();
 }
+
 const playGame = document.getElementById("play-game");
 const instructions = document.getElementById("info-button");
 const exitGame = document.getElementById("exit");
+
 exitGame.addEventListener("click", () => {
   drawTitle();
   return;
