@@ -5,52 +5,34 @@ import { audio } from "./audio.js";
 let currentStage;
 let chosenCharacter;
 
+/**
+ *
+ * @param {Object} stageToDraw The current stage which the game should draw as a story screen
+ */
 function drawNarrative(stageToDraw) {
-  if (stageToDraw.choices) {
-    const htmlString = `
-    <div class="ui-element story">
-    <p id="story">${stageToDraw.text}</p>
-    <div id="choice1" class="button button-text">
-    ${stageToDraw.choices[0].text}
-    </div><div id="choice2" class="button button-text">
-    ${stageToDraw.choices[1].text}
-    </div><div id="choice3" class="button button-text">
-    ${stageToDraw.choices[2].text}
-    </div>
-    </div>;
-    `;
-    document.getElementById("main-content").innerHTML = htmlString;
-    const choice1 = document.getElementById("choice1");
-    const choice2 = document.getElementById("choice2");
-    const choice3 = document.getElementById("choice3");
-    choice1.addEventListener("click", () => {
-      currentStage = stage[stageToDraw.choices[0].action];
-      stage["battle2"].next = "7a";
-      renderToScreen();
+  const injector = document.createElement("div");
+  const container = document.createElement("div");
+  container.classList.add("ui-element", "story");
+  const text = document.createElement("p");
+  text.id = "story";
+  text.innerText = stageToDraw.text;
+  const choices = stageToDraw.choices;
+
+  container.appendChild(text);
+  injector.appendChild(container);
+  const main = document.getElementById("main-content");
+  main.innerHTML = injector.innerHTML;
+
+  choices.forEach((choice) => {
+    const choiceElement = document.createElement("div");
+    choiceElement.classList.add("button", "button-text");
+    choiceElement.innerText = choice.text;
+    main.firstChild.appendChild(choiceElement);
+    choiceElement.addEventListener("click", () => {
+      console.log(choice.action);
     });
-    choice2.addEventListener("click", () => {
-      currentStage = stage[stageToDraw.choices[1].action];
-      stage["battle2"].next = "7b";
-      renderToScreen();
-    });
-    choice3.addEventListener("click", () => {
-      currentStage = stage[stageToDraw.choices[2].action];
-      stage["battle2"].next = "7c";
-      renderToScreen();
-    });
-  } else {
-    const htmlString = `
-    <div class="ui-element story">
-    <p id="story">${stageToDraw.text}</p>
-    <div id="progress" class="button button-text">
-    Progress To Next Scene
-    </div>
-    </div>;
-    `;
-    document.getElementById("main-content").innerHTML = htmlString;
-    const progress = document.getElementById("progress");
-    progress.addEventListener("click", renderToScreen);
-  }
+  });
+  return stageToDraw;
 }
 
 function drawBattle(stageToDraw) {
@@ -238,7 +220,7 @@ function drawInstructions() {
   const returnToPrevious = document.getElementById("return");
   returnToPrevious.addEventListener("click", renderToScreen);
 }
-function renderToScreen() {
+function renderToScreen(currentStage) {
   // Logic To Render Appropriate Screen Type
   if (currentStage.type == "character") {
     drawCharacter();
@@ -266,11 +248,11 @@ const toggleSoundIcon = () => {
   }
 };
 const toggleAudio = () => {
-  const audio = document.querySelector("audio");
-  if (audio.muted) {
-    audio.muted = false;
+  const audioElement = document.querySelector("audio");
+  if (audioElement.muted) {
+    audioElement.muted = false;
   } else {
-    audio.muted = true;
+    audioElement.muted = true;
   }
   toggleSoundIcon();
 };
@@ -289,9 +271,9 @@ function startGame() {
       stage[1].next = "2c";
       break;
   }
-  currentStage = stage["character"];
-  renderToScreen();
-  audio.play("1m01");
+  currentStage = stage["1"];
+  renderToScreen(currentStage);
+  audio("1m01");
   toggleSoundIcon();
 }
 

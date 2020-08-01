@@ -1,5 +1,9 @@
 // Battle Logic
+/**
+ * Battle.
+ *
 
+ */
 export class Battle {
   constructor(enemy, attackBtn, defendBtn, specialBtn, progressBtn, enemyHealthBarId) {
     this.enemy = enemy;
@@ -9,9 +13,11 @@ export class Battle {
     this.progressBtn = progressBtn;
     this.enemyHealthBarId = enemyHealthBarId;
   }
+
   updateHealth() {
     enemy.health -= 10;
   }
+
   initialiseBattleCommand(attackBtn, defendBtn, specialBtn) {
     attackBtn.addEventListener("click", () => {
       this.playerMove(this.enemy, "forest-people-health", "attack");

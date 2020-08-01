@@ -19,7 +19,21 @@ export const stage = {
 
   "1": {
     text:
-      " You and your party make your through the Forest of Poison, through foul waters and rotting trees. Before you, rising like a thorn from the putrid mire, stands the dark tower of Valderak. Its arched windows are filled with the green fire of his baleful magics. You step inside the echoing tower. The first of line of Valderak's defenses falls upon you:",
+      "You and your party make your through the Forest of Poison, through foul waters and rotting trees. Before you, rising like a thorn from the putrid mire, stands the dark tower of Valderak. Its arched windows are filled with the green fire of his baleful magics. You step inside the echoing tower. The first of line of Valderak's defenses falls upon you:",
+    choices: [
+      {
+        text: "Proceed To Next Scene",
+        action: "2a",
+      },
+      {
+        text: "Proceed To Next Scene",
+        action: "2b",
+      },
+      {
+        text: "Proceed To Next Scene",
+        action: "2c",
+      },
+    ],
     type: "story",
     next: "2a",
   },
