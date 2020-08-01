@@ -6,6 +6,17 @@ export const stage = {
     type: "character",
     next: "1",
   },
+  prelude:
+    "A dread shadow stalks the land! Arch-Wizard Valderak, freed from his timeless prison, has come to wreak vengeance on the people of The Four Kingdoms. From his tower deep in the Forest of Poison, he plots a terrible revenge. Four heroes, the greatest from each Kingdom, have been sent to thwart the Arch-Wizard and restore peace to the land.",
+  preludea:
+    "You are Lady Jayna Falchion, First Knight of the Kingdom of Aquilae! Wielder of the enchanted sword Cutbert and the mighty Shield of Aquilae! Your father, the King of Aquilae, has fallen ill as the evil of Valderak has spread. Only your strength of arms, your purity of heart will save your father and the Kingdom of Aquilae.",
+  preludeb:
+    "You are Bjorna Giantsdottir, Titan of the Realm of Harthingfjord. By your side is the mighty axe Dreadcleaver, and the horn of Gallerbjurn. Your tribe have been enchanted by Valderak, frozen in time. You are the last and only hope for the Realm of Harthingfjord.",
+  preludec:
+    "You are Zazzerpan the Scatterbrained, Wizard Third-Class from the Sorcerous Realm of Fizzlesnip. At your fingertips are the powers of the elements, guided by the magic tome Mallifax. The great library of Fizzlesnip has been plundered by Valderak. Only you can save the knowledge of the ancients from being corrupted.",
+  preluded:
+    "You are Yolo the Magnificent, Sneak-Thief from the endlessly filthy city-state of Groemen-Sloarch. No locked doors, no hidden vaults can stand before you or your clockwork beetle, the Figetywib. You know that the dread wizard Valderak has gathered to him the most powerful artefacts of the Four Kingdoms. You are going to steal a few of them.",
+
   "1": {
     text:
       " You and your party make your through the Forest of Poison, through foul waters and rotting trees. Before you, rising like a thorn from the putrid mire, stands the dark tower of Valderak. Its arched windows are filled with the green fire of his baleful magics. You step inside the echoing tower. The first of line of Valderak's defenses falls upon you:",
