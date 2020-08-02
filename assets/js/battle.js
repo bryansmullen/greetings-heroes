@@ -8,7 +8,7 @@ import { stage } from "./story.js";
 
  */
 export class Battle {
-  constructor(player, enemy, attackBtn, defendBtn, specialBtn, progressBtn, playerHealthBarId, enemyHealthBarId) {
+  constructor(player, enemy, attackBtn, defendBtn, specialBtn, progressBtn, playerHealthBarId, enemyHealthBarId, updateField) {
     this.player = player;
     this.enemy = enemy;
     this.attackBtn = attackBtn;
@@ -17,6 +17,7 @@ export class Battle {
     this.progressBtn = progressBtn;
     this.playerHealthBarId = playerHealthBarId;
     this.enemyHealthBarId = enemyHealthBarId;
+    this.updateField = document.getElementById(updateField);
   }
 
   updateHealth() {
@@ -26,7 +27,10 @@ export class Battle {
   initialiseBattleCommand(attackBtn, defendBtn, specialBtn) {
     attackBtn.addEventListener("click", () => {
       this.playerMove(this.enemy, "enemy-health", "attack");
-      this.computerMove(this.player, "player-health");
+
+      setTimeout(() => {
+        this.computerMove(this.player, "player-health");
+      }, 1000);
       this.checkHealth(this.progressBtn);
     });
     defendBtn.addEventListener("click", () => {
@@ -47,13 +51,16 @@ export class Battle {
         enemy.health -= 10;
         enemyHealthBar = document.getElementById(this.enemyHealthBarId);
         enemyHealthBar.value = (enemy.health / enemy.maxHealth) * 100;
-        console.dir(enemyHealthBar);
+        console.dir(this.player);
+        this.updateField.innerText = `${this.player.name} attacked!`;
         break;
       case "defend":
         console.log("defend");
+        this.updateField.innerText = `${this.player.name} defended!`;
         break;
       case "special":
         console.log("special");
+        this.updateField.innerText = `${this.player.name} used their special ability!`;
         break;
     }
   }
@@ -61,6 +68,7 @@ export class Battle {
     player.health -= 5;
     playerHealthBar = document.getElementById(this.playerHealthBarId);
     console.dir(playerHealthBar);
+    this.updateField.innerText = `${this.enemy.name} attacked!`;
     playerHealthBar.value = (player.health / player.maxHealth) * 100;
   }
 

@@ -194,6 +194,7 @@ export function drawBattle(stageToDraw, enemy) {
   // Configure Status Section
   status.classList.add("battle", "status");
   battleUpdate.innerText = `${stageToDraw.enemy} attacked!`;
+  battleUpdate.id = "battle-update";
 
   // Append Status Section
   status.append(battleUpdate);
@@ -259,7 +260,8 @@ export function drawBattle(stageToDraw, enemy) {
     specialBtn,
     "progress",
     "player-health",
-    "enemy-health"
+    "enemy-health",
+    "battle-update"
   );
 
   battle.run();
