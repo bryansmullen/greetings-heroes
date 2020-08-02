@@ -1,12 +1,13 @@
-import { startGame, drawInstructions } from "./application.js";
+import { startGame, drawInstructions, drawCharacter } from "./application.js";
 export const stage = {
   title: {
     type: "title",
     text: "Greetings Heroes",
+    next: "prelude",
     choices: [
       {
         text: "Play Game",
-        action: startGame,
+        action: drawCharacter,
       },
       {
         text: "Instructions",
@@ -33,11 +34,27 @@ export const stage = {
     ],
   },
   character: {
+    text: "Choose Your Hero",
     type: "character",
     next: "1",
+    characters: [
+      { name: "jayna", imagePath: "assets/img/jayna.png", action: "prelude" },
+      { name: "bjorna", imagePath: "assets/img/bjorna.png", action: "prelude" },
+      { name: "zazzerpan", imagePath: "assets/img/zazzerpan.png", action: "prelude" },
+      { name: "yolo", imagePath: "assets/img/yolo.png", action: "prelude" },
+    ],
   },
-  prelude:
-    "A dread shadow stalks the land! Arch-Wizard Valderak, freed from his timeless prison, has come to wreak vengeance on the people of The Four Kingdoms. From his tower deep in the Forest of Poison, he plots a terrible revenge. Four heroes, the greatest from each Kingdom, have been sent to thwart the Arch-Wizard and restore peace to the land.",
+  prelude: {
+    text:
+      "A dread shadow stalks the land! Arch-Wizard Valderak, freed from his timeless prison, has come to wreak vengeance on the people of The Four Kingdoms. From his tower deep in the Forest of Poison, he plots a terrible revenge. Four heroes, the greatest from each Kingdom, have been sent to thwart the Arch-Wizard and restore peace to the land.",
+    choices: [
+      {
+        text: "Progress To Next Scene",
+        action: "startGame",
+      },
+    ],
+    next: "1",
+  },
   preludea:
     "You are Lady Jayna Falchion, First Knight of the Kingdom of Aquilae! Wielder of the enchanted sword Cutbert and the mighty Shield of Aquilae! Your father, the King of Aquilae, has fallen ill as the evil of Valderak has spread. Only your strength of arms, your purity of heart will save your father and the Kingdom of Aquilae.",
   preludeb:

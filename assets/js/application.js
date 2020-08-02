@@ -39,7 +39,7 @@ function drawNarrative(stageToDraw) {
  *
  * @param {Object} stageToDraw The current stage which the game should draw as a title screen
  */
-function drawTitle(stageToDraw) {
+function drawTitle(stageToDraw = "title") {
   const injector = document.createElement("div");
   const container = document.createElement("div");
   const heading = document.createElement("h2");
@@ -57,7 +57,9 @@ function drawTitle(stageToDraw) {
     choiceElement.classList.add("button", "button-text");
     choiceElement.innerText = choice.text;
     main.firstChild.appendChild(choiceElement);
-    choiceElement.addEventListener("click", () => {});
+    choiceElement.addEventListener("click", () => {
+      choice.action();
+    });
   });
   return stageToDraw;
 }
@@ -93,6 +95,48 @@ export function drawInstructions(stageToDraw = stage["instructions"]) {
     main.firstChild.appendChild(choiceElement);
     choiceElement.addEventListener("click", () => {
       choice.action();
+    });
+  });
+  return stageToDraw;
+}
+
+/**
+ *
+ * @param {Object} stageToDraw The current stage which the game should draw as an character screen
+ */
+export function drawCharacter(stageToDraw = stage["character"]) {
+  const injector = document.createElement("div");
+  let container = document.createElement("div");
+  container.classList.add("ui-element", "character");
+  const heading = document.createElement("h2");
+  heading.classList.add("character-heading");
+  heading.innerText = stageToDraw.text;
+  container.appendChild(heading);
+
+  const characterContainer = document.createElement("div");
+  characterContainer.classList.add("character-selection");
+
+  const characters = stageToDraw.characters;
+  container.append(characterContainer);
+  injector.appendChild(container);
+  const main = document.getElementById("main-content");
+  main.innerHTML = injector.innerHTML;
+
+  characters.forEach((character) => {
+    const characterCard = document.createElement("div");
+    characterCard.classList.add("character-card");
+    const characterHeading = document.createElement("h3");
+    characterHeading.innerText = character.name;
+    const characterImage = document.createElement("img");
+    characterImage.src = character.imagePath;
+    characterCard.append(characterHeading);
+    characterCard.append(characterImage);
+    characterContainer.append(characterCard);
+    let container = document.querySelector(".character-selection");
+    container.appendChild(characterCard);
+    characterCard.addEventListener("click", () => {
+      console.dir(character.action);
+      drawNarrative(stage[character.action]);
     });
   });
   return stageToDraw;
@@ -134,7 +178,6 @@ function drawBattle(stageToDraw) {
   `;
   document.getElementById("main-content").innerHTML = htmlString;
   const attack = document.getElementById("attack");
-  console.dir(attack);
   const defend = document.getElementById("defend");
   const special = document.getElementById("special");
   let battle = new Battle(
@@ -148,87 +191,6 @@ function drawBattle(stageToDraw) {
   battle.run();
   const progress = document.getElementById("progress");
   progress.addEventListener("click", renderToScreen);
-}
-
-function drawCharacter() {
-  const htmlString = `
-  <div id="character-screen" class=" ui-element">
-  <div class="character-screen">
-    <h2 class="character-heading">Choose Your Hero</h2>
-    <div class="character-selection">
-      <div id="bjorna" class="character-card bjorna">
-        <img src="assets/img/bjorna.png" alt="bjorna" />
-        <div class="stats">
-          <h3>Bjorna</h3>
-          <p>Name: Bjorna</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <h2>Bjorna</h2>
-      </div>
-      <div id="jayna" class="character-card jayna">
-        <img src="assets/img/jayna.png" alt="jayna" />
-        <div class="stats">
-          <h3>Jayna</h3>
-          <p>Name: Jayna</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <h2>Lady Jayna</h2>
-      </div>
-      <div id="yolo" class="character-card yolo">
-        <div class="stats">
-          <h3>Yolo</h3>
-          <p>Name: Yolo</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <img src="assets/img/yolo.png" alt="yolo" />
-        <h2>Yolo</h2>
-      </div>
-      <div id="zazzerpan" class="character-card zazzerpan">
-        <div class="stats">
-          <h3>Zazzerpan</h3>
-          <p>Name: Zazzerpan</p>
-          <p>Strength: 100</p>
-          <p>Health: 200</p>
-        </div>
-        <img src="assets/img/zazzerpan.png" alt="zazzerpan" />
-        <h2>Zazzerpan</h2>
-      </div>
-    </div>
-  </div>
-</div>
-    `;
-  document.getElementById("main-content").innerHTML = htmlString;
-  const bjorna = document.getElementById("bjorna");
-  const jayna = document.getElementById("jayna");
-  const zazzerpan = document.getElementById("zazzerpan");
-  const yolo = document.getElementById("yolo");
-  bjorna.addEventListener("click", () => {
-    chosenCharacter = new Player("Bjorna", 10, 10, 10, 100);
-    stage["8"].next = "9b";
-    stage["victory"].next = "11b";
-    renderToScreen();
-  });
-  jayna.addEventListener("click", () => {
-    chosenCharacter = new Player("Jayna", 10, 10, 10, 100);
-    stage["8"].next = "9a";
-    stage["victory"].next = "11a";
-    renderToScreen();
-  });
-  zazzerpan.addEventListener("click", () => {
-    chosenCharacter = new Player("Zazzerpan", 10, 10, 10, 100);
-    stage["8"].next = "9c";
-    stage["victory"].next = "11c";
-    renderToScreen();
-  });
-  yolo.addEventListener("click", () => {
-    chosenCharacter = new Player("Yolo", 10, 10, 10, 100);
-    stage["8"].next = "9d";
-    stage["victory"].next = "11d";
-    renderToScreen();
-  });
 }
 
 function renderToScreen(currentStage) {
