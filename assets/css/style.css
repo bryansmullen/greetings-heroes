@@ -79,8 +79,6 @@ main {
       max-width: 80%; }
   main .story {
     width: 100%;
-    height: calc(100% - 200px);
-    display: grid;
     justify-items: center;
     align-items: center;
     grid-template-rows: 1fr 1fr 1fr 1fr; }
