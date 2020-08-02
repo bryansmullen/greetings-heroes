@@ -1,3 +1,4 @@
+import { preferences } from "./preferences.js";
 /**
  * Plays Audio In the Browser.
  *
@@ -17,25 +18,18 @@ export const audio = function (cue) {
   newTrack.play();
   document.body.appendChild(newTrack);
 };
+
 const soundIcon = document.getElementById("toggle-sound");
+
 export const toggleSound = function () {
-  if (soundIcon.classList.contains("fa-volume-mute")) {
-    soundIcon.classList.remove("fa-volume-mute");
-    soundIcon.classList.add("fa-volume-up");
-  } else {
-    soundIcon.classList.remove("fa-volume-up");
-    soundIcon.classList.add("fa-volume-mute");
-  }
-};
-const toggleSoundIcon = () => {};
-const toggleAudio = () => {
   const audioElement = document.querySelector("audio");
-  if (audioElement.muted) {
-    audioElement.muted = false;
-    volumeOn = true;
-  } else {
+  if (preferences.volumeOn) {
     audioElement.muted = true;
-    volumeOn = false;
+    preferences.volumeOn = false;
+    console.dir(audioElement);
+  } else {
+    audioElement.muted = false;
+    preferences.volumeOn = true;
+    console.dir(audioElement);
   }
-  toggleSoundIcon();
 };
