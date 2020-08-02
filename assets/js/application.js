@@ -9,7 +9,7 @@ let chosenCharacter;
  *
  * @param {Object} stageToDraw The current stage which the game should draw as a story screen
  */
-function drawNarrative(stageToDraw) {
+export function drawNarrative(stageToDraw) {
   const injector = document.createElement("div");
   const container = document.createElement("div");
   container.classList.add("ui-element", "story");
@@ -29,7 +29,7 @@ function drawNarrative(stageToDraw) {
     choiceElement.innerText = choice.text;
     main.firstChild.appendChild(choiceElement);
     choiceElement.addEventListener("click", () => {
-      console.log(choice.action);
+      choice.action(stage[choice.next]);
     });
   });
   return stageToDraw;
@@ -39,7 +39,7 @@ function drawNarrative(stageToDraw) {
  *
  * @param {Object} stageToDraw The current stage which the game should draw as a title screen
  */
-function drawTitle(stageToDraw = "title") {
+export function drawTitle(stageToDraw = "title") {
   const injector = document.createElement("div");
   const container = document.createElement("div");
   const heading = document.createElement("h2");
@@ -58,7 +58,7 @@ function drawTitle(stageToDraw = "title") {
     choiceElement.innerText = choice.text;
     main.firstChild.appendChild(choiceElement);
     choiceElement.addEventListener("click", () => {
-      choice.action();
+      choice.action(stage[choice.next]);
     });
   });
   return stageToDraw;
@@ -94,7 +94,7 @@ export function drawInstructions(stageToDraw = stage["instructions"]) {
     choiceElement.innerText = choice.text;
     main.firstChild.appendChild(choiceElement);
     choiceElement.addEventListener("click", () => {
-      choice.action();
+      choice.action(stage[choice.next]);
     });
   });
   return stageToDraw;
@@ -136,7 +136,7 @@ export function drawCharacter(stageToDraw = stage["character"]) {
     container.appendChild(characterCard);
     characterCard.addEventListener("click", () => {
       console.dir(character.action);
-      drawNarrative(stage[character.action]);
+      character.action(stage[character.next]);
     });
   });
   return stageToDraw;
