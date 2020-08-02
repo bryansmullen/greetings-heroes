@@ -20,15 +20,15 @@ export class Battle {
 
   initialiseBattleCommand(attackBtn, defendBtn, specialBtn) {
     attackBtn.addEventListener("click", () => {
-      this.playerMove(this.enemy, "forest-people-health", "attack");
+      this.playerMove(this.enemy, "enemy-health", "attack");
       this.checkHealth(this.progressBtn);
     });
     defendBtn.addEventListener("click", () => {
-      this.playerMove(enemy, "forest-people-health", "attack");
+      this.playerMove(enemy, "enemy-health", "attack");
       this.checkHealth(this.progressBtn);
     });
     specialBtn.addEventListener("click", () => {
-      this.playerMove(enemy, "forest-people-health", "attack");
+      this.playerMove(enemy, "enemy-health", "attack");
       this.checkHealth(this.progressBtn);
     });
   }

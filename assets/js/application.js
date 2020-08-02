@@ -61,6 +61,7 @@ export function drawTitle(stageToDraw = "title") {
       choice.action(stage[choice.next]);
     });
   });
+
   return stageToDraw;
 }
 
@@ -142,124 +143,169 @@ export function drawCharacter(stageToDraw = stage["character"]) {
   return stageToDraw;
 }
 
-function drawBattle(stageToDraw) {
-  const htmlString = `
-  <div class="battle ui-element">
-        <div class="battle-arena">
-          <div class="battle health">
-            <div class="character-stats">
-              <p>Player</p>
-              <progress class="player-health" value="100" max="100"></progress>
-            </div>
-            <div class="character-stats">
-              <p>Enemy</p>
-              <progress id="enemy-health" value="100" max="100"></progress>
-            </div>
-          </div>
-          <div class="battle status">
-            <p>${stageToDraw.enemy} attacked!</p>
-          </div>
-          <div class="battle actions">
-            <div class="battle-command attack" id="attack">
-              <p>Attack</p>
-            </div>
-            <div class="battle-command defend" id="defend">
-              <p>Defend</p>
-            </div>
-            <div class="battle-command special" id="special">
-              <p>Special</p>
-            </div>
-          </div>
-        </div>
-        <div class="button button-text hidden" id="progress">
-          Next Scene
-        </div>
-      </div>
-  `;
-  document.getElementById("main-content").innerHTML = htmlString;
-  const attack = document.getElementById("attack");
-  const defend = document.getElementById("defend");
-  const special = document.getElementById("special");
+export function drawBattle(stageToDraw, enemy) {
+  // Set Up Container and Injector
+  const injector = document.createElement("div");
+  const container = document.createElement("div");
+  container.classList.add("ui-element", "battle");
+
+  const battleArena = document.createElement("div");
+  battleArena.classList.add("battle-arena");
+
+  // Draw Health Section
+  const health = document.createElement("div");
+  const playerStats = document.createElement("div");
+  const playerHeading = document.createElement("p");
+  const playerHealthBar = document.createElement("progress");
+  const enemyStats = document.createElement("div");
+  const enemyHeading = document.createElement("p");
+  const enemyHealthBar = document.createElement("progress");
+
+  // Configure Health Section
+  health.classList.add("battle", "health");
+  playerStats.classList.add("character-stats");
+  playerHeading.innerText = "Player";
+  playerHealthBar.classList.add("player-health");
+  playerHealthBar.value = 100;
+  playerHealthBar.max = 100;
+  enemyStats.classList.add("character-stats");
+  enemyHeading.innerText = "Enemy";
+  enemyHealthBar.id = "enemy-health";
+  enemyHealthBar.value = 100;
+  enemyHealthBar.max = 100;
+
+  // Append Health Section
+  playerStats.append(playerHeading, playerHealthBar);
+  enemyStats.append(enemyHeading, enemyHealthBar);
+  health.append(playerStats, enemyStats);
+
+  // Draw Status Section
+  const status = document.createElement("div");
+  const battleUpdate = document.createElement("p");
+
+  // Configure Status Section
+  status.classList.add("battle", "status");
+  battleUpdate.innerText = `${stageToDraw.enemy} attacked!`;
+
+  // Append Status Section
+  status.append(battleUpdate);
+
+  // Draw Actions Section
+  const actions = document.createElement("div");
+  const attack = document.createElement("div");
+  const defend = document.createElement("div");
+  const special = document.createElement("div");
+
+  // Configure Actions Section
+  actions.classList.add("battle", "actions");
+  attack.classList.add("battle-command", "attack");
+  defend.classList.add("battle-command", "defend");
+  special.classList.add("battle-command", "special");
+  attack.id = "attack";
+  defend.id = "defend";
+  special.id = "special";
+  const attackText = document.createElement("p");
+  const defendText = document.createElement("p");
+  const specialText = document.createElement("p");
+  attackText.innerText = "Attack";
+  defendText.innerText = "Defend";
+  specialText.innerText = "Special";
+
+  // Append Actions Section
+  attack.append(attackText);
+  defend.append(defendText);
+  special.append(specialText);
+
+  actions.append(attack, defend, special);
+  battleArena.append(health, status, actions);
+  container.append(battleArena);
+  injector.append(container);
+  // Inject Content
+  const main = document.getElementById("main-content");
+  main.innerHTML = injector.innerHTML;
+
+  // Set Up Progress Button
+  const choices = stageToDraw["choices"];
+  choices.forEach((choice) => {
+    const choiceElement = document.createElement("div");
+    choiceElement.classList.add("button", "button-text", "hidden");
+    choiceElement.id = choice.id;
+    choiceElement.innerText = choice.text;
+    main.firstChild.appendChild(choiceElement);
+    choiceElement.addEventListener("click", () => {
+      choice.action(stage[choice.next]);
+    });
+  });
+
+  // Grab Screen Controls
+  const attackBtn = document.getElementById("attack");
+  const defendBtn = document.getElementById("defend");
+  const specialBtn = document.getElementById("special");
+  console.dir(stageToDraw);
+
+  // Set Up Battle
   let battle = new Battle(
     new Enemy(stageToDraw.enemy, stageToDraw.enemyStrengh, stageToDraw.enemyDefence, stageToDraw.enemyMagicDefence, stageToDraw.enemyHealth),
-    attack,
-    defend,
-    special,
+    attackBtn,
+    defendBtn,
+    specialBtn,
     "progress",
     "enemy-health"
   );
+
   battle.run();
-  const progress = document.getElementById("progress");
-  progress.addEventListener("click", renderToScreen);
+  return stageToDraw;
 }
 
-function renderToScreen(currentStage) {
-  // Logic To Render Appropriate Screen Type
-  if (currentStage.type == "character") {
-    drawCharacter();
-    currentStage = stage[currentStage.next];
-  } else if (currentStage.type == "story") {
-    drawNarrative(currentStage);
-    currentStage = stage[currentStage.next];
-  } else if (currentStage.type == "battle") {
-    drawBattle(currentStage);
-    currentStage = stage[currentStage.next];
-  } else {
-    drawTitle();
-    return;
-  }
-}
+// const toggleSoundIcon = () => {
+//   const soundIcon = document.getElementById("toggle-sound");
+//   if (soundIcon.classList.contains("fa-volume-mute")) {
+//     soundIcon.classList.remove("fa-volume-mute");
+//     soundIcon.classList.add("fa-volume-up");
+//   } else {
+//     soundIcon.classList.remove("fa-volume-up");
+//     soundIcon.classList.add("fa-volume-mute");
+//   }
+// };
+// const toggleAudio = () => {
+//   const audioElement = document.querySelector("audio");
+//   if (audioElement.muted) {
+//     audioElement.muted = false;
+//   } else {
+//     audioElement.muted = true;
+//   }
+//   toggleSoundIcon();
+// };
 
-const toggleSoundIcon = () => {
-  const soundIcon = document.getElementById("toggle-sound");
-  if (soundIcon.classList.contains("fa-volume-mute")) {
-    soundIcon.classList.remove("fa-volume-mute");
-    soundIcon.classList.add("fa-volume-up");
-  } else {
-    soundIcon.classList.remove("fa-volume-up");
-    soundIcon.classList.add("fa-volume-mute");
-  }
-};
-const toggleAudio = () => {
-  const audioElement = document.querySelector("audio");
-  if (audioElement.muted) {
-    audioElement.muted = false;
-  } else {
-    audioElement.muted = true;
-  }
-  toggleSoundIcon();
-};
+// export function startGame() {
+//   // Set Up Game Variables
+//   const randomNumber = Math.ceil(Math.random() * 3);
+//   switch (randomNumber) {
+//     case 1:
+//       stage[1].next = "2a";
+//       break;
+//     case 2:
+//       stage[1].next = "2b";
+//       break;
+//     case 3:
+//       stage[1].next = "2c";
+//       break;
+//   }
+//   currentStage = stage["1"];
+//   renderToScreen(currentStage);
+//   audio("1m01");
+//   toggleSoundIcon();
+// }
 
-export function startGame() {
-  // Set Up Game Variables
-  const randomNumber = Math.ceil(Math.random() * 3);
-  switch (randomNumber) {
-    case 1:
-      stage[1].next = "2a";
-      break;
-    case 2:
-      stage[1].next = "2b";
-      break;
-    case 3:
-      stage[1].next = "2c";
-      break;
-  }
-  currentStage = stage["1"];
-  renderToScreen(currentStage);
-  audio("1m01");
-  toggleSoundIcon();
-}
-
-const playGame = document.getElementById("play-game");
+// Header Event Listeners
 const info = document.getElementById("info-button");
 const exitGame = document.getElementById("exit");
-
 exitGame.addEventListener("click", () => {
   drawTitle(stage["title"]);
   return;
 });
-
 info.addEventListener("click", () => {
   drawInstructions();
 });
+
 drawTitle(stage["title"]);

@@ -1,4 +1,4 @@
-import { startGame, drawInstructions, drawCharacter, drawTitle, drawNarrative } from "./application.js";
+import { drawBattle, drawInstructions, drawCharacter, drawTitle, drawNarrative } from "./application.js";
 export const stage = {
   title: {
     type: "title",
@@ -123,8 +123,8 @@ export const stage = {
     choices: [
       {
         text: "Proceed To Next Scene",
-        action: drawNarrative,
-        next: "3a",
+        action: drawBattle,
+        next: "battle1a",
       },
     ],
   },
@@ -135,8 +135,8 @@ export const stage = {
     choices: [
       {
         text: "Proceed To Next Scene",
-        action: drawNarrative,
-        next: "3b",
+        action: drawBattle,
+        next: "1b",
       },
     ],
   },
@@ -147,8 +147,8 @@ export const stage = {
     choices: [
       {
         text: "Proceed To Next Scene",
-        action: drawNarrative,
-        next: "3c",
+        action: drawBattle,
+        next: "1c",
       },
     ],
   },
@@ -243,8 +243,8 @@ export const stage = {
     choices: [
       {
         text: "Proceed To Next Scene",
-        action: drawNarrative,
-        next: "7a",
+        action: drawBattle,
+        next: "battle2",
       },
     ],
   },
@@ -256,8 +256,8 @@ export const stage = {
     choices: [
       {
         text: "Proceed To Next Scene",
-        action: drawNarrative,
-        next: "7b",
+        action: drawBattle,
+        next: "battle2",
       },
     ],
   },
@@ -269,8 +269,8 @@ export const stage = {
     choices: [
       {
         text: "Proceed To Next Scene",
-        action: drawNarrative,
-        next: "7c",
+        action: drawBattle,
+        next: "battle2",
       },
     ],
   },
@@ -382,8 +382,8 @@ export const stage = {
     choices: [
       {
         text: "Proceed To Next Scene",
-        action: drawNarrative,
-        next: "victory",
+        action: drawBattle,
+        next: "battle3",
       },
     ],
   },
@@ -466,6 +466,14 @@ export const stage = {
     enemyDefence: 10,
     enemyMagic: 10,
     enemyMagicDefence: 10,
+    choices: [
+      {
+        text: "Progress To Next Screen",
+        action: drawNarrative,
+        next: "3a",
+        id: "progress",
+      },
+    ],
   },
   battle1b: {
     type: "battle",
@@ -476,6 +484,14 @@ export const stage = {
     enemyDefence: 10,
     enemyMagic: 10,
     enemyMagicDefence: 10,
+    choices: [
+      {
+        text: "Progress To Next Screen",
+        action: drawNarrative,
+        next: "3b",
+        id: "progress",
+      },
+    ],
   },
   battle1c: {
     type: "battle",
@@ -486,6 +502,14 @@ export const stage = {
     enemyDefence: 10,
     enemyMagic: 10,
     enemyMagicDefence: 10,
+    choices: [
+      {
+        text: "Progress To Next Screen",
+        action: drawNarrative,
+        next: "3c",
+        id: "progress",
+      },
+    ],
   },
   battle2: {
     type: "battle",
@@ -496,6 +520,14 @@ export const stage = {
     enemyDefence: 10,
     enemyMagic: 10,
     enemyMagicDefence: 10,
+    choices: [
+      {
+        text: "Progress To Next Screen",
+        action: drawNarrative,
+        next: "7a",
+        id: "progress",
+      },
+    ],
   },
   battle3: {
     type: "battle",
@@ -506,5 +538,13 @@ export const stage = {
     enemyDefence: 10,
     enemyMagic: 10,
     enemyMagicDefence: 10,
+    choices: [
+      {
+        text: "Progress To Next Screen",
+        action: drawNarrative,
+        next: "victory",
+        id: "progress",
+      },
+    ],
   },
 };
