@@ -1,8 +1,11 @@
 import { drawBattle, drawInstructions, drawCharacter, drawTitle, drawNarrative } from "./application.js";
+import { toggleSound } from "./audio.js";
 export const stage = {
   title: {
     type: "title",
     text: "Greetings Heroes",
+    audio: "1m03",
+
     choices: [
       {
         text: "Play Game",
@@ -13,6 +16,26 @@ export const stage = {
         text: "Instructions",
         action: drawInstructions,
         next: "instructions",
+      },
+      {
+        text: "Preferences",
+        action: drawTitle,
+        next: "preferences",
+      },
+    ],
+  },
+  preferences: {
+    type: "title",
+    text: "Preferences",
+    choices: [
+      {
+        text: "Return To Title",
+        action: drawTitle,
+        next: "title",
+      },
+      {
+        text: "Sound On",
+        action: toggleSound,
       },
     ],
   },
@@ -46,6 +69,7 @@ export const stage = {
       },
     ],
     next: "1",
+    audio: "1m03",
   },
   character: {
     text: "Choose Your Hero",
@@ -56,6 +80,7 @@ export const stage = {
       { name: "zazzerpan", imagePath: "assets/img/zazzerpan.png", action: drawNarrative, next: "preludec" },
       { name: "yolo", imagePath: "assets/img/yolo.png", action: drawNarrative, next: "preluded" },
     ],
+    audio: "1m03",
   },
   preludea: {
     text:
@@ -67,6 +92,7 @@ export const stage = {
         next: "1",
       },
     ],
+    audio: "1m03",
   },
   preludeb: {
     text:
@@ -78,6 +104,7 @@ export const stage = {
         next: "1",
       },
     ],
+    audio: "1m03",
   },
   preludec: {
     text:
@@ -89,6 +116,7 @@ export const stage = {
         next: "1",
       },
     ],
+    audio: "1m03",
   },
   preluded: {
     text:
@@ -100,6 +128,7 @@ export const stage = {
         next: "1",
       },
     ],
+    audio: "1m03",
   },
 
   "1": {
@@ -112,6 +141,8 @@ export const stage = {
         next: "2a",
       },
     ],
+    audio: "1m03",
+
     type: "story",
     next: "2a",
   },
@@ -127,6 +158,7 @@ export const stage = {
         next: "battle1a",
       },
     ],
+    audio: "1m03",
   },
   "2b": {
     text: "a local tribe of Melwunts, their nasty natures amplified by Valderak",
@@ -139,6 +171,7 @@ export const stage = {
         next: "1b",
       },
     ],
+    audio: "1m03",
   },
   "2c": {
     text: "a group of the Wretched Dead, corpses animated by the magics of Valderak.",
@@ -151,6 +184,7 @@ export const stage = {
         next: "1c",
       },
     ],
+    audio: "1m03",
   },
   "3a": {
     text: "Defeating the forest folk, you are able to free them from the influence of Valderak.",
@@ -163,6 +197,7 @@ export const stage = {
         next: "4a",
       },
     ],
+    audio: "1m01",
   },
   "3b": {
     text: "Defeating the Melwunts, you send them scampering back into the marshes.",
@@ -175,6 +210,7 @@ export const stage = {
         next: "4b",
       },
     ],
+    audio: "1m01",
   },
   "3c": {
     text: "Defeating the Wretched Dead, they fall to pieces on the floor, no longer animated by Valderak.",
@@ -187,6 +223,7 @@ export const stage = {
         next: "4c",
       },
     ],
+    audio: "1m01",
   },
   "4a": {
     text: "Your foe leaves behind a powerful artefact: The Wand of Azzerthoth, crackling with violet energies [ATTACK UP]",
@@ -199,6 +236,7 @@ export const stage = {
         next: "5",
       },
     ],
+    audio: "1m01",
   },
   "4b": {
     text: "Your foe leaves behind a powerful artefact: The Brazen Helm of Caargolos, the demon-mask of a dead god [DEFENSE UP]",
@@ -211,6 +249,7 @@ export const stage = {
         next: "5",
       },
     ],
+    audio: "1m01",
   },
   "4c": {
     text: "Your foe leaves behind a powerful artefact: The Philtre of Gnomon - a glass vial filled with moonlight [HEALING]",
@@ -223,6 +262,7 @@ export const stage = {
         next: "5",
       },
     ],
+    audio: "1m01",
   },
   "5": {
     text:
@@ -234,6 +274,7 @@ export const stage = {
       { text: "Proceed Through Topaz Door", action: drawNarrative, next: "6b" },
       { text: "Proceed Through Aquamarine Door", action: drawNarrative, next: "6c" },
     ],
+    audio: "1m01",
   },
   "6a": {
     text:
@@ -247,6 +288,7 @@ export const stage = {
         next: "battle2",
       },
     ],
+    audio: "1m01",
   },
   "6b": {
     text:
@@ -260,6 +302,7 @@ export const stage = {
         next: "battle2",
       },
     ],
+    audio: "1m01",
   },
   "6c": {
     text:
@@ -273,6 +316,7 @@ export const stage = {
         next: "battle2",
       },
     ],
+    audio: "1m01",
   },
   "7a": {
     text: "The Engine of Chaos is destroyed. From its wreckage you pluck the source of its power, a Gem of Annihilation. It pulses with the power of fire",
@@ -285,6 +329,7 @@ export const stage = {
         next: "8",
       },
     ],
+    audio: "1m01",
   },
   "7b": {
     text: "The Engine of Chaos is destroyed. From its wreckage you pluck the source of its power, a Gem of Annihilation. It pulses with the power of lightning",
@@ -297,6 +342,7 @@ export const stage = {
         next: "8",
       },
     ],
+    audio: "1m01",
   },
   "7c": {
     text: "The Engine of Chaos is destroyed. From its wreckage you pluck the source of its power, a Gem of Annihilation. It pulses with the power of water",
@@ -309,6 +355,7 @@ export const stage = {
         next: "8",
       },
     ],
+    audio: "1m01",
   },
   "8": {
     text:
@@ -322,6 +369,7 @@ export const stage = {
         next: "9a",
       },
     ],
+    audio: "1m01",
   },
   "9a": {
     text:
@@ -335,6 +383,7 @@ export const stage = {
         next: "10",
       },
     ],
+    audio: "1m01",
   },
   "9b": {
     text:
@@ -348,6 +397,7 @@ export const stage = {
         next: "10",
       },
     ],
+    audio: "1m01",
   },
   "9c": {
     text:
@@ -361,6 +411,7 @@ export const stage = {
         next: "10",
       },
     ],
+    audio: "1m01",
   },
   "9d": {
     text:
@@ -374,6 +425,7 @@ export const stage = {
         next: "10",
       },
     ],
+    audio: "1m01",
   },
   "10": {
     text: "With a screech of disgust he conjures his Poison Blade, and with one final curse on the Four Kingdoms, launches himself at you. Battle is joined.",
@@ -386,6 +438,7 @@ export const stage = {
         next: "battle3",
       },
     ],
+    audio: "1m01",
   },
   victory: {
     text:
@@ -399,6 +452,7 @@ export const stage = {
         next: "11a",
       },
     ],
+    audio: "1m02",
   },
   "11a": {
     text:
@@ -412,6 +466,7 @@ export const stage = {
         next: "title",
       },
     ],
+    audio: "1m02",
   },
   "11b": {
     text:
@@ -425,6 +480,7 @@ export const stage = {
         next: "title",
       },
     ],
+    audio: "1m02",
   },
   "11c": {
     text:
@@ -438,6 +494,7 @@ export const stage = {
         next: "title",
       },
     ],
+    audio: "1m02",
   },
   "11d": {
     text:
@@ -451,11 +508,13 @@ export const stage = {
         next: "title",
       },
     ],
+    audio: "1m02",
   },
   "Game Over": {
     text:
       "All your valour, all your bravery, was for naught. You have been vanquished. It is a dark day for the Four Kingdoms as its greatest champions lie defeated. There will be many more dark days ahead, for now nothing stands in the way of Valderak's final victory. All is lost.",
     type: "story",
+    audio: "1m02",
   },
   battle1a: {
     type: "battle",
@@ -474,6 +533,7 @@ export const stage = {
         id: "progress",
       },
     ],
+    audio: "1m04",
   },
   battle1b: {
     type: "battle",
@@ -492,6 +552,7 @@ export const stage = {
         id: "progress",
       },
     ],
+    audio: "1m04",
   },
   battle1c: {
     type: "battle",
@@ -510,6 +571,7 @@ export const stage = {
         id: "progress",
       },
     ],
+    audio: "1m01",
   },
   battle2: {
     type: "battle",
@@ -528,6 +590,7 @@ export const stage = {
         id: "progress",
       },
     ],
+    audio: "1m04",
   },
   battle3: {
     type: "battle",
@@ -546,5 +609,6 @@ export const stage = {
         id: "progress",
       },
     ],
+    audio: "1m04",
   },
 };

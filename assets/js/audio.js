@@ -17,3 +17,25 @@ export const audio = function (cue) {
   newTrack.play();
   document.body.appendChild(newTrack);
 };
+const soundIcon = document.getElementById("toggle-sound");
+export const toggleSound = function () {
+  if (soundIcon.classList.contains("fa-volume-mute")) {
+    soundIcon.classList.remove("fa-volume-mute");
+    soundIcon.classList.add("fa-volume-up");
+  } else {
+    soundIcon.classList.remove("fa-volume-up");
+    soundIcon.classList.add("fa-volume-mute");
+  }
+};
+const toggleSoundIcon = () => {};
+const toggleAudio = () => {
+  const audioElement = document.querySelector("audio");
+  if (audioElement.muted) {
+    audioElement.muted = false;
+    volumeOn = true;
+  } else {
+    audioElement.muted = true;
+    volumeOn = false;
+  }
+  toggleSoundIcon();
+};

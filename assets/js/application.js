@@ -1,9 +1,11 @@
 import { Battle } from "./battle.js";
 import { stage } from "./story.js";
 import { Player, Enemy } from "./characters.js";
-import { audio } from "./audio.js";
+import { audio, toggleSound } from "./audio.js";
 let currentStage;
 let chosenCharacter;
+let audioPlaying;
+let volumeOn = true;
 
 /**
  *
@@ -32,6 +34,12 @@ export function drawNarrative(stageToDraw) {
       choice.action(stage[choice.next]);
     });
   });
+  console.dir(audioPlaying);
+  if (audioPlaying != stageToDraw.audio && volumeOn) {
+    audio(stageToDraw.audio);
+    audioPlaying = stageToDraw.audio;
+    toggleSoundIcon();
+  }
   return stageToDraw;
 }
 
@@ -140,6 +148,7 @@ export function drawCharacter(stageToDraw = stage["character"]) {
       character.action(stage[character.next]);
     });
   });
+  setGameVariables();
   return stageToDraw;
 }
 
@@ -254,48 +263,30 @@ export function drawBattle(stageToDraw, enemy) {
   );
 
   battle.run();
+  if (audioPlaying != stageToDraw.audio) {
+    audio(stageToDraw.audio);
+    audioPlaying = stageToDraw.audio;
+  }
   return stageToDraw;
 }
 
-// const toggleSoundIcon = () => {
-//   const soundIcon = document.getElementById("toggle-sound");
-//   if (soundIcon.classList.contains("fa-volume-mute")) {
-//     soundIcon.classList.remove("fa-volume-mute");
-//     soundIcon.classList.add("fa-volume-up");
-//   } else {
-//     soundIcon.classList.remove("fa-volume-up");
-//     soundIcon.classList.add("fa-volume-mute");
-//   }
-// };
-// const toggleAudio = () => {
-//   const audioElement = document.querySelector("audio");
-//   if (audioElement.muted) {
-//     audioElement.muted = false;
-//   } else {
-//     audioElement.muted = true;
-//   }
-//   toggleSoundIcon();
-// };
+const soundIcon = document.getElementById("toggle-sound");
+soundIcon.addEventListener("click", toggleSound);
 
-// export function startGame() {
-//   // Set Up Game Variables
-//   const randomNumber = Math.ceil(Math.random() * 3);
-//   switch (randomNumber) {
-//     case 1:
-//       stage[1].next = "2a";
-//       break;
-//     case 2:
-//       stage[1].next = "2b";
-//       break;
-//     case 3:
-//       stage[1].next = "2c";
-//       break;
-//   }
-//   currentStage = stage["1"];
-//   renderToScreen(currentStage);
-//   audio("1m01");
-//   toggleSoundIcon();
-// }
+const setGameVariables = function () {
+  const randomNumber = Math.ceil(Math.random() * 3);
+  switch (randomNumber) {
+    case 1:
+      stage[1].next = "2a";
+      break;
+    case 2:
+      stage[1].next = "2b";
+      break;
+    case 3:
+      stage[1].next = "2c";
+      break;
+  }
+};
 
 // Header Event Listeners
 const info = document.getElementById("info-button");
