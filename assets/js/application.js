@@ -34,11 +34,10 @@ export function drawNarrative(stageToDraw) {
       choice.action(stage[choice.next]);
     });
   });
-  console.dir(audioPlaying);
   if (audioPlaying != stageToDraw.audio && volumeOn) {
     audio(stageToDraw.audio);
     audioPlaying = stageToDraw.audio;
-    toggleSoundIcon();
+    // toggleSoundIcon();
   }
   return stageToDraw;
 }
@@ -144,8 +143,8 @@ export function drawCharacter(stageToDraw = stage["character"]) {
     let container = document.querySelector(".character-selection");
     container.appendChild(characterCard);
     characterCard.addEventListener("click", () => {
-      console.dir(character.action);
       character.action(stage[character.next]);
+      chosenCharacter = new Player(character.name, 10, 10, 10, 100);
     });
   });
   setGameVariables();
@@ -174,7 +173,7 @@ export function drawBattle(stageToDraw, enemy) {
   health.classList.add("battle", "health");
   playerStats.classList.add("character-stats");
   playerHeading.innerText = "Player";
-  playerHealthBar.classList.add("player-health");
+  playerHealthBar.id = "player-health";
   playerHealthBar.value = 100;
   playerHealthBar.max = 100;
   enemyStats.classList.add("character-stats");
@@ -195,6 +194,7 @@ export function drawBattle(stageToDraw, enemy) {
   // Configure Status Section
   status.classList.add("battle", "status");
   battleUpdate.innerText = `${stageToDraw.enemy} attacked!`;
+  battleUpdate.id = "battle-update";
 
   // Append Status Section
   status.append(battleUpdate);
@@ -250,16 +250,18 @@ export function drawBattle(stageToDraw, enemy) {
   const attackBtn = document.getElementById("attack");
   const defendBtn = document.getElementById("defend");
   const specialBtn = document.getElementById("special");
-  console.dir(stageToDraw);
 
   // Set Up Battle
   let battle = new Battle(
+    chosenCharacter,
     new Enemy(stageToDraw.enemy, stageToDraw.enemyStrengh, stageToDraw.enemyDefence, stageToDraw.enemyMagicDefence, stageToDraw.enemyHealth),
     attackBtn,
     defendBtn,
     specialBtn,
     "progress",
-    "enemy-health"
+    "player-health",
+    "enemy-health",
+    "battle-update"
   );
 
   battle.run();

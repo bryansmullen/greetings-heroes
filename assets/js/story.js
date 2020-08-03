@@ -515,6 +515,14 @@ export const stage = {
       "All your valour, all your bravery, was for naught. You have been vanquished. It is a dark day for the Four Kingdoms as its greatest champions lie defeated. There will be many more dark days ahead, for now nothing stands in the way of Valderak's final victory. All is lost.",
     type: "story",
     audio: "1m02",
+    choices: [
+      {
+        text: "Return To Title Screen",
+        action: drawTitle,
+        next: "title",
+      },
+    ],
+    audio: "1m02",
   },
   battle1a: {
     type: "battle",
