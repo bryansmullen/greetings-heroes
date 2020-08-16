@@ -1,6 +1,6 @@
 // Battle Logic
 
-import { drawNarrative } from "./application.js";
+import { drawNarrative } from "./drawScreens.js";
 import { stage } from "./story.js";
 /**
  * Battle.

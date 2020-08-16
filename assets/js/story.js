@@ -1,4 +1,4 @@
-import { drawBattle, drawInstructions, drawCharacter, drawTitle, drawNarrative } from "./application.js";
+import { drawBattle, drawInstructions, drawCharacter, drawTitle, drawNarrative } from "./drawScreens.js";
 import { toggleSound } from "./audio.js";
 export const stage = {
   title: {
