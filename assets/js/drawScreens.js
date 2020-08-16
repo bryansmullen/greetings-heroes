@@ -1,5 +1,6 @@
 import { stage } from "./story.js";
 import { Player, Enemy } from "./characters.js";
+import { startGame } from "./application.js";
 
 /**
  *
@@ -107,6 +108,7 @@ export function drawInstructions(stageToDraw = stage["instructions"]) {
  * @param {Object} stageToDraw The current stage which the game should draw as an character screen
  */
 export function drawCharacter(stageToDraw = stage["character"]) {
+  startGame();
   const injector = document.createElement("div");
   let container = document.createElement("div");
   container.classList.add("ui-element", "character");
@@ -137,8 +139,7 @@ export function drawCharacter(stageToDraw = stage["character"]) {
     let container = document.querySelector(".character-selection");
     container.appendChild(characterCard);
     characterCard.addEventListener("click", () => {
-      character.action(stage[character.next]);
-      chosenCharacter = new Player(character.name, 10, 10, 10, 100);
+      sessionStorage.setItem("character", character.name);
     });
   });
   setGameVariables();

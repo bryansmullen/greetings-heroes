@@ -37,21 +37,6 @@ let volumeOn = true;
 const soundIcon = document.getElementById("toggle-sound");
 soundIcon.addEventListener("click", toggleSound);
 
-const setGameVariables = function () {
-  const randomNumber = Math.ceil(Math.random() * 3);
-  switch (randomNumber) {
-    case 1:
-      stage[1].next = "2a";
-      break;
-    case 2:
-      stage[1].next = "2b";
-      break;
-    case 3:
-      stage[1].next = "2c";
-      break;
-  }
-};
-
 // Header Event Listeners
 const info = document.getElementById("info-button");
 const exitGame = document.getElementById("exit");
@@ -64,3 +49,8 @@ info.addEventListener("click", () => {
 });
 
 drawTitle(stage["title"]);
+
+export function startGame() {
+  sessionStorage.setItem("gameIsRunning", true);
+  sessionStorage.setItem("randomiser", Math.ceil(Math.random() * 3));
+}
