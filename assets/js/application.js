@@ -1,56 +1,43 @@
-import { Battle } from "./battle.js";
-import { stage } from "./story.js";
-import { Player, Enemy } from "./characters.js";
-import { audio, toggleSound } from "./audio.js";
-import { drawTitle } from "./drawScreens.js";
-let currentStage;
-let chosenCharacter;
-let audioPlaying;
-let volumeOn = true;
+import { stage } from "./stages.js";
+import { drawTitle } from "./drawTitle.js";
+import { drawNarrative } from './drawNarrative.js'
+// Sound Event Listener
+// const soundIcon = document.getElementById("toggle-sound");
+// soundIcon.addEventListener("click", toggleSound);
 
-//   // Grab Screen Controls
-//   const attackBtn = document.getElementById("attack");
-//   const defendBtn = document.getElementById("defend");
-//   const specialBtn = document.getElementById("special");
+// Exit Game Event Listeners
+// const exitGame = document.getElementById("exit");
+// exitGame.addEventListener("click", () => {
+//   drawTitle(stage["title"]);
+//   return;
+// });
 
-//   // Set Up Battle
-//   let battle = new Battle(
-//     chosenCharacter,
-//     new Enemy(stageToDraw.enemy, stageToDraw.enemyStrengh, stageToDraw.enemyDefence, stageToDraw.enemyMagicDefence, stageToDraw.enemyHealth),
-//     attackBtn,
-//     defendBtn,
-//     specialBtn,
-//     "progress",
-//     "player-health",
-//     "enemy-health",
-//     "battle-update"
-//   );
+// Info Event Listener
+// const info = document.getElementById("info-button");
+// info.addEventListener("click", () => {
+//   drawInstructions();
+// });
 
-//   battle.run();
-//   if (audioPlaying != stageToDraw.audio) {
-//     audio(stageToDraw.audio);
-//     audioPlaying = stageToDraw.audio;
-//   }
-//   return stageToDraw;
-// }
+export function renderStage() {
+    const stageId = sessionStorage.getItem('stage')
+    const stageObj = stage[stageId]
+    if (stageObj.type === 'story') {
+        console.log(sessionStorage)
+        drawNarrative(stageObj)
+    } else {
+        console.log('somethingelse')
+    }
 
-const soundIcon = document.getElementById("toggle-sound");
-soundIcon.addEventListener("click", toggleSound);
-
-// Header Event Listeners
-const info = document.getElementById("info-button");
-const exitGame = document.getElementById("exit");
-exitGame.addEventListener("click", () => {
-  drawTitle(stage["title"]);
-  return;
-});
-info.addEventListener("click", () => {
-  drawInstructions();
-});
-
-drawTitle(stage["title"]);
+}
 
 export function startGame() {
-  sessionStorage.setItem("gameIsRunning", true);
-  sessionStorage.setItem("randomiser", Math.ceil(Math.random() * 3));
+    sessionStorage.setItem("gameIsRunning", true);
+    sessionStorage.setItem("randomiser", Math.ceil(Math.random() * 3));
+    sessionStorage.setItem('stage', 'prelude')
+    console.log('startGame')
+    renderStage()
 }
+
+
+
+drawTitle()
