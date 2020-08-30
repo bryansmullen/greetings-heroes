@@ -28,11 +28,9 @@ export function drawCharacter(stageObj) {
   characters.forEach((character) => {
     const characterCard = document.createElement("div");
     characterCard.classList.add("character-card");
-    const characterHeading = document.createElement("h3");
-    characterHeading.innerText = character.name;
+
     const characterImage = document.createElement("img");
     characterImage.src = character.imagePath;
-    characterCard.append(characterHeading);
     characterCard.append(characterImage);
     characterContainer.append(characterCard);
     let container = document.querySelector(".character-selection");

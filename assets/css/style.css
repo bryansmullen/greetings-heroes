@@ -88,7 +88,12 @@ main .ui-element h2 {
   font-family: gothicus-roman, sans-serif;
   text-align: center;
   color: #800000;
-  font-size: 4rem;
+  font-size: 3rem;
+}
+@media (min-width: 768px) {
+  main .ui-element h2 {
+    font-size: 4rem;
+  }
 }
 main .ui-element p {
   margin: 1rem;
@@ -110,7 +115,13 @@ main .story {
 }
 main .story p {
   grid-row: 2;
-  font-size: 1.3rem;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+@media (min-width: 768px) {
+  main .story p {
+    font-size: 1.3rem;
+  }
 }
 main .story .button {
   grid-row: 3;
@@ -137,6 +148,7 @@ main .character-card {
   width: 100%;
   height: 100%;
   border: 2px solid orange;
+  overflow: hidden;
   cursor: pointer;
 }
 main .character-card h2 {
@@ -159,12 +171,6 @@ main .character-card .stats p {
 }
 main .character-card:hover {
   background-color: #8f4836;
-}
-main .character-card:hover img {
-  display: none;
-}
-main .character-card:hover .stats {
-  display: block;
 }
 main .character-card:active {
   background-color: #99004c;
