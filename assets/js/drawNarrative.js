@@ -1,13 +1,10 @@
 import { stage } from "./stages.js";
 
-
 /**
  *
  * @param {Object} stageToDraw The current stage which the game should draw as a story screen
  */
 export function drawNarrative(stageObj) {
-
-  console.dir(stageObj)
   // Create Elements
   const injector = document.createElement("div");
   const container = document.createElement("div");
@@ -33,7 +30,4 @@ export function drawNarrative(stageObj) {
       choice.action(stage[choice.next]);
     });
   });
-
 }
-
-

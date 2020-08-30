@@ -5,7 +5,7 @@ import { drawInstructions } from "./drawInstructions.js";
 import { renderStage } from "./application.js";
 import { paragraphs, story } from "./story.js";
 import { Story, Title, Instructions, Character, Battle } from "./screenClasses.js";
-
+import { forestPeople, melwuntTribe, wretchedDead, engineOfChaos, valderak } from "./characters.js";
 export const progressToNextScene = () => {
   const currentStageName = sessionStorage.getItem("stage");
   const currentStage = stage[currentStageName];
@@ -58,17 +58,20 @@ export const setRandomFirstEnemy = function () {
   const randomNumber = Math.ceil(Math.random() * 3);
   switch (randomNumber) {
     case 1:
-      stage.stage_2 = new Story(story.stage_2a, "story", "stage_3", [progressButton], "1m03");
+      stage.stage_2 = new Story(story.stage_2a, "story", "battle_1", [progressButton], "1m03");
+      stage.battle_1 = new Battle("battle", forestPeople, "stage_3", [progressButton], "1m04");
       stage.stage_3 = new Story(story.stage_3a, "story", "stage_4", [progressButton], "1m03");
       stage.stage_4 = new Story(story.stage_4a, "story", "stage_5", [progressButton], "1m03");
       break;
     case 2:
-      stage.stage_2 = new Story(story.stage_2b, "story", "stage_3", [progressButton], "1m03");
+      stage.stage_2 = new Story(story.stage_2b, "story", "battle_1", [progressButton], "1m03");
+      stage.battle_1 = new Battle("battle", melwuntTribe, "stage_3", [progressButton], "1m04");
       stage.stage_3 = new Story(story.stage_3b, "story", "stage_4", [progressButton], "1m03");
       stage.stage_4 = new Story(story.stage_4b, "story", "stage_5", [progressButton], "1m03");
       break;
     case 3:
-      stage.stage_2 = new Story(story.stage_2c, "story", "stage_3", [progressButton], "1m03");
+      stage.stage_2 = new Story(story.stage_2c, "story", "battle_1", [progressButton], "1m03");
+      stage.battle_1 = new Battle("battle", wretchedDead, "stage_3", [progressButton], "1m04");
       stage.stage_3 = new Story(story.stage_3c, "story", "stage_4", [progressButton], "1m03");
       stage.stage_4 = new Story(story.stage_4c, "story", "stage_5", [progressButton], "1m03");
       break;
@@ -101,39 +104,6 @@ export const stage = {
   victory: new Story(story.victory, "story", "stage_11", [progressButton], "1m03"),
   // Stage 11 is set dynamically
   game_over: new Story(story.game_over, "story", "title", [progressButton], "1m03"),
-  battle1a: new Battle(
-    "battle",
-    { name: "The Forest People", enemyHealth: 100, enemyStrengh: 10, enemyDefence: 10, enemyMagic: 10, enemyMagicDefence: 10 },
-    "stage_3a",
-    [progressButton],
-    "1m04"
-  ),
-  battle1b: new Battle(
-    "battle",
-    { name: "A Tribe Of Melwunts", enemyHealth: 100, enemyStrengh: 10, enemyDefence: 10, enemyMagic: 10, enemyMagicDefence: 10 },
-    "stage_3b",
-    [progressButton],
-    "1m04"
-  ),
-  battle1a: new Battle(
-    "battle",
-    { name: "The Wretched Dead", enemyHealth: 100, enemyStrengh: 10, enemyDefence: 10, enemyMagic: 10, enemyMagicDefence: 10 },
-    "stage_3c",
-    [progressButton],
-    "1m04"
-  ),
-  battle2: new Battle(
-    "battle",
-    { name: "The Engine Of Chaos", enemyHealth: 100, enemyStrengh: 10, enemyDefence: 10, enemyMagic: 10, enemyMagicDefence: 10 },
-    "stage_7a",
-    [progressButton],
-    "1m04"
-  ),
-  battle3: new Battle(
-    "battle",
-    { name: "Valderak", enemyHealth: 100, enemyStrengh: 10, enemyDefence: 10, enemyMagic: 10, enemyMagicDefence: 10 },
-    "victory",
-    [progressButton],
-    "1m04"
-  ),
+  battle2: new Battle("battle", engineOfChaos, "stage_7a", [progressButton], "1m04"),
+  battle3: new Battle("battle", valderak, "victory", [progressButton], "1m04"),
 };

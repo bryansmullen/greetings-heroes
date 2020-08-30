@@ -24,7 +24,6 @@ export function drawCharacter(stageObj) {
   injector.appendChild(container);
   const main = document.getElementById("main-content");
   main.innerHTML = injector.innerHTML;
-  console.dir(characters);
   characters.forEach((character) => {
     const characterCard = document.createElement("div");
     characterCard.classList.add("character-card");
@@ -38,7 +37,6 @@ export function drawCharacter(stageObj) {
     characterCard.addEventListener("click", () => {
       sessionStorage.setItem("character", character.name);
       setPreludeInfo();
-      console.dir(stage);
       progressToNextScene();
     });
   });
