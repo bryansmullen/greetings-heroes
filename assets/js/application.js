@@ -6,11 +6,10 @@ import { drawNarrative } from './drawNarrative.js'
 // soundIcon.addEventListener("click", toggleSound);
 
 // Exit Game Event Listeners
-// const exitGame = document.getElementById("exit");
-// exitGame.addEventListener("click", () => {
-//   drawTitle(stage["title"]);
-//   return;
-// });
+const exitGame = document.getElementById("exit");
+exitGame.addEventListener("click", () => {
+    drawTitle();
+});
 
 // Info Event Listener
 // const info = document.getElementById("info-button");
@@ -22,8 +21,13 @@ export function renderStage() {
     const stageId = sessionStorage.getItem('stage')
     const stageObj = stage[stageId]
     if (stageObj.type === 'story') {
-        console.log(sessionStorage)
+        console.log('story screen')
         drawNarrative(stageObj)
+        console.log(sessionStorage)
+    } else if (stageObj.type === 'title') {
+        console.log('title screen')
+        drawTitle()
+        console.log(sessionStorage)
     } else {
         console.log('somethingelse')
     }
