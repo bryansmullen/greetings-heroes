@@ -1,5 +1,5 @@
 import { setRandomFirstEnemy, stage } from "./stages.js";
-import { drawTitle } from "./drawTitle.js";
+import { drawTitle, drawConfirmExit } from "./drawTitle.js";
 import { drawInstructions } from "./drawInstructions.js";
 import { drawNarrative } from "./drawNarrative.js";
 import { drawCharacter } from "./drawCharacter.js";
@@ -8,10 +8,13 @@ import { drawCharacter } from "./drawCharacter.js";
 // soundIcon.addEventListener("click", toggleSound);
 
 // Exit Game Event Listeners
-const exitGame = document.getElementById("exit");
-exitGame.addEventListener("click", () => {
-  drawTitle();
-});
+const readyExitGameListener = function () {
+  const exitGame = document.getElementById("exit");
+  exitGame.style.visibility = "visible";
+  exitGame.addEventListener("click", () => {
+    drawConfirmExit();
+  });
+};
 
 // Info Event Listener
 const info = document.getElementById("info-button");
@@ -37,6 +40,8 @@ export function startGame() {
   sessionStorage.setItem("gameIsRunning", true);
   setRandomFirstEnemy();
   sessionStorage.setItem("stage", "prelude");
+  readyExitGameListener();
+
   renderStage();
 }
 

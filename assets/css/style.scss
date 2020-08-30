@@ -53,7 +53,9 @@ header {
     color: lighten($gh-red, 50%);
   }
 }
-
+#exit {
+  visibility: hidden;
+}
 // MAIN CONTENT STYLES
 main {
   width: 100%;
