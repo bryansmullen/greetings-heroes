@@ -52,30 +52,24 @@ export function drawBattle(stageObj) {
   // Draw Actions Section
   const actions = document.createElement("div");
   const attack = document.createElement("div");
-  const defend = document.createElement("div");
   const special = document.createElement("div");
 
   // Configure Actions Section
   actions.classList.add("battle", "actions");
   attack.classList.add("battle-command", "attack");
-  defend.classList.add("battle-command", "defend");
   special.classList.add("battle-command", "heal");
   attack.id = "attack";
-  defend.id = "defend";
   special.id = "heal";
   const attackText = document.createElement("p");
-  const defendText = document.createElement("p");
   const specialText = document.createElement("p");
   attackText.innerText = "Attack";
-  defendText.innerText = "Defend";
   specialText.innerText = "Heal";
 
   // Append Actions Section
   attack.append(attackText);
-  defend.append(defendText);
   special.append(specialText);
 
-  actions.append(attack, defend, special);
+  actions.append(attack, special);
   battleArena.append(health, status, actions);
   container.append(battleArena);
   injector.append(container);

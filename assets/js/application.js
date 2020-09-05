@@ -79,13 +79,12 @@ function attack() {
   removeBattleListeners();
   setTimeout(takeComputersTurn, 500);
 }
-function defend() {
-  console.log("player defended!");
-  removeBattleListeners();
-  setTimeout(takeComputersTurn, 1000);
-}
 
 function heal() {
+  const player = choosePlayer(sessionStorage.character);
+  player.health += 40;
+  const playerHealthBar = document.getElementById("player-health");
+  playerHealthBar.value = (player.health / player.maxHealth) * 100;
   console.log("player healed!");
   removeBattleListeners();
   setTimeout(takeComputersTurn, 1000);
@@ -94,19 +93,15 @@ function heal() {
 // Remove All Listeners To Await Computers Turn
 function removeBattleListeners() {
   const attackButton = document.getElementById("attack");
-  const defendButton = document.getElementById("defend");
   const healButton = document.getElementById("heal");
   attackButton.removeEventListener("click", attack);
-  defendButton.removeEventListener("click", defend);
   healButton.removeEventListener("click", heal);
 }
 
 // Add All Listeners To Await Players Turn
 function addBattleListeners() {
   const attackButton = document.getElementById("attack");
-  const defendButton = document.getElementById("defend");
   const healButton = document.getElementById("heal");
   attackButton.addEventListener("click", attack);
-  defendButton.addEventListener("click", defend);
   healButton.addEventListener("click", heal);
 }
