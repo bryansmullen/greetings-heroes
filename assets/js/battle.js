@@ -48,12 +48,7 @@ export class Battle {
   playerMove(enemy, enemyHealthBar, choice) {
     switch (choice) {
       case "attack":
-        enemy.health -= 10;
-        enemyHealthBar = document.getElementById(this.enemyHealthBarId);
-        enemyHealthBar.value = (enemy.health / enemy.maxHealth) * 100;
-        console.dir(this.player);
-        this.updateField.innerText = `${this.player.name} attacked!`;
-        break;
+        c;
       case "defend":
         console.log("defend");
         this.updateField.innerText = `${this.player.name} defended!`;

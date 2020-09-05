@@ -1,6 +1,7 @@
 import { stage } from "./stages.js";
 
 export function drawBattle(stageObj) {
+  console.dir(stageObj);
   // Set Up Container and Injector
   const injector = document.createElement("div");
   const container = document.createElement("div");

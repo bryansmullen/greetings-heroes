@@ -1,10 +1,10 @@
-import { progressToNextScene, setRandomFirstEnemy, stage } from "./stages.js";
+import { progressToNextScene, setRandomFirstEnemy, stage, progressToGameOverScreen } from "./stages.js";
 import { drawTitle, drawConfirmExit } from "./drawTitle.js";
 import { drawInstructions } from "./drawInstructions.js";
 import { drawNarrative } from "./drawNarrative.js";
 import { drawCharacter } from "./drawCharacter.js";
 import { drawBattle } from "./drawBattle.js";
-
+import { choosePlayer } from "./characters.js";
 // Exit Game Event Listeners
 const readyExitGameListener = function () {
   const exitGame = document.getElementById("exit");
@@ -56,20 +56,28 @@ function takePlayerTurn() {
 
 function takeComputersTurn() {
   const stageObj = stage[sessionStorage.stage];
+  const player = choosePlayer(sessionStorage.character);
   if (stageObj.enemy.health <= 0) {
     progressToNextScene();
   } else {
-    console.log("computer attacked");
-    runBattle();
+    player.health -= 30;
+    const playerHealthBar = document.getElementById("player-health");
+    playerHealthBar.value = (player.health / player.maxHealth) * 100;
+    if (player.health <= 0) {
+      setTimeout(progressToGameOverScreen, 500);
+    } else {
+      runBattle();
+    }
   }
 }
 // Possible Player Actions
 function attack() {
   const enemy = stage[sessionStorage.stage].enemy;
-  enemy.health -= 60;
-  console.dir(enemy);
+  enemy.health -= 20;
+  const enemyHealthBar = document.getElementById("enemy-health");
+  enemyHealthBar.value = (enemy.health / enemy.maxHealth) * 100;
   removeBattleListeners();
-  setTimeout(takeComputersTurn, 1000);
+  setTimeout(takeComputersTurn, 500);
 }
 function defend() {
   console.log("player defended!");

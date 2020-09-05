@@ -36,6 +36,7 @@ export function drawCharacter(stageObj) {
     container.appendChild(characterCard);
     characterCard.addEventListener("click", () => {
       sessionStorage.setItem("character", character.name);
+
       setPreludeInfo();
       progressToNextScene();
     });

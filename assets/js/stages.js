@@ -10,6 +10,12 @@ export const progressToNextScene = () => {
   const currentStageName = sessionStorage.getItem("stage");
   const currentStage = stage[currentStageName];
   sessionStorage.setItem("stage", currentStage.next);
+  console.dir(currentStage);
+  renderStage();
+};
+
+export const progressToGameOverScreen = () => {
+  sessionStorage.setItem("stage", "game_over");
   renderStage();
 };
 const returnToCurrentScene = () => {
@@ -20,6 +26,7 @@ const returnToCurrentScene = () => {
 
 const returnButton = { text: "Return To Previous Screen", action: returnToCurrentScene };
 const progressButton = { text: "Next Scene", action: progressToNextScene };
+const titleButton = { text: "Return To Title Screen", action: progressToNextScene };
 const playGameButton = { text: "Play Game", action: drawNarrative };
 const instructionsButton = { text: "Instructions", action: drawInstructions };
 const preferencesButton = { text: "Preferences", action: drawTitle };
