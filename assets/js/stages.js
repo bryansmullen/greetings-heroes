@@ -98,16 +98,16 @@ export const stage = {
   // Prelude 2 is set dynamically
   stage_1: new Story(story.stage_1, "story", "stage_2", [progressButton], "1m03"),
   // Stages 2,3,4 set dynamically
-  stage_5: new Story(story.stage_5, "story", "stage_6a", [progressButton], "1m03"),
-  stage_6a: new Story(story.stage_6a, "story", "stage_7a", [progressButton], "1m03"),
-  stage_6b: new Story(story.stage_6b, "story", "stage_7b", [progressButton], "1m03"),
-  stage_6c: new Story(story.stage_6c, "story", "stage_7c", [progressButton], "1m03"),
+  stage_5: new Story(story.stage_5, "story", "battle2", [progressButton], "1m03"),
+  stage_6a: new Story(story.stage_6a, "story", "battle2", [progressButton], "1m03"),
+  stage_6b: new Story(story.stage_6b, "story", "battle2", [progressButton], "1m03"),
+  stage_6c: new Story(story.stage_6c, "story", "battle2", [progressButton], "1m03"),
   stage_7a: new Story(story.stage_7a, "story", "stage_8", [progressButton], "1m03"),
   stage_7b: new Story(story.stage_7b, "story", "stage_8", [progressButton], "1m03"),
   stage_7c: new Story(story.stage_7c, "story", "stage_8", [progressButton], "1m03"),
   stage_8: new Story(story.stage_8, "story", "stage_9", [progressButton], "1m03"),
   // Stage 9 is set dynamically
-  stage_10: new Story(story.stage_10, "story", "victory", [progressButton], "1m03"),
+  stage_10: new Story(story.stage_10, "story", "battle3", [progressButton], "1m03"),
   victory: new Story(story.victory, "story", "stage_11", [progressButton], "1m03"),
   // Stage 11 is set dynamically
   game_over: new Story(story.game_over, "story", "title", [titleButton], "1m03"),

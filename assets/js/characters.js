@@ -18,11 +18,11 @@ class Enemy {
   }
 }
 
-export const forestPeople = new Enemy("The Forest People", 35, 400);
-export const melwuntTribe = new Enemy("A Tribe Of Melwunts", 25, 600);
-export const wretchedDead = new Enemy("The Wretched Dead", 30, 500);
-export const engineOfChaos = new Enemy("The Engine Of Chaos", 60, 100);
-export const valderak = new Enemy("Valderak", 100, 3000);
+export const forestPeople = new Enemy("The Forest People", 35, 350);
+export const melwuntTribe = new Enemy("A Tribe Of Melwunts", 25, 400);
+export const wretchedDead = new Enemy("The Wretched Dead", 30, 300);
+export const engineOfChaos = new Enemy("The Engine Of Chaos", 60, 650);
+export const valderak = new Enemy("Valderak", 100, 750);
 const bjorna = new Player("Bjorna", 80, 1000);
 const jayna = new Player("Jayna", 70, 800);
 const zazzerpan = new Player("Zazzerpan", 90, 300);

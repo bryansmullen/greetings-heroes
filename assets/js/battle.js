@@ -52,9 +52,12 @@ function takeComputersTurn() {
 function attack() {
   const enemy = stage[sessionStorage.stage].enemy;
   const player = choosePlayer(sessionStorage.character);
-  const attackValue = player.strength * Math.random();
+  const attackValue = player.strength;
+  const randomiser = Math.ceil(Math.random() * 20);
+  const finalAttackValue = attackValue + randomiser;
+  enemy.health -= finalAttackValue;
   console.log(attackValue);
-  enemy.health -= attackValue;
+  console.log(finalAttackValue);
   const enemyHealthBar = document.getElementById("enemy-health");
   enemyHealthBar.value = (enemy.health / enemy.maxHealth) * 100;
   removeBattleListeners();

@@ -27,6 +27,7 @@ export function renderStage() {
   const stageObj = stage[stageId];
   if (stageObj.type === "story") {
     drawNarrative(stageObj);
+    console.log(stageObj);
   } else if (stageObj.type === "title") {
     drawTitle();
   } else if (stageObj.type === "character") {
