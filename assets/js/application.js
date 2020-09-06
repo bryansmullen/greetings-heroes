@@ -22,21 +22,33 @@ info.addEventListener("click", () => {
   drawInstructions();
 });
 
+// Update Audio If Required
+function updateAudio() {
+  const stageId = sessionStorage.getItem("stage");
+  const stageObj = stage[stageId];
+  const audioObj = document.querySelector("audio");
+  if (audioObj && audioObj.classList.contains(stageObj.audio)) {
+  } else {
+    audio(stageObj.audio);
+  }
+}
+
 export function renderStage() {
   const stageId = sessionStorage.getItem("stage");
   const stageObj = stage[stageId];
   if (stageObj.type === "story") {
     drawNarrative(stageObj);
-    audio(stageObj.audio);
-    const audioObj = document.querySelector("audio");
-    console.dir(audioObj);
+    updateAudio()
   } else if (stageObj.type === "title") {
     drawTitle();
+    updateAudio()
   } else if (stageObj.type === "character") {
     drawCharacter(stageObj);
+    updateAudio()
   } else if (stageObj.type === "battle") {
     drawBattle(stageObj);
     runBattle(stageObj);
+    updateAudio()
   }
 }
 
