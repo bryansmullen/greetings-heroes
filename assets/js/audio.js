@@ -13,6 +13,7 @@ export const audio = function (cue) {
     currentlyPlaying.remove();
   }
   let newTrack = document.createElement("audio");
+  newTrack.classList.add("audio", cue);
   newTrack.loop = true;
   newTrack.src = `assets/audio/${cue}.mp3`;
   newTrack.play();
