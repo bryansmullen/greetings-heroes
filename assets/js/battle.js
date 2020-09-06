@@ -37,7 +37,6 @@ function takeComputersTurn() {
   } else {
     const enemy = stage[sessionStorage.stage].enemy;
     const attackValue = enemy.strength * Math.random();
-    console.log(attackValue);
     player.health -= attackValue;
     const playerHealthBar = document.getElementById("player-health");
     playerHealthBar.value = (player.health / player.maxHealth) * 100;
@@ -56,8 +55,6 @@ function attack() {
   const randomiser = Math.ceil(Math.random() * 20);
   const finalAttackValue = attackValue + randomiser;
   enemy.health -= finalAttackValue;
-  console.log(attackValue);
-  console.log(finalAttackValue);
   const enemyHealthBar = document.getElementById("enemy-health");
   enemyHealthBar.value = (enemy.health / enemy.maxHealth) * 100;
   removeBattleListeners();

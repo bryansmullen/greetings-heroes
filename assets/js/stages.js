@@ -10,7 +10,6 @@ export const progressToNextScene = () => {
   const currentStageName = sessionStorage.getItem("stage");
   const currentStage = stage[currentStageName];
   sessionStorage.setItem("stage", currentStage.next);
-  console.dir(currentStage);
   renderStage();
 };
 
@@ -34,7 +33,6 @@ const preferencesButton = { text: "Preferences", action: drawTitle };
 // Function Which Sets Stages Which Vary Based On Character Selection
 export const setPreludeInfo = function () {
   const chosenCharacter = sessionStorage.character;
-  console.log(chosenCharacter);
   switch (chosenCharacter) {
     case "bjorna":
       stage.prelude2 = new Story(story.bjornaIntro, "story", "stage_1", [progressButton], "1m03");

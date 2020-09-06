@@ -1,7 +1,7 @@
 import { stage } from "./stages.js";
+import { choosePlayer } from "./characters.js";
 
 export function drawBattle(stageObj) {
-  console.dir(stageObj);
   // Set Up Container and Injector
   const injector = document.createElement("div");
   const container = document.createElement("div");
@@ -24,7 +24,10 @@ export function drawBattle(stageObj) {
   playerStats.classList.add("character-stats");
   playerHeading.innerText = "Player";
   playerHealthBar.id = "player-health";
-  playerHealthBar.value = 100;
+  const player = choosePlayer(sessionStorage.character);
+  const playerHealthPercentage = (player.health / player.maxHealth) * 100;
+  playerHealthBar.value = playerHealthPercentage;
+
   playerHealthBar.max = 100;
   enemyStats.classList.add("character-stats");
   enemyHeading.innerText = "Enemy";
@@ -76,6 +79,4 @@ export function drawBattle(stageObj) {
   // Inject Content
   const main = document.getElementById("main-content");
   main.innerHTML = injector.innerHTML;
-
-  console.dir(stageObj);
 }
