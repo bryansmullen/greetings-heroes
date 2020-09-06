@@ -110,7 +110,7 @@ export const stage = {
   stage_10: new Story(story.stage_10, "story", "victory", [progressButton], "1m03"),
   victory: new Story(story.victory, "story", "stage_11", [progressButton], "1m03"),
   // Stage 11 is set dynamically
-  game_over: new Story(story.game_over, "story", "title", [progressButton], "1m03"),
+  game_over: new Story(story.game_over, "story", "title", [titleButton], "1m03"),
   battle2: new Battle("battle", engineOfChaos, "stage_7a", [progressButton], "1m04"),
   battle3: new Battle("battle", valderak, "victory", [progressButton], "1m04"),
 };

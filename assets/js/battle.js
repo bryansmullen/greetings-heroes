@@ -1,11 +1,11 @@
 // Battle Logic
 
-import { drawNarrative } from "./drawNarrative.js";
-import { stage } from "./story.js";
+import { stage } from "./stages.js";
+import { choosePlayer } from "./characters.js";
+import { progressToGameOverScreen, progressToNextScene } from "./stages.js";
 /**
  * Battle.
  *
-
  */
 export class Battle {
   constructor(player, enemy, attackBtn, defendBtn, specialBtn, progressBtn, playerHealthBarId, enemyHealthBarId, updateField) {
@@ -19,63 +19,69 @@ export class Battle {
     this.enemyHealthBarId = enemyHealthBarId;
     this.updateField = document.getElementById(updateField);
   }
+}
 
-  updateHealth() {
-    enemy.health -= 10;
-  }
+export function runBattle() {
+  takePlayerTurn();
+}
 
-  initialiseBattleCommand(attackBtn, defendBtn, specialBtn) {
-    attackBtn.addEventListener("click", () => {
-      this.playerMove(this.enemy, "enemy-health", "attack");
+function takePlayerTurn() {
+  addBattleListeners();
+}
 
-      setTimeout(() => {
-        this.computerMove(this.player, "player-health");
-      }, 1000);
-      this.checkHealth(this.progressBtn);
-    });
-    defendBtn.addEventListener("click", () => {
-      this.playerMove(enemy, "enemy-health", "attack");
-      this.computerMove(this.player, "player-health");
-      this.checkHealth(this.progressBtn);
-    });
-    specialBtn.addEventListener("click", () => {
-      this.playerMove(enemy, "enemy-health", "attack");
-      this.computerMove(this.player, "player-health");
-      this.checkHealth(this.progressBtn);
-    });
-  }
-
-  playerMove(enemy, enemyHealthBar, choice) {
-    switch (choice) {
-      case "attack":
-        c;
-      case "defend":
-        console.log("defend");
-        this.updateField.innerText = `${this.player.name} defended!`;
-        break;
-      case "special":
-        console.log("special");
-        this.updateField.innerText = `${this.player.name} used their special ability!`;
-        break;
-    }
-  }
-  computerMove(player, playerHealthBar) {
-    player.health -= 5;
-    playerHealthBar = document.getElementById(this.playerHealthBarId);
-    console.dir(playerHealthBar);
-    this.updateField.innerText = `${this.enemy.name} attacked!`;
+function takeComputersTurn() {
+  const stageObj = stage[sessionStorage.stage];
+  const player = choosePlayer(sessionStorage.character);
+  if (stageObj.enemy.health <= 0) {
+    progressToNextScene();
+  } else {
+    const enemy = stage[sessionStorage.stage].enemy;
+    const attackValue = enemy.strength * Math.random();
+    console.log(attackValue);
+    player.health -= attackValue;
+    const playerHealthBar = document.getElementById("player-health");
     playerHealthBar.value = (player.health / player.maxHealth) * 100;
-  }
-
-  checkHealth(progressBtn) {
-    console.dir(progressBtn);
-    if (this.enemy.health <= 0) {
-      document.getElementById(progressBtn).classList.remove("hidden");
-    } else if (this.player.health <= 0) {
-      drawNarrative(stage["Game Over"]);
+    if (player.health <= 0) {
+      setTimeout(progressToGameOverScreen, 500);
+    } else {
+      runBattle();
     }
   }
-  run() {
-    this.initialiseBattleCommand(this.attackBtn, this.defendBtn, this.specialBtn);
-  }
+}
+// Possible Player Actions
+function attack() {
+  const enemy = stage[sessionStorage.stage].enemy;
+  const player = choosePlayer(sessionStorage.character);
+  const attackValue = player.strength * Math.random();
+  console.log(attackValue);
+  enemy.health -= attackValue;
+  const enemyHealthBar = document.getElementById("enemy-health");
+  enemyHealthBar.value = (enemy.health / enemy.maxHealth) * 100;
+  removeBattleListeners();
+  setTimeout(takeComputersTurn, 500);
+}
+
+function heal() {
+  const player = choosePlayer(sessionStorage.character);
+  player.health += 250;
+  const playerHealthBar = document.getElementById("player-health");
+  playerHealthBar.value = (player.health / player.maxHealth) * 100;
+  removeBattleListeners();
+  setTimeout(takeComputersTurn, 1000);
+}
+
+// Remove All Listeners To Await Computers Turn
+function removeBattleListeners() {
+  const attackButton = document.getElementById("attack");
+  const healButton = document.getElementById("heal");
+  attackButton.removeEventListener("click", attack);
+  healButton.removeEventListener("click", heal);
+}
+
+// Add All Listeners To Await Players Turn
+function addBattleListeners() {
+  const attackButton = document.getElementById("attack");
+  const healButton = document.getElementById("heal");
+  attackButton.addEventListener("click", attack);
+  healButton.addEventListener("click", heal);
 }
