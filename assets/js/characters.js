@@ -23,10 +23,10 @@ export const melwuntTribe = new Enemy("A Tribe Of Melwunts", 25, 400);
 export const wretchedDead = new Enemy("The Wretched Dead", 30, 300);
 export const engineOfChaos = new Enemy("The Engine Of Chaos", 60, 650);
 export const valderak = new Enemy("Valderak", 100, 750);
-const bjorna = new Player("Bjorna", 80, 1000);
-const jayna = new Player("Jayna", 70, 800);
-const zazzerpan = new Player("Zazzerpan", 90, 300);
-const yolo = new Player("Yolo", 100, 500);
+const bjorna = new Player("Bjorna", 80, 800);
+const jayna = new Player("Jayna", 70, 600);
+const zazzerpan = new Player("Zazzerpan", 90, 200);
+const yolo = new Player("Yolo", 100, 300);
 
 export const choosePlayer = function (character) {
   switch (character) {

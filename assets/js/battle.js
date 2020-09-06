@@ -63,7 +63,13 @@ function attack() {
 
 function heal() {
   const player = choosePlayer(sessionStorage.character);
-  player.health += 250;
+  const playerHealthDiff = player.maxHealth - player.health;
+  console.log(playerHealthDiff);
+  if (playerHealthDiff >= 250) {
+    player.health += 250;
+  } else {
+    player.health = player.maxHealth;
+  }
   const playerHealthBar = document.getElementById("player-health");
   playerHealthBar.value = (player.health / player.maxHealth) * 100;
   removeBattleListeners();
