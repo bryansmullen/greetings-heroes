@@ -6,7 +6,7 @@ import { drawCharacter } from "./drawCharacter.js";
 import { drawBattle } from "./drawBattle.js";
 import { choosePlayer } from "./characters.js";
 import { runBattle } from "./battle.js";
-
+import { audio } from "./audio.js";
 // Exit Game Event Listeners
 const readyExitGameListener = function () {
   const exitGame = document.getElementById("exit");
@@ -27,6 +27,9 @@ export function renderStage() {
   const stageObj = stage[stageId];
   if (stageObj.type === "story") {
     drawNarrative(stageObj);
+    audio(stageObj.audio);
+    const audioObj = document.querySelector("audio");
+    console.dir(audioObj);
   } else if (stageObj.type === "title") {
     drawTitle();
   } else if (stageObj.type === "character") {
