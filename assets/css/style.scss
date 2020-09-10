@@ -132,9 +132,8 @@ main {
 
   .story {
     width: 100%;
-    // height: calc(100% - 200px);
-    // display: grid;
-    justify-items: center;
+
+    justify-content: center;
     align-items: center;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     @media (min-width: $media-tablet) {
@@ -144,12 +143,18 @@ main {
       grid-row: 2;
       font-size: 1rem;
       line-height: 2rem;
+      @media (max-width: $media-tablet) {
+        padding: 10% 3%;
+      }
       @media (min-width: $media-tablet) {
         font-size: 1.3rem;
       }
     }
     .button {
       grid-row: 3;
+      @media (max-width: $media-tablet) {
+        margin-bottom: 50%;
+      }
     }
   }
   .character-selection {
@@ -212,26 +217,39 @@ main {
       height: 90%;
     }
   }
-
+  .instructions {
+    margin-top: 15%;
+    margin-bottom: 55%;
+  }
   // Battle styles
 
   .battle {
     display: flex;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     justify-content: space-around;
     font-size: 2rem;
+    @media (max-width: $media-tablet) {
+      font-size: 1rem;
+    }
     align-items: center;
     .battle-arena {
       width: 100%;
       height: calc(100% - 30px);
       display: grid;
       grid-template-rows: 3fr 1fr 3fr;
+      @media (max-width: $media-tablet) {
+        margin: 20% 0;
+      }
       .battle-command {
         color: white;
         background: $gh-dark-red;
         width: 200px;
         height: 100px;
+        @media (max-width: $media-tablet) {
+          width: 150px;
+          height: 50px;
+        }
         text-align: center;
         cursor: pointer;
         &:hover {
@@ -247,6 +265,13 @@ main {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      align-items: center;
+    }
+    #battle-update {
+      margin: auto;
+    }
+    .battle-command {
+      margin: auto;
     }
   }
 }

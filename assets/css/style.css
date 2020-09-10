@@ -104,7 +104,7 @@ main .ui-element p {
 }
 main .story {
   width: 100%;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
   grid-template-rows: 1fr 1fr 1fr 1fr;
 }
@@ -118,6 +118,11 @@ main .story p {
   font-size: 1rem;
   line-height: 2rem;
 }
+@media (max-width: 768px) {
+  main .story p {
+    padding: 10% 3%;
+  }
+}
 @media (min-width: 768px) {
   main .story p {
     font-size: 1.3rem;
@@ -125,6 +130,11 @@ main .story p {
 }
 main .story .button {
   grid-row: 3;
+}
+@media (max-width: 768px) {
+  main .story .button {
+    margin-bottom: 50%;
+  }
 }
 main .character-selection {
   height: 100%;
@@ -190,19 +200,33 @@ main .character-card img {
     height: 90%;
   }
 }
+main .instructions {
+  margin-top: 15%;
+  margin-bottom: 55%;
+}
 main .battle {
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   justify-content: space-around;
   font-size: 2rem;
   align-items: center;
+}
+@media (max-width: 768px) {
+  main .battle {
+    font-size: 1rem;
+  }
 }
 main .battle .battle-arena {
   width: 100%;
   height: calc(100% - 30px);
   display: grid;
   grid-template-rows: 3fr 1fr 3fr;
+}
+@media (max-width: 768px) {
+  main .battle .battle-arena {
+    margin: 20% 0;
+  }
 }
 main .battle .battle-arena .battle-command {
   color: white;
@@ -211,6 +235,12 @@ main .battle .battle-arena .battle-command {
   height: 100px;
   text-align: center;
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  main .battle .battle-arena .battle-command {
+    width: 150px;
+    height: 50px;
+  }
 }
 main .battle .battle-arena .battle-command:hover {
   background-color: #8f4836;
@@ -222,6 +252,13 @@ main .battle .character-stats {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
+}
+main .battle #battle-update {
+  margin: auto;
+}
+main .battle .battle-command {
+  margin: auto;
 }
 
 footer {

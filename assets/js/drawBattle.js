@@ -20,7 +20,7 @@ export function drawBattle(stageObj) {
   const enemyHealthBar = document.createElement("progress");
 
   // Configure Health Section
-  health.classList.add("battle", "health");
+  health.classList.add("health");
   playerStats.classList.add("character-stats");
   playerHeading.innerText = "Player";
   playerHealthBar.id = "player-health";
@@ -45,7 +45,7 @@ export function drawBattle(stageObj) {
   const battleUpdate = document.createElement("p");
 
   // Configure Status Section
-  status.classList.add("battle", "status");
+  status.classList.add("status");
   battleUpdate.innerText = `${stageObj.enemy.name} attacked!`;
   battleUpdate.id = "battle-update";
 
@@ -58,7 +58,7 @@ export function drawBattle(stageObj) {
   const special = document.createElement("div");
 
   // Configure Actions Section
-  actions.classList.add("battle", "actions");
+  actions.classList.add("actions");
   attack.classList.add("battle-command", "attack");
   special.classList.add("battle-command", "heal");
   attack.id = "attack";
