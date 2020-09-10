@@ -1,6 +1,6 @@
 # Greetings Heroes
 
-[View the live project here](#)
+[View the live project here](https://bryansmullen.github.io/greetings-heroes/)
 
 ![Banner Image](wireframes/design-assets/../mockups/greetings-heroes-mockup.jpg)
 
