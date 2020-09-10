@@ -13,6 +13,18 @@ export const progressToNextScene = () => {
   renderStage();
 };
 
+const progressThroughRubyDoor = () => {
+  sessionStorage.setItem("stage", "stage_6a");
+  renderStage();
+};
+const progressThroughAquamarineDoor = () => {
+  sessionStorage.setItem("stage", "stage_6c");
+  renderStage();
+};
+const progressThroughTopazDoor = () => {
+  sessionStorage.setItem("stage", "stage_6b");
+  renderStage();
+};
 export const progressToGameOverScreen = () => {
   sessionStorage.setItem("stage", "game_over");
   renderStage();
@@ -25,6 +37,9 @@ const returnToCurrentScene = () => {
 
 const returnButton = { text: "Return To Previous Screen", action: returnToCurrentScene };
 const progressButton = { text: "Next Scene", action: progressToNextScene };
+const rubyDoor = { text: "Proceed through the Ruby Door", action: progressThroughRubyDoor };
+const aquamarineDoor = { text: "Proceed through the Aquamarine Door", action: progressThroughAquamarineDoor };
+const topazDoor = { text: "Proceed through the Topaz Door", action: progressThroughTopazDoor };
 const titleButton = { text: "Return To Title Screen", action: progressToNextScene };
 const playGameButton = { text: "Play Game", action: drawNarrative };
 const instructionsButton = { text: "Instructions", action: drawInstructions };
@@ -96,7 +111,7 @@ export const stage = {
   // Prelude 2 is set dynamically
   stage_1: new Story(story.stage_1, "story", "stage_2", [progressButton], "1m03"),
   // Stages 2,3,4 set dynamically
-  stage_5: new Story(story.stage_5, "story", "battle2", [progressButton], "1m01"),
+  stage_5: new Story(story.stage_5, "story", "stage_6a", [rubyDoor, aquamarineDoor, topazDoor], "1m01"),
   stage_6a: new Story(story.stage_6a, "story", "battle2", [progressButton], "1m01"),
   stage_6b: new Story(story.stage_6b, "story", "battle2", [progressButton], "1m01"),
   stage_6c: new Story(story.stage_6c, "story", "battle2", [progressButton], "1m01"),

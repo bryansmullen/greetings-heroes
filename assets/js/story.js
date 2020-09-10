@@ -17,9 +17,9 @@ export const story = {
   stage_3a: "Defeating the forest folk, you are able to free them from the influence of Valderak.",
   stage_3b: "Defeating the Melwunts, you send them scampering back into the marshes.",
   stage_3c: "Defeating the Wretched Dead, they fall to pieces on the floor, no longer animated by Valderak.",
-  stage_4a: "Your foe leaves behind a powerful artefact: The Wand of Azzerthoth, crackling with violet energies [ATTACK UP]",
-  stage_4b: "Your foe leaves behind a powerful artefact: The Brazen Helm of Caargolos, the demon-mask of a dead god [DEFENSE UP]",
-  stage_4c: "Your foe leaves behind a powerful artefact: The Philtre of Gnomon - a glass vial filled with moonlight [HEALING]",
+  stage_4a: "Your foe leaves behind a powerful artefact: The Wand of Azzerthoth, crackling with violet energies",
+  stage_4b: "Your foe leaves behind a powerful artefact: The Brazen Helm of Caargolos, the demon-mask of a dead god",
+  stage_4c: "Your foe leaves behind a powerful artefact: The Philtre of Gnomon - a glass vial filled with moonlight",
   stage_5:
     "Hidden in the wreckage you find the key to the upper floors. Ascending the winding stairs your ears pick up a harsh, clanking sound. There is smoke upon the air. You are greeted by three doors - to your left a door of ruby, to your right a door of aquamarine, and between, a door of topaz.",
   stage_6a:
