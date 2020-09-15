@@ -1,4 +1,3 @@
-import { stage } from "./stages.js";
 import { progressToNextScene, setPreludeInfo } from "./stages.js";
 
 /**

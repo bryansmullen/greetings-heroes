@@ -68,6 +68,4 @@ export function drawConfirmExit() {
   });
   main.firstChild.appendChild(choice2);
 
-  // Clear Session Storage
-  console.log(sessionStorage);
 }

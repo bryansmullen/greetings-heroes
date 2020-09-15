@@ -30,8 +30,6 @@ export const progressToGameOverScreen = () => {
   renderStage();
 };
 const returnToCurrentScene = () => {
-  const currentStageName = sessionStorage.getItem("stage");
-  const currentStage = stage[currentStageName];
   renderStage();
 };
 
@@ -44,7 +42,6 @@ const progressButton = { text: "Next Scene", action: progressToNextScene };
 const rubyDoor = { text: "Proceed through the Ruby Door", action: progressThroughRubyDoor };
 const aquamarineDoor = { text: "Proceed through the Aquamarine Door", action: progressThroughAquamarineDoor };
 const topazDoor = { text: "Proceed through the Topaz Door", action: progressThroughTopazDoor };
-const titleButton = { text: "Return To Title Screen", action: progressToNextScene };
 const playGameButton = { text: "Play Game", action: drawNarrative };
 const instructionsButton = { text: "Instructions", action: drawInstructions };
 const preferencesButton = { text: "Preferences", action: drawTitle };

@@ -340,6 +340,10 @@ footer {
     }
     ul {
       display: flex;
+      li{
+
+        list-style-type: none;
+      }
 
       a {
         line-height: 0;

@@ -312,6 +312,9 @@ footer .social .social-links {
 footer .social ul {
   display: flex;
 }
+footer .social ul li {
+  list-style-type: none;
+}
 footer .social ul a {
   line-height: 0;
   color: white;

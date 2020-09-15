@@ -1,4 +1,3 @@
-import { stage } from "./stages.js";
 import { choosePlayer } from "./characters.js";
 
 export function drawBattle(stageObj) {

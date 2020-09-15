@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <script src="https://kit.fontawesome.com/3ebd44cf5a.js" crossorigin="anonymous"></script>
-    <script src="assets/js/application.js" type="module" defer></script>
-    <title>Greetings Heroes</title>
-  </head>
 
-  <body>
-    <header>
-      <i id="info-button" class="fas fa-info-circle"></i>
-      <div class="sound-container">
-        <i id="toggle-sound" class="fas fa-volume-up"></i>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://kit.fontawesome.com/3ebd44cf5a.js" crossorigin="anonymous"></script>
+  <script src="assets/js/application.js" type="module"></script>
+  <title>Greetings Heroes</title>
+</head>
+
+<body>
+  <header>
+    <i id="info-button" class="fas fa-info-circle"></i>
+    <div class="sound-container">
+      <i id="toggle-sound" class="fas fa-volume-up"></i>
+    </div>
+    <i id="exit" class="hidden fas fa-sign-out-alt"></i>
+  </header>
+
+  <!-- MAIN CONTENT - GETS DYNAMICALLY UPDATED -->
+  <main id="main-content"></main>
+  <!-- END MAIN CONTENT -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="hire-container">
+      <div class="hire">
+        <h3>Hire</h3>
+        <p>I am ready to work on your new, exciting project, get in touch now about hiring me!</p>
       </div>
-      <i id="exit" class="hidden fas fa-sign-out-alt"></i>
-    </header>
+    </div>
 
-    <!-- MAIN CONTENT - GETS DYNAMICALLY UPDATED -->
-    <main id="main-content"></main>
-    <!-- END MAIN CONTENT -->
-
-    <!-- Footer -->
-    <footer>
-      <div class="hire-container">
-        <div class="hire">
-          <h3>Hire</h3>
-          <p>I am ready to work on your new, exciting project, get in touch now about hiring me!</p>
-        </div>
-      </div>
-
-      <div class="social">
-        <ul class="social-links">
+    <div class="social">
+      <ul class="social-links">
+        <li class="github">
           <a href="https://github.com/bryansmullen" target="_blank" rel="noopener noreferrer">
-            <li class="github">
-              <i class="fab fa-github-square"></i>
-            </li>
+            <i class="fab fa-github-square"></i>
           </a>
+        </li>
+        <li class="linkedin">
           <a href="https://www.linkedin.com/in/bryansmullen/" target="_blank" rel="noopener noreferrer">
-            <li class="linkedin"><i class="fab fa-linkedin"></i></li>
+            <i class="fab fa-linkedin"></i>
           </a>
-        </ul>
-      </div>
-    </footer>
-  </body>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
 </html>

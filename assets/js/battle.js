@@ -66,7 +66,6 @@ function attack() {
 function heal() {
   const player = choosePlayer(sessionStorage.character);
   const playerHealthDiff = player.maxHealth - player.health;
-  console.log(playerHealthDiff);
   if (playerHealthDiff >= 250) {
     player.health += 250;
   } else {

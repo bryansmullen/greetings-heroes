@@ -7,7 +7,6 @@ import { stage } from "./stages.js";
 
 export function drawInstructions() {
   const instructionsObj = stage.instructions;
-  console.dir(instructionsObj);
   const injector = document.createElement("div");
   const container = document.createElement("div");
   const heading = document.createElement("h2");

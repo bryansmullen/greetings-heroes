@@ -27,8 +27,7 @@ function updateAudio() {
   const stageId = sessionStorage.getItem("stage");
   const stageObj = stage[stageId];
   const audioObj = document.querySelector("audio");
-  if (audioObj && audioObj.classList.contains(stageObj.audio)) {
-  } else {
+  if (!(audioObj && audioObj.classList.contains(stageObj.audio))) {
     audio(stageObj.audio);
   }
 }

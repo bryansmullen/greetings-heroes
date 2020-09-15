@@ -42,10 +42,8 @@ export const toggleSound = function () {
   const audioElement = document.querySelector("audio");
   if (soundIcon.classList.contains("fa-volume-mute")) {
     soundIcon.classList.replace("fa-volume-mute", "fa-volume-up");
-    console.log("mute-up");
   } else {
     soundIcon.classList.replace("fa-volume-up", "fa-volume-mute");
-    console.log("up-mute");
   }
   if (soundIcon.classList.contains("fa-volume-mute")) {
     audioElement.muted = true;

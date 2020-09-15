@@ -1,0 +1,22 @@
+{
+  "name": "greetings-heroes",
+  "version": "1.0.0",
+  "description": "[View the live project here](https://bryansmullen.github.io/greetings-heroes/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryansmullen/greetings-heroes.git"
+  },
+  "author": "bryansmullen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryansmullen/greetings-heroes/issues"
+  },
+  "homepage": "https://github.com/bryansmullen/greetings-heroes#readme",
+  "devDependencies": {
+    "eslint": "^7.9.0"
+  }
+}
