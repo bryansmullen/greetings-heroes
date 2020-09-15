@@ -167,9 +167,10 @@ In this section, I will mention all of the languages, frameworks, libraries, and
 
 ### Languages
 
-- [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
-- [CSS](https://www.w3.org/Style/CSS/#specs)
-- [Javascript](https://developer.mozilla.org/en-US/docs/Web/javascript)
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) is used to render the content of the website.
+- [CSS](https://www.w3.org/Style/CSS/#specs) is used to style the content of the website.
+- [SCSS](https://sass-lang.com/documentation) is used to generate the CSS, by means of a SASS compiler.
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/javascript) is used to create interactivity with the website.
 
 ### Other Tools
 
@@ -180,12 +181,87 @@ In this section, I will mention all of the languages, frameworks, libraries, and
 - [Adobe Color](https://www.adobe.com/ie/products/color.html) is used to select the colour palette used in this project.
 - [Git](https://git-scm.com/) is used for version control in this project. Throughout the project, a Develop branch has been added to the project to allow work to continue on the website without breaking the functioning version on the Master branch.
 - [Github](https://github.com/) is used as a remote repository for the site, as well as for deployment of the final version.
+- [Dorico](https://new.steinberg.net/dorico/) is used to generate the initial MIDI data from the compositions.
+- [Studio One](https://www.presonus.com/products/Studio-One) is used to generate the final audio files for the score.
 
 [BACK TO CONTENTS](#Contents)
 
 ## Testing
 
-TBC
+### Validation
+
+All HTML and CSS in this project is validated by using the W3C Markup Validation Service and the W3C CSS Validation Service.
+
+HTML Validated without errors on 16 Sept 2020
+
+CSS Validated without errors on 16 Sept 2020
+
+### Linting
+
+All javascript was passed through the ESLint plugin for VSCode to ensure compliance with best practices
+
+### Modelled Device Testing
+
+To test the layout on multiple devices, Google Chrome DevTools is used to simulate the size of multiple devices and screen ratios. Screen responsiveness has been noted to ensure the correct screen ratio was delivered, links are tested by clicking through, images are checked to ensure they displayed correctly on all devices, and the website as a whole is checked to ensure everything renders as expected. Any faults or issues were noted in the Device Testing Chart
+
+The following device dimensions are tested:
+
+Moto G4
+Galaxy S5
+Pixel 2
+Pixel 2 XL
+iPhone 5/SE
+iPhone 6,7,8
+iPhone 6,7,8 Plus
+iPhone X
+iPad
+iPad Pro
+Laptop 1024px
+Laptop L 1440px
+4k -2560px
+
+### Automated Cross Browser Testing
+
+To test the layout on multiple browsers, browserstack is used to screenshot how the layout will render on several different versions of major browsers, on the more up-to-date operating systems. These screenshots are then inspected and the results are once again documented in the Browser Automated Testing Chart. The following browsers are tested:
+
+Mac OS Catalina Chrome 69
+Mac OS Catalina Chrome 70
+Mac OS Catalina Chrome 71
+Mac OS Catalina Firefox 61
+Mac OS Catalina Firefox 62
+Mac OS Catalina Safari 13.1
+Mac OS Mojave Opera 12.12
+Mac OS Mojave Opera 12.14
+Mac OS Mojave Opera 12.15
+Windows 8.1 Opera 12.14
+Windows 8.1 Opera 12.15
+Windows 8.1 12.16
+Windows 10 Chrome 69
+Windows 10 Chrome 70
+Windows 10 Chrome 71
+Windows 10 Edge 16
+Windows 10 Edge 17
+Windows 10 Edge 18
+Windows 10 Firefox 61
+Windows 10 Firefox 62
+Windows 10 Internet Explorer 11
+
+### Manual Cross Browser Testing
+
+To complement the above results the website is also tested manually on up-to-date browsers available on the developer's machine. The results are once again documented in the Browser Manual Testing Chart
+
+The following browsers are tested:
+
+Mac OS Catalina Opera Version 68.0.3618.125
+Mac OS Catalina Edge Version 81.0.416.77
+Mac OS Catalina Brave Version 1.8.96
+Mac OS Catalina Chrome Version 81.0.4044.138
+Mac OS Catalina Safari Firefox 76.0.1 (64-bit)
+iOS 13.3.1 iPad Pro Safari
+iOS 13.3.1 iPad Pro Chrome
+iOS 13.4.1 iPhone Safari
+Windows 10 Microsoft Edge 44.18362.387.0
+Windows 10 Google Chrome 81.0.4044.138 (Official Build) (64 Bit)
 
 ## Deployment
 
@@ -229,9 +305,9 @@ To clone this project locally, complete the following steps:
 
 ### Media
 
-Character Images
 Main title image sourced from [Freepik](http://www.freepik.com).
 Character artwork created by [Dearbháil Clarke](#)
+Attack and heal SFX licenced from [Envato](https://envato.com/)
 
 ### Acknowledgements
 

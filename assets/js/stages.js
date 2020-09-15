@@ -1,10 +1,10 @@
-import { drawNarrative } from "./drawNarrative.js";
-import { drawTitle } from "./drawTitle.js";
-import { drawInstructions } from "./drawInstructions.js";
+import { drawNarrative } from "./draw-narrative.js";
+import { drawTitle } from "./draw-title.js";
+import { drawInstructions } from "./draw-instructions.js";
 
 import { renderStage } from "./application.js";
 import { paragraphs, story } from "./story.js";
-import { Story, Title, Instructions, Character, Battle } from "./screenClasses.js";
+import { Story, Title, Instructions, Character, Battle } from "./screen-classes.js";
 import { forestPeople, melwuntTribe, wretchedDead, engineOfChaos, valderak } from "./characters.js";
 export const progressToNextScene = () => {
   const currentStageName = sessionStorage.getItem("stage");

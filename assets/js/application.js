@@ -1,9 +1,9 @@
 import { setRandomFirstEnemy, stage } from "./stages.js";
-import { drawTitle, drawConfirmExit } from "./drawTitle.js";
-import { drawInstructions } from "./drawInstructions.js";
-import { drawNarrative } from "./drawNarrative.js";
-import { drawCharacter } from "./drawCharacter.js";
-import { drawBattle } from "./drawBattle.js";
+import { drawTitle, drawConfirmExit } from "./draw-title.js";
+import { drawInstructions } from "./draw-instructions.js";
+import { drawNarrative } from "./draw-narrative.js";
+import { drawCharacter } from "./draw-character.js";
+import { drawBattle } from "./draw-battle.js";
 import { runBattle } from "./battle.js";
 import { audio } from "./audio.js";
 
