@@ -1,12 +1,12 @@
-import { progressToNextScene, setRandomFirstEnemy, stage, progressToGameOverScreen } from "./stages.js";
+import { setRandomFirstEnemy, stage } from "./stages.js";
 import { drawTitle, drawConfirmExit } from "./drawTitle.js";
 import { drawInstructions } from "./drawInstructions.js";
 import { drawNarrative } from "./drawNarrative.js";
 import { drawCharacter } from "./drawCharacter.js";
 import { drawBattle } from "./drawBattle.js";
-import { choosePlayer } from "./characters.js";
 import { runBattle } from "./battle.js";
 import { audio } from "./audio.js";
+
 // Exit Game Event Listeners
 const readyExitGameListener = function () {
   const exitGame = document.getElementById("exit");

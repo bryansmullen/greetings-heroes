@@ -170,7 +170,6 @@ main .character-card h2 {
   margin: auto 0;
 }
 main .character-card .stats {
-  display: none;
   color: white;
   text-align: center;
   margin: auto;
@@ -228,7 +227,14 @@ main .battle .battle-arena {
     margin: 20% 0;
   }
 }
+@media (min-width: 768px) {
+  main .battle .battle-arena .actions, main .battle .battle-arena .health {
+    display: flex;
+    justify-content: space-around;
+  }
+}
 main .battle .battle-arena .battle-command {
+  margin-top: 0;
   color: white;
   background: #800000;
   width: 200px;

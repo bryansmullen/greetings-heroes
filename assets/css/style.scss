@@ -190,7 +190,6 @@ main {
       margin: auto 0;
     }
     .stats {
-      display: none;
       color: white;
       text-align: center;
       margin: auto;
@@ -198,6 +197,7 @@ main {
       p {
         margin: 0;
       }
+
     }
     &:hover {
       background-color: $gh-earth;
@@ -232,6 +232,7 @@ main {
     @media (max-width: $media-tablet) {
       font-size: 1rem;
     }
+   
     align-items: center;
     .battle-arena {
       width: 100%;
@@ -241,7 +242,17 @@ main {
       @media (max-width: $media-tablet) {
         margin: 20% 0;
       }
+      
+      @media(min-width: $media-tablet){
+
+        .actions, .health{
+          display: flex;
+          justify-content: space-around;
+        }
+      }
       .battle-command {
+        
+        margin-top: 0;
         color: white;
         background: $gh-dark-red;
         width: 200px;
@@ -275,6 +286,8 @@ main {
     }
   }
 }
+
+
 
 // Footer Styles
 
@@ -348,3 +361,4 @@ footer {
     }
   }
 }
+

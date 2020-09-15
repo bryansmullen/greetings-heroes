@@ -30,6 +30,11 @@ export function drawCharacter(stageObj) {
 
     const characterImage = document.createElement("img");
     characterImage.src = character.imagePath;
+    characterImage.classList.add(character.name)
+    const stats = document.createElement('div')
+    stats.innerText = character.name
+    stats.classList.add('stats')
+    characterCard.append(stats)
     characterCard.append(characterImage);
     characterContainer.append(characterCard);
     let container = document.querySelector(".character-selection");

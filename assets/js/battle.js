@@ -3,6 +3,7 @@
 import { stage } from "./stages.js";
 import { choosePlayer } from "./characters.js";
 import { progressToGameOverScreen, progressToNextScene } from "./stages.js";
+import { sfx } from "./audio.js"
 /**
  * Battle.
  *
@@ -57,6 +58,7 @@ function attack() {
   enemy.health -= finalAttackValue;
   const enemyHealthBar = document.getElementById("enemy-health");
   enemyHealthBar.value = (enemy.health / enemy.maxHealth) * 100;
+  sfx('attack')
   removeBattleListeners();
   setTimeout(takeComputersTurn, 500);
 }
@@ -72,6 +74,7 @@ function heal() {
   }
   const playerHealthBar = document.getElementById("player-health");
   playerHealthBar.value = (player.health / player.maxHealth) * 100;
+  sfx('heal')
   removeBattleListeners();
   setTimeout(takeComputersTurn, 1000);
 }

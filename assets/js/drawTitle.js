@@ -55,7 +55,7 @@ export function drawConfirmExit() {
   choice1.classList.add("button", "button-text");
   choice1.innerText = "Exit and discard progress";
   choice1.addEventListener("click", () => {
-    drawTitle();
+    window.location.reload()
   });
   main.firstChild.appendChild(choice1);
 

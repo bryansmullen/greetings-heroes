@@ -35,6 +35,10 @@ const returnToCurrentScene = () => {
   renderStage();
 };
 
+const refreshScreen = () => {
+  window.location.reload()
+}
+
 const returnButton = { text: "Return To Previous Screen", action: returnToCurrentScene };
 const progressButton = { text: "Next Scene", action: progressToNextScene };
 const rubyDoor = { text: "Proceed through the Ruby Door", action: progressThroughRubyDoor };
@@ -44,7 +48,7 @@ const titleButton = { text: "Return To Title Screen", action: progressToNextScen
 const playGameButton = { text: "Play Game", action: drawNarrative };
 const instructionsButton = { text: "Instructions", action: drawInstructions };
 const preferencesButton = { text: "Preferences", action: drawTitle };
-
+const refreshButton = { text: "Return To Title Screen", action: refreshScreen }
 // Function Which Sets Stages Which Vary Based On Character Selection
 export const setPreludeInfo = function () {
   const chosenCharacter = sessionStorage.character;
@@ -52,24 +56,24 @@ export const setPreludeInfo = function () {
     case "bjorna":
       stage.prelude2 = new Story(story.bjornaIntro, "story", "stage_1", [progressButton], "1m03");
       stage.stage_9 = new Story(story.stage_9b, "story", "stage_10", [progressButton], "1m01");
-      stage.stage_11 = new Story(story.stage_11b, "story", "title", [progressButton], "1m02");
+      stage.stage_11 = new Story(story.stage_11b, "story", "title", [refreshButton], "1m02");
       break;
     case "jayna":
       stage.prelude2 = new Story(story.jaynaIntro, "story", "stage_1", [progressButton], "1m03");
       stage.stage_9 = new Story(story.stage_9a, "story", "stage_10", [progressButton], "1m01");
-      stage.stage_11 = new Story(story.stage_11a, "story", "title", [progressButton], "1m02");
+      stage.stage_11 = new Story(story.stage_11a, "story", "title", [refreshButton], "1m02");
       break;
 
     case "yolo":
       stage.prelude2 = new Story(story.yoloIntro, "story", "stage_1", [progressButton], "1m03");
       stage.stage_9 = new Story(story.stage_9d, "story", "stage_10", [progressButton], "1m01");
-      stage.stage_11 = new Story(story.stage_11d, "story", "title", [progressButton], "1m02");
+      stage.stage_11 = new Story(story.stage_11d, "story", "title", [refreshButton], "1m02");
       break;
 
     case "zazzerpan":
       stage.prelude2 = new Story(story.zazzerpanIntro, "story", "stage_1", [progressButton], "1m03");
       stage.stage_9 = new Story(story.stage_9c, "story", "stage_10", [progressButton], "1m01");
-      stage.stage_11 = new Story(story.stage_11c, "story", "title", [progressButton], "1m02");
+      stage.stage_11 = new Story(story.stage_11c, "story", "title", [refreshButton], "1m02");
       break;
   }
 };
@@ -123,7 +127,7 @@ export const stage = {
   stage_10: new Story(story.stage_10, "story", "battle3", [progressButton], "1m01"),
   victory: new Story(story.victory, "story", "stage_11", [progressButton], "1m02"),
   // Stage 11 is set dynamically
-  game_over: new Story(story.game_over, "story", "title", [titleButton], "1m02"),
+  game_over: new Story(story.game_over, "story", "title", [refreshButton], "1m02"),
   battle2: new Battle("battle", engineOfChaos, "stage_7a", [progressButton], "1m04"),
   battle3: new Battle("battle", valderak, "victory", [progressButton], "1m04"),
 };

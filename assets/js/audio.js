@@ -23,6 +23,17 @@ export const audio = function (cue) {
   }
 };
 
+export const sfx = function (cue) {
+  console.log(cue)
+  let sfx = document.createElement("audio");
+  if (cue === 'attack') {
+    sfx.src = 'assets/audio/attack.wav';
+  } else if (cue === 'heal') {
+    sfx.src = 'assets/audio/heal.mp3'
+  }
+  sfx.play();
+  console.log('sss')
+}
 soundIcon.addEventListener("click", () => {
   toggleSound();
 });
