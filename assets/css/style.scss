@@ -56,6 +56,9 @@ header {
 #exit {
   visibility: hidden;
 }
+.hidden {
+  display: none !important;
+}
 // MAIN CONTENT STYLES
 main {
   width: 100%;
@@ -72,9 +75,7 @@ main {
   // This style is overwritten by javascript to display relevant screens at the appropriate time
   // 'Important' is necessary here because otherwise refactoring of the code could break the entire layout, and it is in fact important
 
-  .hidden {
-    display: none !important;
-  }
+
 
   // UI Elements
   .ui-element {
