@@ -25,12 +25,28 @@
     - [GameResult](#gameresult)
     - [Game](#game)
     - [Story](#story)
+    - [Features Left To Be Implemented](#features-left-to-be-implemented)
+  - [Design Choices](#design-choices)
     - [Wireframes](#wireframes)
     - [Color Palette](#color-palette)
     - [Typography](#typography)
     - [Imagery](#imagery)
     - [Iconography](#iconography)
     - [Prototype](#prototype)
+  - [Technologies Used](#technologies-used)
+    - [Languages](#languages)
+    - [Other Tools](#other-tools)
+  - [Testing](#testing)
+    - [Validation](#validation)
+    - [Linting](#linting)
+    - [Modelled Device Testing](#modelled-device-testing)
+    - [Automated Cross Browser Testing](#automated-cross-browser-testing)
+    - [Manual Cross Browser Testing](#manual-cross-browser-testing)
+    - [Testing Insights/Known Issues](#testing-insights/known-issues)
+  - [Deployment](#deployment)
+    - [Deploying on Github Pages](#deploying-on-github-pages)
+    - [Differences between deployed version and development version](#differences-between-deployed-version-and-development-version)
+    - [Cloning a local version](#cloning-a-local-version)
   - [Credits](#credits)
 
     - [Content](#content)
@@ -81,6 +97,8 @@ Therefore the user profile for this application is children between the ages of 
 - As a user I should be able to read story narrative before and after each battle
 - As a user I should be able to read instructions about how to play the game
 
+[BACK TO CONTENTS](#Contents)
+
 ## Features
 
 ### StartStopPause
@@ -119,6 +137,16 @@ The game proper should consist of a linear path that the character is set on, in
 
 Story blocks should appear at the start of the game, after the first battle, after the second battle, and after the final battle. They should be displayed on a separate screen, for example a modal to distinguish between action (battles) and exposition (story)
 
+### Features Left To Be Implemented
+
+- There is potential to increase the complexity of the battle sequences by adding a third 'special' command for each character.
+- The items dropped by both enemy 1 and enemy 2 could influence the final battle
+- Complexity of the battles could be scaled up by interaction of additional attributes - defence, magic defence, luck etc
+
+[BACK TO CONTENTS](#Contents)
+
+## Design Choices
+
 ### Wireframes
 
 Wireframes are generated to accomodate the majority of user stories. Still to be implemented are #StartStopPause, #AdvanceStory, #InspectCharacter.
@@ -153,15 +181,7 @@ Initial hues were selected based on these representations of the brand, and then
 
 With these decisions in place, a high fidelity [prototype](https://xd.adobe.com/view/b053e336-3558-410b-bda6-40c7af002eba-e500/) is created drawing together all strands of the design to show what the developed project will look like. Decisions such as placement of content, sizing of images, application of colour and typography palettes are taken at this point.
 
-## Features
-
-In this section, I will mention all of the languages, frameworks, libraries, and any other tools that I have used to construct this project.
-
-### Features Left To implemented
-
-- There is potential to increase the complexity of the battle sequences by adding a third 'special' command for each character.
-- The items dropped by both enemy 1 and enemy 2 could influence the final battle
-- Complexity of the battles could be scaled up by interaction of additional attributes - defence, magic defence, luck etc
+[BACK TO CONTENTS](#Contents)
 
 ## Technologies Used
 
@@ -256,6 +276,8 @@ The following browsers are tested:
 - Internet Explorer, as expected, breaks everything
 - Some inconsistent font size issues on tablet
 - Mute button only affects bg music, not sfx
+
+[BACK TO CONTENTS](#Contents)
 
 ## Deployment
 
