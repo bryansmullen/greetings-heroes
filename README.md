@@ -131,7 +131,7 @@ Once the user stories are completed, [wireframes](https://xd.adobe.com/view/c7be
 
 ### Color Palette
 
-Next, the brand is designed. This involves the creation of a [logo](#), compiling of a [color palette](https://color.adobe.com/Greetings-Heroes-color-theme-15326853), and selection of appropriate [font choices](https://use.typekit.net/twt4nji.css).
+Next, the brand is designed. This involves the creation of a logo, compiling of a [color palette](https://color.adobe.com/Greetings-Heroes-color-theme-15326853), and selection of appropriate [font choices](https://use.typekit.net/twt4nji.css).
 
 The colors palette chosen for the brand consist mainly of deep reds. The reds represent the the excitement, danger, and courage that are qualities that a hero must possess. Additionally purple is used as a highlight colour, representing magic and imagination.
 
@@ -208,33 +208,33 @@ To test the layout on multiple devices, Google Chrome DevTools is used to simula
 
 The following device dimensions are tested:
 
-Moto G4
-Galaxy S5
-Pixel 2
-Pixel 2 XL
-iPhone 5/SE
-iPhone 6,7,8
-iPhone 6,7,8 Plus
-iPhone X
-iPad
-iPad Pro
-Laptop 1024px
-Laptop L 1440px
-4k -2560px
+- Moto G4
+- Galaxy S5
+- Pixel 2
+- Pixel 2 XL
+- iPhone 5/SE
+- iPhone 6,7,8
+- iPhone 6,7,8 Plus
+- iPhone X
+- iPad
+- iPad Pro
+- Laptop 1024px
+- Laptop L 1440px
+- 4k -2560px
 
 ### Automated Cross Browser Testing
 
 To test the layout on multiple browsers, browserstack is used to screenshot how the layout will render on several different versions of major browsers, on the more up-to-date operating systems. These screenshots are then inspected and the results are once again documented in the Browser Automated Testing Chart. The following browsers are tested:
 
-Mac OSX Catalina Safari 71
-Mac OSX Catalina Firefox 80
-Mac OSX Catalina Chrome 85
-Mac OSX Catalina Opera 70
-Mac OSX Catalina Edge 85
-Windows 10 Edge 85
-Windows 10 IE 11
-Windows 10 Firefox 80
-Windows 10 Chrome 85
+- Mac OSX Catalina Safari 71
+- Mac OSX Catalina Firefox 80
+- Mac OSX Catalina Chrome 85
+- Mac OSX Catalina Opera 70
+- Mac OSX Catalina Edge 85
+- Windows 10 Edge 85
+- Windows 10 IE 11
+- Windows 10 Firefox 80
+- Windows 10 Chrome 85
 
 ### Manual Cross Browser Testing
 
@@ -242,12 +242,12 @@ To complement the above results the website is also tested manually on up-to-dat
 
 The following browsers are tested:
 
-Mac OS Catalina Brave Version 1.8.96
-Mac OS Catalina Safari Firefox 76.0.1 (64-bit)
-iOS 13.3.1 iPad Pro Safari
-iOS 13.4.1 iPhone Safari
-Windows 10 Microsoft Edge 44.18362.387.0
-Windows 10 Google Chrome 81.0.4044.138 (Official Build) (64 Bit)
+- Mac OS Catalina Brave Version 1.8.96
+- Mac OS Catalina Safari Firefox 76.0.1 (64-bit)
+- iOS 13.3.1 iPad Pro Safari
+- iOS 13.4.1 iPhone Safari
+- Windows 10 Microsoft Edge 44.18362.387.0
+- Windows 10 Google Chrome 81.0.4044.138 (Official Build) (64 Bit)
 
 ### Testing Insights/Known Issues
 
@@ -300,7 +300,6 @@ To clone this project locally, complete the following steps:
 ### Media
 
 Main title image sourced from [Freepik](http://www.freepik.com).
-Character artwork created by [Dearbháil Clarke](#)
 Attack and heal SFX licenced from [Envato](https://envato.com/)
 
 ### Acknowledgements
