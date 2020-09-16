@@ -142,7 +142,7 @@ main .character-selection {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 @media (min-width: 768px) {
   main .character-selection {
@@ -175,6 +175,7 @@ main .character-card .stats {
   text-align: center;
   margin: auto;
   font-family: courier-prime, monospace;
+  z-index: 2;
 }
 main .character-card .stats p {
   margin: 0;
@@ -193,6 +194,9 @@ main .character-card img {
   main .character-card img {
     height: 200px;
   }
+}
+main .character-card img .yolo {
+  margin-bottom: 150px;
 }
 @media (min-width: 768px) {
   main .character-card {

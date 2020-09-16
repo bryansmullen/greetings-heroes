@@ -163,7 +163,7 @@ main {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 
     @media (min-width: $media-tablet) {
       grid-template-columns: 1fr 1fr;
@@ -195,6 +195,7 @@ main {
       text-align: center;
       margin: auto;
       font-family: $gh-courier;
+      z-index: 2;
       p {
         margin: 0;
       }
@@ -211,6 +212,9 @@ main {
       margin: auto;
       @media (min-width: $media-tablet) {
         height: 200px;
+      }
+      .yolo{
+        margin-bottom: 150px;
       }
     }
     @media (min-width: $media-tablet) {

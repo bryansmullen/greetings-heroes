@@ -157,9 +157,11 @@ With these decisions in place, a high fidelity [prototype](https://xd.adobe.com/
 
 In this section, I will mention all of the languages, frameworks, libraries, and any other tools that I have used to construct this project.
 
-### Existing Features
-
 ### Features Left To implemented
+
+- There is potential to increase the complexity of the battle sequences by adding a third 'special' command for each character.
+- The items dropped by both enemy 1 and enemy 2 could influence the final battle
+- Complexity of the battles could be scaled up by interaction of additional attributes - defence, magic defence, luck etc
 
 ## Technologies Used
 
@@ -224,27 +226,15 @@ Laptop L 1440px
 
 To test the layout on multiple browsers, browserstack is used to screenshot how the layout will render on several different versions of major browsers, on the more up-to-date operating systems. These screenshots are then inspected and the results are once again documented in the Browser Automated Testing Chart. The following browsers are tested:
 
-Mac OS Catalina Chrome 69
-Mac OS Catalina Chrome 70
-Mac OS Catalina Chrome 71
-Mac OS Catalina Firefox 61
-Mac OS Catalina Firefox 62
-Mac OS Catalina Safari 13.1
-Mac OS Mojave Opera 12.12
-Mac OS Mojave Opera 12.14
-Mac OS Mojave Opera 12.15
-Windows 8.1 Opera 12.14
-Windows 8.1 Opera 12.15
-Windows 8.1 12.16
-Windows 10 Chrome 69
-Windows 10 Chrome 70
-Windows 10 Chrome 71
-Windows 10 Edge 16
-Windows 10 Edge 17
-Windows 10 Edge 18
-Windows 10 Firefox 61
-Windows 10 Firefox 62
-Windows 10 Internet Explorer 11
+Mac OSX Catalina Safari 71
+Mac OSX Catalina Firefox 80
+Mac OSX Catalina Chrome 85
+Mac OSX Catalina Opera 70
+Mac OSX Catalina Edge 85
+Windows 10 Edge 85
+Windows 10 IE 11
+Windows 10 Firefox 80
+Windows 10 Chrome 85
 
 ### Manual Cross Browser Testing
 
@@ -252,16 +242,19 @@ To complement the above results the website is also tested manually on up-to-dat
 
 The following browsers are tested:
 
-Mac OS Catalina Opera Version 68.0.3618.125
-Mac OS Catalina Edge Version 81.0.416.77
 Mac OS Catalina Brave Version 1.8.96
-Mac OS Catalina Chrome Version 81.0.4044.138
 Mac OS Catalina Safari Firefox 76.0.1 (64-bit)
 iOS 13.3.1 iPad Pro Safari
-iOS 13.3.1 iPad Pro Chrome
 iOS 13.4.1 iPhone Safari
 Windows 10 Microsoft Edge 44.18362.387.0
 Windows 10 Google Chrome 81.0.4044.138 (Official Build) (64 Bit)
+
+### Testing Insights/Known Issues
+
+- Some unexpected results re default rendering of progress bars on firefox and safari
+- Safari has unexpected results for for margins/padding on character screen
+- Internet Explorer, as expected, breaks everything
+- Some inconsistent font size issues on tablet
 
 ## Deployment
 
