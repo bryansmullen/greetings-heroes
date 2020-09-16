@@ -1,4 +1,6 @@
+// Grab Toggle Sound Icon
 const soundIcon = document.getElementById("toggle-sound");
+
 /**
  * Plays Audio In the Browser.
  *
@@ -23,6 +25,14 @@ export const audio = function (cue) {
   }
 };
 
+/**
+ * Plays Audio In the Browser.
+ *
+ * This function takes one argument - the cue name of the sound effect to be played. The cue should exist in the assets/audio/ directory and be in .wav or .mp3 format
+ *
+ * @param {string}   string  The audio cue to be played, formatted as .wav or .mp3
+ *
+ */
 export const sfx = function (cue) {
   let sfx = document.createElement("audio");
   if (cue === 'attack') {
@@ -36,6 +46,11 @@ soundIcon.addEventListener("click", () => {
   toggleSound();
 });
 
+
+/**
+ * Toggles background audio and mute icon
+ *
+ */
 export const toggleSound = function () {
   const audioElement = document.querySelector("audio");
   if (soundIcon.classList.contains("fa-volume-mute")) {

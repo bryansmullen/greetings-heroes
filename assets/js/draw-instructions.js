@@ -1,3 +1,5 @@
+// This file is responsible for rendering instructions screens
+
 import { stage } from "./stages.js";
 
 /**
@@ -6,14 +8,19 @@ import { stage } from "./stages.js";
  */
 
 export function drawInstructions() {
+
+  // Set Up Container and Injector
   const instructionsObj = stage.instructions;
   const injector = document.createElement("div");
   const container = document.createElement("div");
+
+  // Draw Heading
   const heading = document.createElement("h2");
   heading.innerText = instructionsObj.text;
   container.classList.add("ui-element", "instructions");
   container.appendChild(heading);
 
+  // Draw each paragraph
   const paragraphs = instructionsObj.paragraphs;
   paragraphs.forEach((paragraph) => {
     const paragraphElement = document.createElement("p");
@@ -21,11 +28,13 @@ export function drawInstructions() {
     container.appendChild(paragraphElement);
   });
 
+  // Set up main injector
   const choices = instructionsObj.choices;
   injector.appendChild(container);
   const main = document.getElementById("main-content");
   main.innerHTML = injector.innerHTML;
 
+  // Render each choice
   choices.forEach((choice) => {
     const choiceElement = document.createElement("div");
     choiceElement.classList.add("button", "button-text");

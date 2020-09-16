@@ -1,3 +1,5 @@
+// This file is responsible for rendering title screens
+
 import { renderStage, startGame } from "./application.js";
 
 /**

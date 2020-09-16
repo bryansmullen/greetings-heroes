@@ -1,3 +1,5 @@
+// This file is responsible for rendering battle screens
+
 import { choosePlayer } from "./characters.js";
 
 export function drawBattle(stageObj) {

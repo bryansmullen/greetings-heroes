@@ -1,3 +1,5 @@
+// This file declares the differnet classes of screens to expect to render, and the attributes they should have
+
 export class Story {
   constructor(text, type, next, choices, audio) {
     this.text = text;

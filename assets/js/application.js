@@ -32,6 +32,7 @@ function updateAudio() {
   }
 }
 
+// Decides which type of stage requires rendering, and does so
 export function renderStage() {
   const stageId = sessionStorage.getItem("stage");
   const stageObj = stage[stageId];
@@ -51,6 +52,7 @@ export function renderStage() {
   }
 }
 
+// Sets initial session variables and renders first stage
 export function startGame() {
   sessionStorage.setItem("gameIsRunning", true);
   setRandomFirstEnemy();

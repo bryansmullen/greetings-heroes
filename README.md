@@ -255,6 +255,7 @@ Windows 10 Google Chrome 81.0.4044.138 (Official Build) (64 Bit)
 - Safari has unexpected results for for margins/padding on character screen
 - Internet Explorer, as expected, breaks everything
 - Some inconsistent font size issues on tablet
+- Mute button only affects bg music, not sfx
 
 ## Deployment
 

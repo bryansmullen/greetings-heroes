@@ -1,17 +1,43 @@
+// This file handles most of the routing of which screen to render, which options to allow, and how to get from one stage to the next
+
 import { drawNarrative } from "./draw-narrative.js";
 import { drawTitle } from "./draw-title.js";
 import { drawInstructions } from "./draw-instructions.js";
-
 import { renderStage } from "./application.js";
 import { paragraphs, story } from "./story.js";
 import { Story, Title, Instructions, Character, Battle } from "./screen-classes.js";
 import { forestPeople, melwuntTribe, wretchedDead, engineOfChaos, valderak } from "./characters.js";
+
+// Function to move to the scene stored in the next variable of the stage object
+
 export const progressToNextScene = () => {
   const currentStageName = sessionStorage.getItem("stage");
   const currentStage = stage[currentStageName];
   sessionStorage.setItem("stage", currentStage.next);
   renderStage();
 };
+
+
+// Function to bring player to game over screen
+
+export const progressToGameOverScreen = () => {
+  sessionStorage.setItem("stage", "game_over");
+  renderStage();
+};
+
+// Function to return player to current stage in the game
+
+const returnToCurrentScene = () => {
+  renderStage();
+};
+
+// Function to refresh the browser. This exists to refresh all variables when the game ends in either victory or game over
+
+const refreshScreen = () => {
+  window.location.reload()
+}
+
+// Function group to set stage variables based on the players choice of which door to proceed through
 
 const progressThroughRubyDoor = () => {
   sessionStorage.setItem("stage", "stage_6a");
@@ -25,17 +51,8 @@ const progressThroughTopazDoor = () => {
   sessionStorage.setItem("stage", "stage_6b");
   renderStage();
 };
-export const progressToGameOverScreen = () => {
-  sessionStorage.setItem("stage", "game_over");
-  renderStage();
-};
-const returnToCurrentScene = () => {
-  renderStage();
-};
 
-const refreshScreen = () => {
-  window.location.reload()
-}
+// Buttons which will be rendered as options on various screens, which trigger specific actions
 
 const returnButton = { text: "Return To Previous Screen", action: returnToCurrentScene };
 const progressButton = { text: "Next Scene", action: progressToNextScene };
@@ -46,6 +63,7 @@ const playGameButton = { text: "Play Game", action: drawNarrative };
 const instructionsButton = { text: "Instructions", action: drawInstructions };
 const preferencesButton = { text: "Preferences", action: drawTitle };
 const refreshButton = { text: "Return To Title Screen", action: refreshScreen }
+
 // Function Which Sets Stages Which Vary Based On Character Selection
 export const setPreludeInfo = function () {
   const chosenCharacter = sessionStorage.character;
@@ -98,6 +116,7 @@ export const setRandomFirstEnemy = function () {
       break;
   }
 };
+
 // Set Cards For Character Selection Screen
 const jaynaCard = { name: "jayna", imagePath: "assets/img/jayna.png", action: drawNarrative, next: "preludea" };
 const bjornaCard = { name: "bjorna", imagePath: "assets/img/bjorna.png", action: drawNarrative, next: "preludeb" };

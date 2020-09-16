@@ -1,4 +1,4 @@
-// Playable Characters
+// Character Classes
 
 export class Player {
   constructor(name, strength, health) {
@@ -18,6 +18,8 @@ class Enemy {
   }
 }
 
+// Instances of each class for the game
+
 export const forestPeople = new Enemy("The Forest People", 45, 350);
 export const melwuntTribe = new Enemy("A Tribe Of Melwunts", 35, 400);
 export const wretchedDead = new Enemy("The Wretched Dead", 40, 300);
@@ -27,6 +29,8 @@ const bjorna = new Player("Bjorna", 80, 450);
 const jayna = new Player("Jayna", 70, 400);
 const zazzerpan = new Player("Zazzerpan", 90, 200);
 const yolo = new Player("Yolo", 80, 300);
+
+// Function to return chosen player object
 
 export const choosePlayer = function (character) {
   switch (character) {

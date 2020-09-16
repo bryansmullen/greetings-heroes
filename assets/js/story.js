@@ -1,3 +1,7 @@
+// This file is a data dump for a story object and paragraphs array
+
+// The story object which contains all narrative created for the game
+
 export const story = {
   prelude:
     "A dread shadow stalks the land! Arch-Wizard Valderak, freed from his timeless prison, has come to wreak vengeance on the people of The Four Kingdoms. From his tower deep in the Forest of Poison, he plots a terrible revenge. Four heroes, the greatest from each Kingdom, have been sent to thwart the Arch-Wizard and restore peace to the land.",
@@ -56,6 +60,8 @@ export const story = {
   game_over:
     "All your valour, all your bravery, was for naught. You have been vanquished. It is a dark day for the Four Kingdoms as its greatest champions lie defeated. There will be many more dark days ahead, for now nothing stands in the way of Valderak's final victory. All is lost.",
 };
+
+// The paragraphs array which contains the instructions for the game
 
 export const paragraphs = [
   "The game is played using only the mouse.",

@@ -1,11 +1,10 @@
-// Battle Logic
-
 import { stage } from "./stages.js";
 import { choosePlayer } from "./characters.js";
 import { progressToGameOverScreen, progressToNextScene } from "./stages.js";
 import { sfx } from "./audio.js"
+
 /**
- * Battle.
+ * Battle class
  *
  */
 export class Battle {
@@ -22,14 +21,17 @@ export class Battle {
   }
 }
 
+// Await Players Choice. Triggers next function but left in to allow additional functionality
 export function runBattle() {
   takePlayerTurn();
 }
 
+// Wire up event listeners for players choice
 function takePlayerTurn() {
   addBattleListeners();
 }
 
+// Enemy attacks after short delay. Update health evaluate whether to progress, game over or loop
 function takeComputersTurn() {
   const stageObj = stage[sessionStorage.stage];
   const player = choosePlayer(sessionStorage.character);
@@ -48,7 +50,8 @@ function takeComputersTurn() {
     }
   }
 }
-// Possible Player Actions
+
+// Function for player to attack. Update health, remove listeners and trigger computers turn
 function attack() {
   const enemy = stage[sessionStorage.stage].enemy;
   const player = choosePlayer(sessionStorage.character);
@@ -63,6 +66,7 @@ function attack() {
   setTimeout(takeComputersTurn, 500);
 }
 
+// Function for player to heal. Update health, remove listeners and trigger computers turn
 function heal() {
   const player = choosePlayer(sessionStorage.character);
   const playerHealthDiff = player.maxHealth - player.health;

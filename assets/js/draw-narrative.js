@@ -1,3 +1,5 @@
+// This file is responsible for rendering narrative screens
+
 import { stage } from "./stages.js";
 
 /**
