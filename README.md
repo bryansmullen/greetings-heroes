@@ -15,7 +15,7 @@
   - [UX Design](#ux-design)
     - [Goals](#goals)
     - [User Stories](#user-stories)
-  - [Featuresgit](#featuresgit)
+  - [Features](#features)
     - [StartStopPause](#startstoppause)
     - [ChooseAction](#chooseaction)
     - [HUD](#hud)
