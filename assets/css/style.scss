@@ -1,7 +1,9 @@
-// IMPORTS
+//================== Imports ======================//
+
 @import url("https://use.typekit.net/twt4nji.css");
 
-// VARIABLES
+//================== Variables ======================//
+
 $gh-earth: #8f4836;
 $gh-red: #991b00;
 $gh-dark-red: #800000;
@@ -10,11 +12,13 @@ $gh-violet: #8c078c;
 $gh-gothicus: gothicus-roman, sans-serif;
 $gh-courier: courier-prime, monospace;
 
-// MEDIA QUERY SIZES
+//================== Media Query Breakpoints ======================//
+
 $media-tablet: 768px;
 $media-web: 1024px;
 
-// DOCUMENT CONFIG
+//================== Document Config Styles ======================//
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -36,7 +40,8 @@ body {
   grid-template-rows: 60px 1fr 100px;
 }
 
-// HEADER STYLES
+//================== Header Styles ======================//
+
 header {
   background-color: $gh-dark-red;
   height: 60px;
@@ -53,13 +58,17 @@ header {
     color: lighten($gh-red, 50%);
   }
 }
+
 #exit {
   visibility: hidden;
 }
+
 .hidden {
   display: none !important;
 }
-// MAIN CONTENT STYLES
+
+//================== Main Content Styles ======================//
+
 main {
   width: 100%;
   height: 100%;
@@ -70,12 +79,6 @@ main {
   flex-direction: column;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-
-  // Utiliity style to hide all ui elements
-  // This style is overwritten by javascript to display relevant screens at the appropriate time
-  // 'Important' is necessary here because otherwise refactoring of the code could break the entire layout, and it is in fact important
-
-
 
   // UI Elements
   .ui-element {
@@ -98,6 +101,7 @@ main {
         background-color: $gh-violet;
       }
     }
+
     // BUTTON TEXT STYLES
     .button-text {
       font-family: $gh-courier;
@@ -120,6 +124,7 @@ main {
         font-size: 4rem;
       }
     }
+
     p {
       margin: 1rem;
       text-align: center;
@@ -133,13 +138,13 @@ main {
 
   .story {
     width: 100%;
-
     justify-content: center;
     align-items: center;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     @media (min-width: $media-tablet) {
       grid-template-rows: 2fr 1fr 1fr 1fr;
     }
+
     p {
       grid-row: 2;
       font-size: 1rem;
@@ -151,6 +156,7 @@ main {
         font-size: 1.3rem;
       }
     }
+
     .button {
       grid-row: 3;
       @media (max-width: $media-tablet) {
@@ -158,6 +164,9 @@ main {
       }
     }
   }
+
+  //================== Character Selection Styles ======================//
+
   .character-selection {
     height: 100%;
     width: 100%;
@@ -182,6 +191,7 @@ main {
     border: 2px solid orange;
     overflow: hidden;
     cursor: pointer;
+
     h2 {
       font-size: 2rem;
       color: white;
@@ -190,6 +200,7 @@ main {
       font-family: $gh-gothicus;
       margin: auto 0;
     }
+
     .stats {
       color: white;
       text-align: center;
@@ -199,14 +210,15 @@ main {
       p {
         margin: 0;
       }
-
     }
+
     &:hover {
       background-color: $gh-earth;
     }
     &:active {
       background-color: $gh-magenta;
     }
+
     img {
       height: 100px;
       margin: auto;
@@ -217,17 +229,24 @@ main {
         margin-bottom: 150px;
       }
     }
+
     @media (min-width: $media-tablet) {
       width: 95%;
       height: 90%;
     }
   }
+
+  //================== Instructions Styles ======================//
+
+
   .instructions {
     margin-top: 15%;
     margin-bottom: 55%;
   }
-  // Battle styles
 
+//================== Battle Styles ======================//
+
+// General Battle
   .battle {
     display: flex;
     width: 100vw;
@@ -237,8 +256,10 @@ main {
     @media (max-width: $media-tablet) {
       font-size: 1rem;
     }
-   
     align-items: center;
+   
+    // Battle Arena
+    
     .battle-arena {
       width: 100%;
       height: calc(100% - 30px);
@@ -249,7 +270,6 @@ main {
       }
       
       @media(min-width: $media-tablet){
-
         .actions, .health{
           display: flex;
           justify-content: space-around;
@@ -277,25 +297,31 @@ main {
       }
     }
 
+    // Battle Stats
+
     .character-stats {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
     }
+
     #battle-update {
       margin: auto;
     }
+
     .battle-command {
       margin: auto;
     }
+
   }
 }
 
 
 
-// Footer Styles
+//================== Footer Styles ======================//
 
+// General Footer
 footer {
   background-color: $gh-dark-red;
   color: white;
@@ -315,7 +341,6 @@ footer {
   .social,
   .hire-container {
     margin: 10px;
-
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -323,28 +348,32 @@ footer {
     width: 100%;
   }
 
+  // Hire
+
   .hire {
     width: 80%;
     text-align: center;
-
     h3 {
       font-family: $gh-courier;
       font-size: 1rem;
     }
-
     p {
       text-align: center;
       font-size: 0.7rem;
     }
   }
 
+  // Social
+
   .social {
     .social-links {
       width: 20%;
       justify-content: space-between;
     }
+
     ul {
       display: flex;
+
       li{
 
         list-style-type: none;
